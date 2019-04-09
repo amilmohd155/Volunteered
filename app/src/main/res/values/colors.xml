@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="colorGrey101">#ECEAEA</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorVlt">#C06161</color>
+    <color name="colorLighterFont">#707070</color>
+    <color name="coloVLFont">#B8B8B8</color>
+    <color name="colorE6e6ff">#e6e6ff</color>
+    <color name="colorBlue63">#6390F0</color>
+
+    <!-- Post Colors-->
+    <color name="colorDarkFontMajor">#707070</color>
+    <color name="colorFontMajor">#8B8B8B</color>
+    <color name="colorFeedStats">#B8B8B8</color>
+    <color name="colorTimeStamp">#43434360</color>
+    <color name="colorFeedText">#434343</color>
+    <color name="colorPostBG">#E8E5E5</color>
+    <color name="colorDisabled">#ECEAEA</color>
+    
+    <!-- Character Colors -->
+    <color name="colorAnimal">#c57d4a</color>
+    <color name="colorArt">#ffff63</color>
+    <color name="colorChildren">#ffb938</color>
+    <color name="colorCivil">#ffffe5</color>
+    <color name="colorDisaster">#a2a2a2a6</color>
+    <color name="colorEconomics">#b2dcac</color>
+    <color name="colorEducation">#c57d4a</color>
+    <color name="colorEnvironment">#389583</color>
+    <color name="colorHealth">#ad6dc7</color>
+    <color name="colorHuman">#82aac4</color>
+    <color name="colorPolitics">#ef5f5f</color>
+    <color name="colorPoverty">#f9f9f9</color>
+    <color name="colorScience">#02a9f7</color>
+    <color name="colorSocial">#ffba61</color>
+    <color name="colorWomen">#f5d4cf</color>
+
+    
+    
+</resources>

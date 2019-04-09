@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/relLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <include layout="@layout/snippet_top_bar_user"/>
+
+        </RelativeLayout>
+
+        <com.angeltek.volunteered_trail.utils.CustomScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:layout_below="@id/top_bar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relLayout1">
+
+                    <ImageView
+                        android:id="@+id/cover_photo"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:src="@drawable/civil"
+                        android:scaleType="centerCrop"
+                        android:adjustViewBounds="true"/>
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:src="@drawable/avatar0"
+                        app:civ_border_width="2dp"
+                        app:civ_border_color="@color/colorWhite"
+                        android:layout_marginStart="20dp"
+                        android:layout_centerVertical="true"
+                        android:elevation="5dp"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/relLayout2"
+                    android:layout_below="@id/relLayout1"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp">
+
+                    <include layout="@layout/snippet_profile_desc_area"/>
+
+                    <TextView
+                        android:id="@+id/edit_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_border_50dp"
+                        android:backgroundTint="@color/colorVlt"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:paddingTop="7dp"
+                        android:paddingBottom="7dp"
+                        android:elevation="5dp"
+                        android:gravity="center"
+                        android:text="Edit Profile"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:layout_alignParentEnd="true" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/relLayout3"
+                    android:layout_below="@id/relLayout2">
+
+                    <android.support.design.widget.TabLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        style="@style/CustomTabLayout"
+                        android:id="@+id/tabs_user"
+                        app:tabMode="fixed"
+                        app:tabMaxWidth="0dp"
+                        app:tabGravity="fill">
+
+                    </android.support.design.widget.TabLayout>
+
+
+                    <com.angeltek.volunteered_trail.utils.WrapContentViewPager
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/user_tab_container"
+                        android:layout_below="@id/tabs_user"
+                        android:layout_marginBottom="50dp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </com.angeltek.volunteered_trail.utils.CustomScrollView>
+
+        <!-- Bottom Navigation  -->
+        <include layout="@layout/layout_bottom_navigation_view"/>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

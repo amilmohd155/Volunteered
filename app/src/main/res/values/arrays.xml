@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- CharacterColor Array -->
+    <array name="characterColor">
+        <item>@color/colorAnimal</item>
+        <item>@color/colorArt</item>
+        <item>@color/colorChildren</item>
+        <item>@color/colorCivil</item>
+        <item>@color/colorDisaster</item>
+        <item>@color/colorEconomics</item>
+        <item>@color/colorEducation</item>
+        <item>@color/colorEnvironment</item>
+        <item>@color/colorHealth</item>
+        <item>@color/colorHuman</item>
+        <item>@color/colorPolitics</item>
+        <item>@color/colorPoverty</item>
+        <item>@color/colorScience</item>
+        <item>@color/colorSocial</item>
+        <item>@color/colorWomen</item>
+    </array>
+
+    //Character Name String array
+    <array name="characterName">
+        <item>@string/animal</item>
+        <item>@string/art</item>
+        <item>@string/children</item>
+        <item>@string/civil</item>
+        <item>@string/disaster</item>
+        <item>@string/economic</item>
+        <item>@string/education</item>
+        <item>@string/environment</item>
+        <item>@string/health</item>
+        <item>@string/human</item>
+        <item>@string/politics</item>
+        <item>@string/poverty</item>
+        <item>@string/science</item>
+        <item>@string/social</item>
+        <item>@string/women</item>
+    </array>
+
+    <!-- Character Icon Array -->
+    <array name="characterIcon">
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+        <item>@drawable/icon1</item>
+    </array>
+
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="110dp"
+    android:layout_height="130dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardMaxElevation="2dp"
+    card_view:cardElevation="1dp"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardPreventCornerOverlap="false"
+    app:cardBackgroundColor="@color/colorWhite"
+    android:id="@+id/character_card_view"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="end"
+        android:layout_gravity="start">
+
+        <ImageView
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:src="@drawable/icon1"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/character_icon"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/character_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/character_icon"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/science"
+            android:textColor="@color/colorWhite"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/character_checkbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_checkmark"
+            android:tint="@color/colorWhite"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/rounded_border_50dp"
+            android:backgroundTint="@color/colorBlack"
+            android:padding="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginTop="5dp"
+            android:visibility="gone"/>
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

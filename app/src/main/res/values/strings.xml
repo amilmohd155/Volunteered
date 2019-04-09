@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">Volunteered</string>
+    <string name="createPing">Create Ping</string>
+    <string name="placebo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  </string>
+    <string name="create_post">Create Post</string>
+    <string name="search">Search</string>
+    <string name="forums_button">Forums</string>
+    <string name="feed_const_terms">Feed</string>
+
+
+    //CHARACTER
+    <string name="animal">Animal Welfare</string>
+    <string name="art">Art &amp; Culture</string>
+    <string name="children">Children</string>
+    <string name="civil">Civil Rights</string>
+    <string name="disaster">Disaster Management</string>
+    <string name="economic">Economic Empowerment</string>
+    <string name="education">Education</string>
+    <string name="environment">Environment</string>
+    <string name="health">Health</string>
+    <string name="human">Human Rights</string>
+    <string name="poverty">Poverty Alleviation</string>
+    <string name="politics">Politics</string>
+    <string name="science">Science &amp; Technology</string>
+    <string name="social">Social Services</string>
+    <string name="women">Women Welfare</string>
+
+
+
+
+    //fragment names
+    <string name="gallery_fragment">Photos, Video</string>
+    <string name="document_fragment">Document</string>
+    <string name="poll_fragment">Poll</string>
+    <string name="camera_fragment">Camera</string>
+
+    //Tabs
+    <string name="tab_request">Requests</string>
+    <string name="tab_notification">Notifications</string>
+
+    <string name="tab_post">Posts</string>
+    <string name="tab_activities">Activities</string>
+    <string name="tab_media">Media</string>
+    <string name="tab_character">character</string>
+
+    //Wizard
+    <string name="step_info_1">Select three or more character that represent what you want to follow</string>
+    <string name="slash">/</string>
+    <string name="new_element">New</string>
+    <string name="created_on">Created on</string>
+    <string name="joined_by">Joined by</string>
+    <string name="details">Details</string>
+    <string name="join">Join</string>
+    <string name="ping">PING</string>
+
+    //Post
+    <string name="post_bait_text">What\'s new?</string>
+    <string name="privacy_heading">Privacy</string>
+    <string name="private_privacy">Private</string>
+    <string name="public_privacy">Public</string>
+    <string name="custom_privacy">Custom</string>
+    <string name="horizontal_divider">|</string>
+    <string name="save_button_text">Save</string>
+    <string name="discard_button_text">Discard</string>
+    <string name="dialog_privacy">dialogPrivacy</string>
+
+
+</resources>
