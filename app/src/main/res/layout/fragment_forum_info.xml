@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite">
+
+    <RelativeLayout
+        android:id="@+id/relLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/snippet_top_bar_form_info"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relLayout1">
+
+        <include layout="@layout/snippet_activity_details"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/relLayout2"
+        android:layout_above="@id/relLayout3">
+
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            style="@style/CustomTabLayout"
+            android:id="@+id/tabs_forum_info"
+            app:tabMode="fixed"
+            app:tabMaxWidth="0dp"
+            app:tabGravity="fill"/>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabs_forum_info">
+
+        </android.support.v4.view.ViewPager>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/white_grey_border_top">
+
+        <TextView
+            android:id="@+id/invite_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:paddingHorizontal="30dp"
+            android:text="Invite your followers"
+            android:textColor="@color/colorVlt"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/review_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:paddingHorizontal="30dp"
+            android:text="Rate this Activity"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

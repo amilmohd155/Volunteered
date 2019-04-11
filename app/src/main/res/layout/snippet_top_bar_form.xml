@@ -45,7 +45,6 @@
                         android:layout_height="wrap_content"
                         android:text="Forums"
                         android:textColor="@color/colorLighterFont"
-                        android:textSize="20sp"
                         android:layout_marginStart="5dp"
                         android:layout_toEndOf="@id/back_btn"
                         android:textAlignment="center"

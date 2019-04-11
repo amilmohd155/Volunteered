@@ -98,7 +98,8 @@ public class ForumsActivity extends AppCompatActivity {
                 else {
 
                     Toast.makeText(mContext, "Single click ::"+ position , Toast.LENGTH_SHORT).show();
-
+                    Intent intent = new Intent(mContext, ForumRoomActivity.class);
+                    mContext.startActivity(intent);
                 }
 
             }

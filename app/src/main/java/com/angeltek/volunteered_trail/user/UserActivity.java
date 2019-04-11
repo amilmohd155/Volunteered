@@ -2,7 +2,6 @@ package com.angeltek.volunteered_trail.user;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import com.angeltek.volunteered_trail.fragments.EditProfileFragment;
 import com.angeltek.volunteered_trail.fragments.FollowStaticFragment;
 import com.angeltek.volunteered_trail.utils.BottomNavigationViewHelper;
 import com.angeltek.volunteered_trail.utils.UserSpinnerAdapter;
+import com.angeltek.volunteered_trail.utils.WrapContentStatePagerAdapter;
 import com.angeltek.volunteered_trail.utils.WrapContentViewPager;
 import com.angeltek.volunteered_trail.utils.SectionsStatePagerAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -168,11 +168,10 @@ public class UserActivity extends AppCompatActivity {
     private void setupFragments() {
 
         viewPager = findViewById(R.id.user_tab_container);
-        SectionsStatePagerAdapter statePagerAdapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
+        WrapContentStatePagerAdapter statePagerAdapter = new WrapContentStatePagerAdapter(getSupportFragmentManager());
         statePagerAdapter.addFragment(new UserPostFragment(), getResources().getString(R.string.tab_post));
         statePagerAdapter.addFragment(new UserActivitiesFragment(), getResources().getString(R.string.tab_activities));
         statePagerAdapter.addFragment(new UserMediaFragment(), getResources().getString(R.string.tab_media));
-        statePagerAdapter.addFragment(new UserCharacterFragment(), getResources().getString(R.string.tab_character));
 
         viewPager.setAdapter(statePagerAdapter);
 
@@ -182,7 +181,6 @@ public class UserActivity extends AppCompatActivity {
         tabLayout.getTabAt(0).setText(R.string.tab_post);
         tabLayout.getTabAt(1).setText(R.string.tab_activities);
         tabLayout.getTabAt(2).setText(R.string.tab_media);
-        tabLayout.getTabAt(3).setText(R.string.tab_character);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 

@@ -42,6 +42,9 @@
     <string name="tab_activities">Activities</string>
     <string name="tab_media">Media</string>
     <string name="tab_character">character</string>
+    
+    <string name="tab_ping">Ping</string>
+    <string name="tab_people">People</string>
 
     //Wizard
     <string name="step_info_1">Select three or more character that represent what you want to follow</string>
@@ -63,6 +66,10 @@
     <string name="save_button_text">Save</string>
     <string name="discard_button_text">Discard</string>
     <string name="dialog_privacy">dialogPrivacy</string>
+    <string name="forum_room_fragment">ForumRoomFragment</string>
+    <string name="forum_info_fargment">ForumInfoFragment</string>
+    <string name="report_activity">Report Activity</string>
+    <string name="leave_activity">Leave Activity</string>
 
 
 </resources>
