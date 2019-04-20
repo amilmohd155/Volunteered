@@ -81,9 +81,9 @@ public class UserSpinnerAdapter extends BaseAdapter implements SpinnerAdapter {
         //selected dropdown Styling
         if (UserActivity.selectedPosition == position) {
 
-            username.setTextColor(context.getResources().getColor(R.color.colorWhite, context.getTheme()));
-            username.setTypeface(username.getTypeface(), Typeface.BOLD);
-            view.setBackgroundColor(context.getColor(R.color.colorE6e6ff));
+//            username.setTextColor(context.getResources().getColor(R.color.colorWhite, context.getTheme()));
+//            username.setTypeface(username.getTypeface(), Typeface.BOLD);
+            view.setBackgroundColor(context.getColor(R.color.colorDBDEFE));
 
         }
 

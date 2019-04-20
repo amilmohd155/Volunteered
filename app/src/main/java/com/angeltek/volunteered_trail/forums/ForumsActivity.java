@@ -1,23 +1,23 @@
 package com.angeltek.volunteered_trail.forums;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.angeltek.volunteered_trail.R;
 import com.angeltek.volunteered_trail.models.ForumListModel;
 import com.angeltek.volunteered_trail.search.SearchActivity;
-import com.angeltek.volunteered_trail.startup.StartUpActivity;
 import com.angeltek.volunteered_trail.utils.ClickListener;
 import com.angeltek.volunteered_trail.utils.RecyclerTouchListener;
 
@@ -40,6 +40,7 @@ public class ForumsActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView searchView;
     ImageView backButton;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +97,6 @@ public class ForumsActivity extends AppCompatActivity {
                     mContext.startActivity(intent);
                 }
                 else {
-
-                    Toast.makeText(mContext, "Single click ::"+ position , Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(mContext, ForumRoomActivity.class);
                     mContext.startActivity(intent);
                 }
@@ -108,7 +107,44 @@ public class ForumsActivity extends AppCompatActivity {
             public void onLongClick(View view, int position) {
 
                 if (position != 0) {
-                    Toast.makeText(mContext, "Long click ::"+ position , Toast.LENGTH_SHORT).show();
+
+                    Log.d(TAG, "onLongClick: DialogFragment Opening");
+
+                    dialog = new Dialog(mContext);
+                    dialog.setContentView(R.layout.dialog_more_options);
+                    if (dialog.getWindow() != null) {
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialog.show();
+                    }
+
+                    TextView deleteForum = (TextView) dialog.findViewById(R.id.delete_forum);
+                    TextView reportForum = (TextView) dialog.findViewById(R.id.report_forum);
+                    TextView closeForum = (TextView) dialog.findViewById(R.id.close_forum);
+
+                    //Delete Forum
+                    deleteForum.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    });
+
+                    //Report Forum
+                    reportForum.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    });
+
+                    //Close Forum
+                    closeForum.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+                        }
+                    });
+
                 }
 
             }

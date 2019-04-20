@@ -26,8 +26,6 @@
     <string name="women">Women Welfare</string>
 
 
-
-
     //fragment names
     <string name="gallery_fragment">Photos, Video</string>
     <string name="document_fragment">Document</string>
@@ -42,9 +40,15 @@
     <string name="tab_activities">Activities</string>
     <string name="tab_media">Media</string>
     <string name="tab_character">character</string>
-    
+
     <string name="tab_ping">Ping</string>
     <string name="tab_people">People</string>
+
+    <string name="tab_document">Document</string>
+
+    //DialogTag
+    <string name="dialog_privacy">dialogPrivacy</string>
+    <string name="dialog_options">dialogOptions</string>
 
     //Wizard
     <string name="step_info_1">Select three or more character that represent what you want to follow</string>
@@ -65,11 +69,16 @@
     <string name="horizontal_divider">|</string>
     <string name="save_button_text">Save</string>
     <string name="discard_button_text">Discard</string>
-    <string name="dialog_privacy">dialogPrivacy</string>
     <string name="forum_room_fragment">ForumRoomFragment</string>
-    <string name="forum_info_fargment">ForumInfoFragment</string>
+    <string name="forum_info_fragment">ForumInfoFragment</string>
     <string name="report_activity">Report Activity</string>
     <string name="leave_activity">Leave Activity</string>
+    <string name="following">Following</string>
+    <string name="follow">Follow</string>
+
+
+    <string name="long_placebo">“As he crossed toward the pharmacy at the corner he involuntarily turned his head because of a burst of light that had ricocheted from his temple, and saw, with that quick smile with which we greet a rainbow or a rose, a blindingly white parallelogram of sky being unloaded from the van—a dresser with mirrors across which, as across a cinema screen, passed a flawlessly clear reflection of boughs sliding and swaying not arboreally, but with a human vacillation, produced by the nature of those who were carrying this sky, these boughs, this gliding façade.”</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>
