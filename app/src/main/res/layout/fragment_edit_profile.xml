@@ -31,22 +31,19 @@
                 <RelativeLayout
                     android:id="@+id/relLayout1"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:src="@drawable/civil"
-                        android:scaleType="centerCrop"
-                        android:visibility="gone"/>
-
+                    <!--Profile Picture-->
                     <LinearLayout
+                        android:id="@+id/linearLayoutProfile"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
-                        android:gravity="center_horizontal|center_vertical">
+                        android:gravity="center_horizontal|center_vertical"
+                        android:layout_marginEnd="20dp">
 
                         <de.hdodenhof.circleimageview.CircleImageView
                             android:id="@+id/profilePhoto"
@@ -61,8 +58,41 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Change Profile Picture"
-                            android:textColor="@color/colorDarkFontMajor"
+                            android:text="Profile Picture"
+                            android:textSize="13sp"
+                            android:textColor="@color/colorFontMajor"
+                            android:textStyle="bold"
+                            android:backgroundTint="@color/colorWhite"
+                            android:padding="10dp" />
+
+                    </LinearLayout>
+
+                    <!--Cover  Photo-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@id/linearLayoutProfile"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:layout_marginStart="20dp">
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/coverPhoto"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@drawable/ic_fb"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            app:civ_border_width="2dp"
+                            app:civ_border_color="@color/colorWhite" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cover Picture"
+                            android:textSize="13sp"
+                            android:textColor="@color/colorFontMajor"
                             android:textStyle="bold"
                             android:backgroundTint="@color/colorWhite"
                             android:padding="10dp" />
