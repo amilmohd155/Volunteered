@@ -5,154 +5,154 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent">-->
 
-        <RelativeLayout
-            android:id="@+id/relLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/relLayout1"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-            <include layout="@layout/snippet_top_bar_form_room"/>
+            <!--<include layout="@layout/snippet_top_bar_form_room"/>-->
 
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/relLayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/relLayout1"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
-
-            <include layout="@layout/layout_forum_bubble_m"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/relLayout2"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp">
-
-            <include layout="@layout/layout_forum_bubble_o"/>
-
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
 
-        <android.support.v7.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/relLayout1"
-            android:visibility="gone">
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/relLayout2"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/relLayout1"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_marginBottom="5dp"-->
+            <!--android:layout_marginTop="5dp">-->
 
-        </android.support.v7.widget.RecyclerView>
+            <!--<include layout="@layout/layout_forum_bubble_m"/>-->
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorWhite">
+        <!--</RelativeLayout>-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/forum_entry_background"
-                android:layout_marginHorizontal="5dp"
-                android:layout_marginVertical="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/relLayout2"-->
+            <!--android:layout_marginBottom="5dp"-->
+            <!--android:layout_marginTop="5dp">-->
 
-                <EditText
-                    android:id="@+id/message_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Message..."
-                    android:scrollHorizontally="false"
-                    android:inputType="textCapSentences|textMultiLine"
-                    android:maxLines="4"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorFeedText"
-                    android:textCursorDrawable="@null"
-                    android:isScrollContainer="true"
-                    android:background="@android:color/transparent"
-                    android:layout_toStartOf="@id/linearLayout"
-                    android:layout_centerVertical="true"
-                    android:paddingStart="20dp"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingEnd="10dp"/>
+            <!--<include layout="@layout/layout_forum_bubble_o"/>-->
 
-                <!--Vertical Divider-->
-                <!--<View-->
-                    <!--android:id="@+id/vertical_divider"-->
-                    <!--android:layout_width="1dp"-->
-                    <!--android:layout_height="0dp"-->
-                    <!--android:layout_marginTop="10dp"-->
-                    <!--android:layout_marginBottom="10dp"-->
-                    <!--android:layout_marginHorizontal="10dp"-->
-                    <!--android:background="@android:color/holo_blue_light"-->
+        <!--</RelativeLayout>-->
+
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_below="@id/relLayout1"-->
+            <!--android:visibility="gone">-->
+
+        <!--</android.support.v7.widget.RecyclerView>-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:background="@color/colorWhite">-->
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/forum_entry_background"-->
+                <!--android:layout_marginHorizontal="5dp"-->
+                <!--android:layout_marginVertical="10dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginBottom="10dp"-->
+                <!--android:layout_marginStart="5dp"-->
+                <!--android:layout_marginEnd="5dp">-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/message_text"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:hint="Message..."-->
+                    <!--android:scrollHorizontally="false"-->
+                    <!--android:inputType="textCapSentences|textMultiLine"-->
+                    <!--android:maxLines="4"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:textColor="@color/colorFeedText"-->
+                    <!--android:textCursorDrawable="@null"-->
+                    <!--android:isScrollContainer="true"-->
+                    <!--android:background="@android:color/transparent"-->
                     <!--android:layout_toStartOf="@id/linearLayout"-->
-                    <!--android:layout_centerVertical="true"/>-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:paddingStart="20dp"-->
+                    <!--android:paddingBottom="10dp"-->
+                    <!--android:paddingTop="10dp"-->
+                    <!--android:paddingEnd="10dp"/>-->
 
-                <LinearLayout
-                    android:layout_alignParentEnd="true"
-                    android:orientation="horizontal"
-                    android:id="@+id/linearLayout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:gravity="center_vertical">
+                <!--&lt;!&ndash;Vertical Divider&ndash;&gt;-->
+                <!--&lt;!&ndash;<View&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:id="@+id/vertical_divider"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="1dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="0dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginTop="10dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginBottom="10dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_marginHorizontal="10dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:background="@android:color/holo_blue_light"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_toStartOf="@id/linearLayout"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_centerVertical="true"/>&ndash;&gt;-->
 
-                    <ImageButton
-                        android:id="@+id/img_btn"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_picture"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:visibility="visible" />
+                <!--<LinearLayout-->
+                    <!--android:layout_alignParentEnd="true"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:id="@+id/linearLayout"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:gravity="center_vertical">-->
 
-                    <ImageButton
-                        android:id="@+id/doc_btn"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_attachment"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:visibility="visible" />
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/img_btn"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:src="@drawable/ic_picture"-->
+                        <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+                        <!--android:visibility="visible" />-->
 
-                    <ImageButton
-                        android:id="@+id/camera_btn"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/ic_photo_camera"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:visibility="visible" />
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/doc_btn"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:src="@drawable/ic_attachment"-->
+                        <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+                        <!--android:visibility="visible" />-->
 
-
-                    <ImageButton
-                        android:id="@+id/send_btn"
-                        android:layout_width="60dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_send"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:layout_margin="5dp"
-                        android:visibility="gone"/>
-
-
-                </LinearLayout>
-
-            </RelativeLayout>
-
-        </RelativeLayout>
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/camera_btn"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:src="@drawable/ic_photo_camera"-->
+                        <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+                        <!--android:visibility="visible" />-->
 
 
-    </RelativeLayout>
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/send_btn"-->
+                        <!--android:layout_width="60dp"-->
+                        <!--android:layout_height="40dp"-->
+                        <!--android:src="@drawable/ic_send"-->
+                        <!--android:background="?attr/selectableItemBackgroundBorderless"-->
+                        <!--android:layout_margin="5dp"-->
+                        <!--android:visibility="gone"/>-->
+
+
+                <!--</LinearLayout>-->
+
+            <!--</RelativeLayout>-->
+
+        <!--</RelativeLayout>-->
+
+
+    <!--</RelativeLayout>-->
 
 
 
