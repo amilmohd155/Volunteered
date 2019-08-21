@@ -112,7 +112,7 @@ public class ForumRoomFragment extends Fragment {
 
     }
 
-    private void setupDorumRecyclerView() {
+    private void setupForumRecyclerView() {
 
     }
 }

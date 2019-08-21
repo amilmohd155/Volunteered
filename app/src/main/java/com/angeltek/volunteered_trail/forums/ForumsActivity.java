@@ -106,46 +106,48 @@ public class ForumsActivity extends AppCompatActivity {
             @Override
             public void onLongClick(View view, int position) {
 
-                if (position != 0) {
+//Todo long click dialog box
 
-                    Log.d(TAG, "onLongClick: DialogFragment Opening");
-
-                    dialog = new Dialog(mContext);
-                    dialog.setContentView(R.layout.dialog_more_options);
-                    if (dialog.getWindow() != null) {
-                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                        dialog.show();
-                    }
-
-                    TextView deleteForum = (TextView) dialog.findViewById(R.id.delete_forum);
-                    TextView reportForum = (TextView) dialog.findViewById(R.id.report_forum);
-                    TextView closeForum = (TextView) dialog.findViewById(R.id.close_forum);
-
-                    //Delete Forum
-                    deleteForum.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                        }
-                    });
-
-                    //Report Forum
-                    reportForum.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                        }
-                    });
-
-                    //Close Forum
-                    closeForum.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-
-                        }
-                    });
-
-                }
+//                if (position != 0) {
+//
+//                    Log.d(TAG, "onLongClick: DialogFragment Opening");
+//
+//                    dialog = new Dialog(mContext);
+//                    dialog.setContentView(R.layout.dialog_more_options);
+//                    if (dialog.getWindow() != null) {
+//                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                        dialog.show();
+//                    }
+//
+//                    TextView deleteForum = (TextView) dialog.findViewById(R.id.delete_forum);
+//                    TextView reportForum = (TextView) dialog.findViewById(R.id.report_forum);
+//                    TextView closeForum = (TextView) dialog.findViewById(R.id.close_forum);
+//
+//                    //Delete Forum
+//                    deleteForum.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//
+//                        }
+//                    });
+//
+//                    //Report Forum
+//                    reportForum.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//
+//                        }
+//                    });
+//
+//                    //Close Forum
+//                    closeForum.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//
+//                        }
+//                    });
+//
+//                }
 
             }
         }));

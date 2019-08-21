@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.angeltek.volunteered_trail.R;
 import com.angeltek.volunteered_trail.models.PeopleListModel;
-import com.angeltek.volunteered_trail.utils.PeopleListAdapter;
 
 import java.util.ArrayList;
 
@@ -49,9 +48,8 @@ public class ForumPeopleChildFragment extends Fragment {
         arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.avatar0, false));
         arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.user, true));
 
-        PeopleListAdapter adapter = new PeopleListAdapter(getContext(), arrayList);
+        //Recyclerview Required
 
-        recyclerView.setAdapter(adapter);
 
 
 
