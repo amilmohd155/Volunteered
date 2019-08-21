@@ -103,10 +103,10 @@ public class PostActivity extends AppCompatActivity {
      */
     private void setupAttachmentTab() {
 
-        attachmentTab.addTab(attachmentTab.newTab().setIcon(R.drawable.ic_photos));//photos
-        attachmentTab.addTab(attachmentTab.newTab().setIcon(R.drawable.ic_google));//videos
-        attachmentTab.addTab(attachmentTab.newTab().setIcon(R.drawable.ic_twitter));//documents
-        attachmentTab.addTab(attachmentTab.newTab().setIcon(R.drawable.ic_facebook));//poll
+        attachmentTab.addTab(attachmentTab.newTab().setIcon(R.drawable.ic_photo));//media
+        attachmentTab.addTab(attachmentTab.newTab().setIcon(R.drawable.ic_photo_camera));//camera
+        attachmentTab.addTab(attachmentTab.newTab().setIcon(R.drawable.ic_document));//documents
+        attachmentTab.addTab(attachmentTab.newTab().setIcon(R.drawable.ic_poll));//poll
 
         attachmentTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -122,7 +122,7 @@ public class PostActivity extends AppCompatActivity {
                             setupFragment(new GalleryFragment(), getString(R.string.gallery_fragment)); //photos
                             break;
                         case 1:
-                            setupFragment(new GalleryFragment(), getString(R.string.gallery_fragment)); //videos
+                            setupFragment(new CameraFragment(), getString(R.string.camera_fragment)); //Camera
                             break;
                         case 2:
                             setupFragment(new DocumentFragment(), getString(R.string.document_fragment)); //document
