@@ -98,6 +98,7 @@
 
             <!--WriteBoard-->
             <RelativeLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/relLayout_inner2"
@@ -118,6 +119,58 @@
                     android:textCursorDrawable="@null"
                     android:hint="@string/post_bait_text"
                     android:textColor="@color/colorFontMajor"/>
+
+            </RelativeLayout>
+
+            <!--Poll Window-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/relLayout_inner3"
+                android:layout_below="@id/relLayout_inner1"
+                android:padding="10dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <EditText
+                    android:id="@+id/poll_que_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Write your Question here"
+                    android:textSize="25sp"
+                    android:gravity="top|start"
+                    android:background="#00000000"
+                    android:textCursorDrawable="@null"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutOpinion"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/poll_que_layout">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1"/>
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Opinion 1"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </RelativeLayout>
 
