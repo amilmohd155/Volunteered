@@ -1,14 +1,14 @@
 package com.angeltek.volunteered_trail.models;
 
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 public class PollOptionModel {
 
     private int circle;
     private String optionText;
     private int optionCount;
+
+    public PollOptionModel(int circle) {
+        this.circle = circle;
+    }
 
     public int getCircle() {
         return circle;

@@ -143,8 +143,25 @@ public class PostActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-                if (tab.getPosition() == 0) {
-                    setupFragment(new GalleryFragment(), getString(R.string.gallery_fragment));
+                int position = tab.getPosition();
+
+                Log.d(TAG, "onTabReselected: positon" + position);
+
+                switch (position) {
+
+                    case 0:
+                        setupFragment(new GalleryFragment(), getString(R.string.gallery_fragment)); //photos
+                        break;
+                    case 1:
+                        setupFragment(new CameraFragment(), getString(R.string.camera_fragment)); //Camera
+                        break;
+                    case 2:
+                        setupFragment(new DocumentFragment(), getString(R.string.document_fragment)); //document
+                        break;
+                    case 3:
+                        setupFragment(new PollFragment(), getString(R.string.poll_fragment)); //poll
+                        break;
+
                 }
             }
         });
