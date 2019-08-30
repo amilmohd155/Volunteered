@@ -103,6 +103,7 @@ public class PollFragment extends Fragment {
 
         adapter.addSection(listSection);
 
+
     }
 
 

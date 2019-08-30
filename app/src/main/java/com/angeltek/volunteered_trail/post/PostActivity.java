@@ -180,7 +180,7 @@ public class PostActivity extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
                 .replace(R.id.relLayout, fragment, fragmentName)
-                .addToBackStack(fragmentName);
+                .addToBackStack(null);
         fragmentTransaction.commit();
 
     }

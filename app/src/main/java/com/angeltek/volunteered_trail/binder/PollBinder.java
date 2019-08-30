@@ -3,11 +3,13 @@ package com.angeltek.volunteered_trail.binder;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.angeltek.volunteered_trail.R;
 import com.angeltek.volunteered_trail.models.PollOptionModel;
@@ -16,9 +18,13 @@ import com.angeltek.volunteered_trail.utils.GlideApp;
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
 
+
 public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionViewHolder> {
 
+    private static final String TAG = "PollBinder";
+
     private Context context;
+    private PollOptionModel model;
 
     public PollBinder(Context context) {
         this.context = context;
@@ -32,6 +38,7 @@ public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionVie
     @Override
     public void bindViewHolder(OptionViewHolder holder, PollOptionModel item) {
 
+        model = item;
 //        holder.etOption.setText(item.getOptionText());
 //        holder.tvOptionCount.setText(String.valueOf(item.getOptionCount()));
         GlideApp.with(context)
@@ -52,7 +59,7 @@ public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionVie
         ImageView ivCircle;
         boolean isEmpty;
 
-        public OptionViewHolder(View itemView) {
+        public OptionViewHolder(final View itemView) {
             super(itemView);
 
             etOption = itemView.findViewById(R.id.option_text);
@@ -99,8 +106,12 @@ public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionVie
             ivCircle.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (isEmpty == false) {
+                    Log.d(TAG, "onClick: " + getAdapterPosition() );
+                    if (getAdapterPosition() > 1) {
+//                        Todo remove item from recycler view
+                        if (isEmpty == true) {
 
+                        }
                     }
                 }
             });
