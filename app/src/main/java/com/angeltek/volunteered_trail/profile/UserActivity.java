@@ -1,4 +1,4 @@
-package com.angeltek.volunteered_trail.user;
+package com.angeltek.volunteered_trail.profile;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,7 +21,6 @@ import com.angeltek.volunteered_trail.utils.BottomNavigationViewHelper;
 import com.angeltek.volunteered_trail.utils.UserSpinnerAdapter;
 import com.angeltek.volunteered_trail.utils.WrapContentStatePagerAdapter;
 import com.angeltek.volunteered_trail.utils.WrapContentViewPager;
-import com.angeltek.volunteered_trail.utils.SectionsStatePagerAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 import java.util.ArrayList;

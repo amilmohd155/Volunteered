@@ -31,7 +31,7 @@
     <activity android:name=".ping.PingActivity"
         android:windowSoftInputMode="adjustResize"/>
 
-    <activity android:name=".user.UserActivity" />
+    <activity android:name=".profile.UserActivity" />
 
     <activity android:name=".forums.ForumsActivity" />
 
@@ -52,8 +52,9 @@
 
       <activity android:name=".forums.ForumRoomActivity"
           android:windowSoftInputMode="adjustResize"/>
+    <activity android:name=".profile.Organisation" />
 
-      <meta-data
+    <meta-data
         android:name="preloaded_fonts"
         android:resource="@array/preloaded_fonts" />
   </application>

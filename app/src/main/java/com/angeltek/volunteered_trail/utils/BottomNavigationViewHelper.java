@@ -12,7 +12,7 @@ import com.angeltek.volunteered_trail.location.LocationActivity;
 import com.angeltek.volunteered_trail.notification.NotificationActivity;
 import com.angeltek.volunteered_trail.R;
 import com.angeltek.volunteered_trail.ping.PingActivity;
-import com.angeltek.volunteered_trail.user.UserActivity;
+import com.angeltek.volunteered_trail.profile.UserActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class BottomNavigationViewHelper {

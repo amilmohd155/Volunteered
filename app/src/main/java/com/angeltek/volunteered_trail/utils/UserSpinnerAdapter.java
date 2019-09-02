@@ -2,8 +2,6 @@ package com.angeltek.volunteered_trail.utils;
 
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Typeface;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +10,7 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.angeltek.volunteered_trail.R;
-import com.angeltek.volunteered_trail.user.UserActivity;
+import com.angeltek.volunteered_trail.profile.UserActivity;
 
 import java.util.ArrayList;
 

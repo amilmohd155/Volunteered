@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.angeltek.volunteered_trail.R;
 
+//todo complete layout, connect media to change dp and coverP.
 public class EditProfileFragment extends Fragment {
 
     private static final String TAG = "EditProfileFragment";
