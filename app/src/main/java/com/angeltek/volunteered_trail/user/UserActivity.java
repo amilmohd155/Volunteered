@@ -140,6 +140,8 @@ public class UserActivity extends AppCompatActivity {
         profilePicture.add(R.drawable.user);
         profilePicture.add(R.drawable.icon1);
 
+        //Todo change spinner design to fragment design.
+
         UserSpinnerAdapter adapter = new UserSpinnerAdapter(mContext,
                 R.layout.layout_spinner_item,
                 R.layout.layout_spinner_dropdown_user,
