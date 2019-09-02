@@ -57,50 +57,55 @@
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <!--character-->
+
+    <!--following&followers-->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout1"
         app:layout_constraintTop_toBottomOf="@+id/user_bio">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_marginEnd="5dp"
-            android:text="#character"
-            android:textColor="#C36969" />
+            android:src="@drawable/circle_fill" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_marginEnd="5dp"
-            android:text="#character"
-            android:textColor="#C36969" />
+            android:src="@drawable/circle_fill" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
             android:layout_marginEnd="5dp"
-            android:text="#character"
-            android:textColor="#C36969" />
+            android:src="@drawable/circle_fill" />
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/circle_fill" />
 
     </LinearLayout>
 
-    <!--following&followers-->
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toBottomOf="@+id/user_bio">
 
         <!--Followers-->
         <LinearLayout
@@ -115,16 +120,18 @@
                 android:id="@+id/followers_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:text="10K"
                 android:textColor="@color/colorBlack"
-                android:text="10K" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="0dp"
-                android:text="Followers" />
+                android:text="Followers"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -140,16 +147,18 @@
                 android:id="@+id/following_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:text="1K"
                 android:textColor="@color/colorBlack"
-                android:text="1K" />
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_marginEnd="0dp"
-                android:text="Following" />
+                android:text="Following"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
@@ -158,12 +167,12 @@
     <!--Additional Details-->
     <LinearLayout
         android:id="@+id/linearLayout2"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout1">
@@ -177,10 +186,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="www.volunteered.com"
-                android:textSize="15sp"
-                android:drawableStart="@drawable/ic_link"
-                android:drawablePadding="5dp"
-                android:drawableTint="@color/coloVLFont"
+                android:textSize="13sp"
+                android:maxEms="14"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
                 android:textColor="@color/colorBlue63"
                 android:layout_gravity="center"/>
 
@@ -191,17 +201,18 @@
             android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp">
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+919123169564"
-                android:textSize="15sp"
-                android:drawableStart="@drawable/ic_phone"
-                android:drawableTint="@color/coloVLFont"
-                android:drawablePadding="5dp"
-                android:layout_gravity="center"/>
+                android:textSize="13sp"
+                android:maxEms="7"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:gravity="center_vertical"/>
 
 
         </LinearLayout>

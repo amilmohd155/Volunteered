@@ -171,7 +171,6 @@ public class UserActivity extends AppCompatActivity {
         WrapContentStatePagerAdapter statePagerAdapter = new WrapContentStatePagerAdapter(getSupportFragmentManager());
         statePagerAdapter.addFragment(new UserPostFragment(), getResources().getString(R.string.tab_post));
         statePagerAdapter.addFragment(new UserActivitiesFragment(), getResources().getString(R.string.tab_activities));
-        statePagerAdapter.addFragment(new UserMediaFragment(), getResources().getString(R.string.tab_media));
 
         viewPager.setAdapter(statePagerAdapter);
 
@@ -180,7 +179,6 @@ public class UserActivity extends AppCompatActivity {
 
         tabLayout.getTabAt(0).setText(R.string.tab_post);
         tabLayout.getTabAt(1).setText(R.string.tab_activities);
-        tabLayout.getTabAt(2).setText(R.string.tab_media);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
 

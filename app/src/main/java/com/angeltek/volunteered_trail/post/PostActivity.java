@@ -7,8 +7,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,6 +21,8 @@ import android.widget.RelativeLayout;
 import com.angeltek.volunteered_trail.R;
 import com.angeltek.volunteered_trail.fragments.PrivacyDialogFragment;
 import com.angeltek.volunteered_trail.utils.Permissions;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PostActivity extends AppCompatActivity {
 
@@ -33,11 +39,11 @@ public class PostActivity extends AppCompatActivity {
     private int privacy_setting_const = 0; //0 - Public | 1 - Private | 2 - Custom
 
     //Widgets
-    private RelativeLayout relativeLayout, relativeLayout2;
     private ImageView closeBtnPost;
-    private EditText postDescEditText;
+    private EditText etPost;
     private TabLayout attachmentTab;
-    LinearLayout privacySetting;
+    private CircleImageView profilePhoto;
+    private Button postBtn;
 
 
     @Override
@@ -48,12 +54,11 @@ public class PostActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: Starting Post Activity");
 
         //Variable Init
-        relativeLayout = (RelativeLayout) findViewById(R.id.relLayout);
-        relativeLayout2 = (RelativeLayout) findViewById(R.id.relLayout2);
-        postDescEditText = (EditText) findViewById(R.id.post_description);
+        etPost = (EditText) findViewById(R.id.post_description);
         closeBtnPost = (ImageView) findViewById(R.id.post_close);
         attachmentTab = (TabLayout) findViewById(R.id.attachment_tab);
-        privacySetting = (LinearLayout) findViewById(R.id.privacy_settings);
+        profilePhoto = (CircleImageView) findViewById(R.id.profilePhoto);
+        postBtn = (Button) findViewById(R.id.submit_post);
 
 
         //function Call
@@ -61,8 +66,43 @@ public class PostActivity extends AppCompatActivity {
         setupAttachmentTab();
         setupClosingPost();
         setupPrivacySetting();
+        setupFontSize();
+        setupPostBtn();
 
 
+    }
+
+    /**
+     * Post submition Button function.
+     */
+    private void setupPostBtn() {
+    }
+
+    /**
+     * Post text font change when lines exceed 5
+     */
+    private void setupFontSize() {
+        etPost.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 50) {
+                    etPost.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16f);
+                }
+                else {
+                    etPost.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25f);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
 
@@ -73,7 +113,7 @@ public class PostActivity extends AppCompatActivity {
 
         Log.d(TAG, "setupPrivacySetting: privacy setting selected");
 
-        privacySetting.setOnClickListener(new View.OnClickListener() {
+        profilePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -192,6 +232,8 @@ public class PostActivity extends AppCompatActivity {
      * Close button Connection
      */
     private void setupClosingPost() {
+
+        //Todo check if the text area or the media area is empty or not.
 
         closeBtnPost.setOnClickListener(new View.OnClickListener() {
             @Override
