@@ -10,7 +10,7 @@
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/white_grey_border_bottom">
+            android:background="@color/colorWhite">
 
             <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
@@ -41,18 +41,18 @@
                         android:focusable="true"
                         android:foreground="?attr/selectableItemBackground"/>
 
-                    <TextView
-                        android:id="@+id/top_bar_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Edit Profile"
-                        android:textSize="20sp"
-                        android:textColor="@color/colorBlack"
-                        android:layout_centerVertical="true"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="0dp"
-                        android:layout_toEndOf="@id/edit_profile_close"/>
+                    <!--<TextView-->
+                        <!--android:id="@+id/top_bar_title"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginStart="5dp"-->
+                        <!--android:text="Edit Profile"-->
+                        <!--android:textSize="20sp"-->
+                        <!--android:textColor="@color/colorBlack"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:paddingStart="5dp"-->
+                        <!--android:paddingEnd="0dp"-->
+                        <!--android:layout_toEndOf="@id/edit_profile_close"/>-->
 
                     <Button
                         android:id="@+id/done_button"

@@ -8,4 +8,6 @@
     <dimen name="date_slash_margin">10dp</dimen>
     <dimen name="fs_top">20sp</dimen>
     <dimen name="user_img_notification">40dp</dimen>
+    <dimen name="edit_profile_font_size">15sp</dimen>
+    <dimen name="edit_profile_character_bulb_dimen">30dp</dimen>
 </resources>

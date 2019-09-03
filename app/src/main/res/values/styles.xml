@@ -62,4 +62,9 @@
     <item name="android:textAllCaps">true</item>
   </style>
 
+  <!--Autocomplete Text-->
+  <style name="AutoCompleteTextViewLight" parent="@android:style/Widget.AutoCompleteTextView">
+    <item name="android:textColor">@color/colorWhite</item>
+  </style>
+
 </resources>
