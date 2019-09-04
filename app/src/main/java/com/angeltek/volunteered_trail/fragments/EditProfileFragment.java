@@ -4,9 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.Fragment;
-import android.text.InputType;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,13 +40,18 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         closeBtn = view.findViewById(R.id.edit_profile_close);
 
         name = view.findViewById(R.id.edit_name);
-        username = view.findViewById(R.id.edit_profile_username);
+        username = view.findViewById(R.id.edit_username);
         bio = view.findViewById(R.id.edit_bio);
         website = view.findViewById(R.id.edit_website);
         emailAddress = view.findViewById(R.id.edit_email);
         phoneNumber = view.findViewById(R.id.edit_phone);
         gender = view.findViewById(R.id.edit_gender);
 
+        username.setOnClickListener(this);
+        bio.setOnClickListener(this);
+        emailAddress.setOnClickListener(this);
+        phoneNumber.setOnClickListener(this);
+        gender.setOnClickListener(this);
 
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +72,17 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
      */
     private void setupChildFragment(int position) {
 
+        Log.d(TAG, "setupChildFragment: edit profile child fragments");
 
+        Fragment fragment = new AdvancedEditingFragment();
+        Bundle type = new Bundle();
+        type.getInt("Position", position);
+        fragment.setArguments(type);
+
+        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction()
+                .replace(R.id.master_layout, fragment, getString(R.string.advanced_editing_fragment))
+                .addToBackStack(null);
+        fragmentTransaction.commit();
 
     }
 
@@ -77,7 +91,9 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
     public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.edit_profile_username:
+            case R.id.edit_username:
+                Log.d(TAG, "onClick: username");
+                Toast.makeText(getContext(), "position" + NUM_USERNAME, Toast.LENGTH_SHORT).show();
                 setupChildFragment(NUM_USERNAME);
                 break;
             case R.id.edit_bio:
@@ -92,6 +108,9 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
             case R.id.edit_gender:
                 setupChildFragment(NUM_GENDER);
                 break;
+                default:
+                    Log.d(TAG, "onClick: i have lost");
+                    break;
         }
 
     }

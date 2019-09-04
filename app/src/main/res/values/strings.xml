@@ -32,6 +32,7 @@
     <string name="poll_fragment">Poll</string>
     <string name="camera_fragment">Camera</string>
     <string name="forum_info_fargment">ForumInfo</string>
+    <string name="advanced_editing_fragment">AdvancedEditingFragment</string>
 
     //Tabs
     <string name="tab_request">Requests</string>
@@ -82,6 +83,8 @@
     <string name="title_activity_maps">Map</string>
     <string name="question">Add question</string>
     <string name="option">Add option</string>
+    <string name="edit_username">Username</string>
+    <string name="edit_bio">Bio</string>
 
 
 </resources>
