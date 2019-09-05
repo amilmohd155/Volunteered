@@ -85,6 +85,10 @@
     <string name="option">Add option</string>
     <string name="edit_username">Username</string>
     <string name="edit_bio">Bio</string>
+    <string name="edit_email_title">Change email address</string>
+    <string name="edit_email">Email address</string>
+    <string name="edit_phone_title">Change phone number</string>
+    <string name="edit_phone">Phone number</string>
 
 
 </resources>

@@ -65,6 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/edit_username"
+            android:inputType="text"
             android:maxLines="1"
             android:paddingBottom="15dp"
             android:layout_marginTop="10dp"
@@ -83,6 +84,7 @@
 
     <!--Bio-->
     <LinearLayout
+        android:visibility="gone"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -100,14 +102,23 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <EditText
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/edit_bio"
-            android:inputType="textMultiLine"
-            android:paddingBottom="15dp"
-            android:layout_marginTop="10dp"
-            android:drawablePadding="5dp" />
+            app:counterEnabled="true"
+            app:counterMaxLength="90"
+            app:hintEnabled="false"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/edit_bio"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:paddingBottom="15dp" />
+
+        </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -119,5 +130,86 @@
 
 
     </LinearLayout>
+
+    <!--Email-->
+    <LinearLayout
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="25dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_email_title"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:paddingBottom="15dp"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/rounded_border_5dp"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
+    <!--Phone Number-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:paddingStart="25dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/edit_phone_title"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/edit_phone"
+            android:inputType="number"
+            android:textColor="@color/colorBlue63"
+            android:maxLines="1"
+            android:paddingBottom="15dp"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/rounded_border_5dp"
+            android:layout_marginTop="10dp"/>
+
+    </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

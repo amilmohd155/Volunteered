@@ -57,4 +57,7 @@ dependencies {
     implementation 'dev.ahamed.mva2:ext-databinding:2.0.0-beta01'  // DataBinding
     implementation 'dev.ahamed.mva2:ext-decorator:2.0.0-beta01'    // Decorators
     implementation 'dev.ahamed.mva2:ext-diffutil-rx:2.0.0-beta01'  // RxDiffUtil
+
+    //CountryCodePickerProject
+    implementation 'com.github.inpossoft:CountryCodePickerProject:2.0.0'
 }
