@@ -2,22 +2,18 @@ package com.angeltek.volunteered_trail.home;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.angeltek.volunteered_trail.forums.ForumsActivity;
 import com.angeltek.volunteered_trail.R;
-import com.angeltek.volunteered_trail.ping.PingActivity;
 import com.angeltek.volunteered_trail.post.PostActivity;
-import com.angeltek.volunteered_trail.startup.LoginActivity;
 import com.angeltek.volunteered_trail.utils.BottomNavigationViewHelper;
-import com.angeltek.volunteered_trail.wizard.WizardActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class HomeActivity extends AppCompatActivity {

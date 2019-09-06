@@ -1,10 +1,10 @@
 package com.angeltek.volunteered_trail.forums;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.angeltek.volunteered_trail.R;
 import com.angeltek.volunteered_trail.utils.GridImageAdapter;
-import com.angeltek.volunteered_trail.utils.ScrollableGridView;
 import com.angeltek.volunteered_trail.utils.UniversalImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoader;
 

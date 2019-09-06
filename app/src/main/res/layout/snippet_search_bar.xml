@@ -6,7 +6,7 @@
         android:layout_height="50dp"
         android:layout_alignParentTop="true">
 
-        <android.support.design.widget.AppBarLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/white_grey_border_bottom">
@@ -36,7 +36,7 @@
             </RelativeLayout>
 
 
-        </android.support.design.widget.AppBarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
     </RelativeLayout>
 

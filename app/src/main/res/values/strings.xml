@@ -89,6 +89,7 @@
     <string name="edit_email">Email address</string>
     <string name="edit_phone_title">Change phone number</string>
     <string name="edit_phone">Phone number</string>
+    <string name="edit_gender">Gender</string>
 
 
 </resources>
