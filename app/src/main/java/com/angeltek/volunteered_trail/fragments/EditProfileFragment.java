@@ -5,13 +5,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.android.material.textfield.TextInputEditText;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.angeltek.volunteered_trail.R;
 
@@ -20,16 +21,17 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
     private static final String TAG = "EditProfileFragment";
 
-    private final int NUM_USERNAME = 0;
-    private final int NUM_BIO= 1;
-    private final int NUM_EMAIL = 2;
-    private final int NUM_PHONE = 3;
-    private final int NUM_GENDER = 4;
-    private final int NUM_CHARACTER = 5;
+    private final String TXT_USERNAME = "EditUsernameFragment";
+    private final String  TXT_BIO= "EditBioFragment";
+    private final String TXT_EMAIL = "EditEmailFragment";
+    private final String TXT_PHONE = "EditPhoneFragment";
+    private final String TXT_GENDER = "EditGenderFragment";
+    private final String TXT_CHARACTER = "EditCharacterFragment";
 
 
     private ImageView closeBtn;
     private TextInputEditText name, username, bio, website, emailAddress, phoneNumber, gender;
+    private LinearLayout character;
 
     @Nullable
     @Override
@@ -37,7 +39,7 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
         View view = inflater.inflate(R.layout.fragment_edit_profile, container, false);
 
-        closeBtn = view.findViewById(R.id.edit_profile_close);
+        closeBtn = view.findViewById(R.id.edit_close);
 
         name = view.findViewById(R.id.edit_name);
         username = view.findViewById(R.id.edit_username);
@@ -46,44 +48,18 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         emailAddress = view.findViewById(R.id.edit_email);
         phoneNumber = view.findViewById(R.id.edit_phone);
         gender = view.findViewById(R.id.edit_gender);
+        character = view.findViewById(R.id.edit_character);
 
+        closeBtn.setOnClickListener(this);
         username.setOnClickListener(this);
         bio.setOnClickListener(this);
         emailAddress.setOnClickListener(this);
         phoneNumber.setOnClickListener(this);
         gender.setOnClickListener(this);
+        character.setOnClickListener(this);
 
-        closeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (getActivity() != null) {
-                    getActivity().onBackPressed();
-                }
-                else Log.d(TAG, "onClick: NPE on getActivity()");
-            }
-        });
 
         return view;
-    }
-
-    /**
-     * Sets up the child fragment based on the constant send to the fragment
-     * params : position(int)
-     */
-    private void setupChildFragment(int position) {
-
-        Log.d(TAG, "setupChildFragment: edit profile child fragments");
-
-        Fragment fragment = new AdvancedEditingFragment();
-        Bundle type = new Bundle();
-        type.getInt("Position", position);
-        fragment.setArguments(type);
-
-        final FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction()
-                .replace(R.id.master_layout, fragment, getString(R.string.advanced_editing_fragment))
-                .addToBackStack(null);
-        fragmentTransaction.commit();
-
     }
 
 
@@ -93,25 +69,46 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
         switch (view.getId()) {
             case R.id.edit_username:
                 Log.d(TAG, "onClick: username");
-                Toast.makeText(getContext(), "position" + NUM_USERNAME, Toast.LENGTH_SHORT).show();
-                setupChildFragment(NUM_USERNAME);
+                setupChildFragment(new EditUsernameFragment(), TXT_USERNAME);
                 break;
             case R.id.edit_bio:
-                setupChildFragment(NUM_BIO);
+                setupChildFragment(new EditBioFragment(), TXT_BIO);
                 break;
             case R.id.edit_email:
-                setupChildFragment(NUM_EMAIL);
+                setupChildFragment(new EditEmailFragment(), TXT_EMAIL);
                 break;
             case R.id.edit_phone:
-                setupChildFragment(NUM_PHONE);
+                setupChildFragment(new EditPhoneFragment(), TXT_PHONE);
                 break;
             case R.id.edit_gender:
-                setupChildFragment(NUM_GENDER);
+                setupChildFragment(new EditGenderFragment(), TXT_GENDER);
                 break;
-                default:
-                    Log.d(TAG, "onClick: i have lost");
-                    break;
+            case R.id.edit_character:
+                setupChildFragment(new EditCharacterFragment(), TXT_CHARACTER);
+                break;
+            case R.id.edit_close:
+                if (getActivity() != null) {
+                    getActivity().onBackPressed();
+                }
+                else Log.d(TAG, "onClick: NPE on getActivity()");
+                break;
         }
+    }
+
+    /**
+     * Sets up the child fragment based on the constant send to the fragment
+     * @param fragment
+     * @param fragmentName
+     */
+    private void setupChildFragment(Fragment fragment, String fragmentName) {
+
+        Log.d(TAG, "setupChildFragment: edit profile child fragments::" + fragmentName);
+
+        FragmentManager fragmentManager = getFragmentManager();
+        final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                .replace(R.id.master_layout, fragment, fragmentName)
+                .addToBackStack(null);
+        fragmentTransaction.commit();
 
     }
 }

@@ -90,6 +90,11 @@
     <string name="edit_phone_title">Change phone number</string>
     <string name="edit_phone">Phone number</string>
     <string name="edit_gender">Gender</string>
+    <string name="male_gender">Male</string>
+    <string name="female_gender">Female</string>
+    <string name="specific_gender">Other</string>
+    <string name="undisclosed_gender">Prefer not to disclose</string>
+    <string name="specify_text">Specify...</string>
 
 
 </resources>

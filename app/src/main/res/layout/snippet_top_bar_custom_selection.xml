@@ -30,7 +30,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/edit_profile_close"
+                        android:id="@+id/edit_close"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_close"
@@ -52,7 +52,7 @@
                         android:layout_centerVertical="true"
                         android:paddingStart="5dp"
                         android:paddingEnd="0dp"
-                        android:layout_toEndOf="@id/edit_profile_close"/>
+                        android:layout_toEndOf="@id/edit_close"/>
 
                     <Button
                         android:id="@+id/done_button"

@@ -30,7 +30,7 @@
                     android:layout_height="match_parent">
 
                     <ImageView
-                        android:id="@+id/edit_profile_close"
+                        android:id="@+id/edit_close"
                         android:layout_width="50dp"
                         android:layout_height="match_parent"
                         android:src="@drawable/ic_close"
