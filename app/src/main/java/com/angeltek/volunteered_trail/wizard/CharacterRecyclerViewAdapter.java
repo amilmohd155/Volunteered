@@ -73,7 +73,7 @@ public class CharacterRecyclerViewAdapter extends RecyclerView.Adapter<Character
             characterName = itemView.findViewById(R.id.character_title);
             characterIcon = itemView.findViewById(R.id.character_icon);
             characterCard = itemView.findViewById(R.id.character_card_view);
-            checkBox = itemView.findViewById(R.id.character_checkbox);
+            checkBox = itemView.findViewById(R.id.character_checkmark);
         }
 
         private void setData(CharacterModel characterModel) {

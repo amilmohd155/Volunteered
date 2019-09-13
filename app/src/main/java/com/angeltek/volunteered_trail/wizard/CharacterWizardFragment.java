@@ -89,7 +89,7 @@ public class CharacterWizardFragment extends Fragment implements CharacterRecycl
                 CharacterRecyclerViewAdapter adapter = new CharacterRecyclerViewAdapter(characterModels, getContext(), listener);
                 recyclerView.setAdapter(adapter);
 
-                GridLayoutManager manager = new GridLayoutManager(getContext(), NUM_COL, GridLayoutManager.VERTICAL, false);
+                GridLayoutManager manager = new GridLayoutManager(getContext(), NUM_COL, RecyclerView.VERTICAL, false);
                 recyclerView.setLayoutManager(manager);
 
             }
