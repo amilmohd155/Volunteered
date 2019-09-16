@@ -106,9 +106,11 @@ public class EditProfileFragment extends Fragment implements View.OnClickListene
 
         FragmentManager fragmentManager = getFragmentManager();
         final FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                .setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right)
                 .replace(R.id.master_layout, fragment, fragmentName)
                 .addToBackStack(null);
         fragmentTransaction.commit();
 
     }
 }
+

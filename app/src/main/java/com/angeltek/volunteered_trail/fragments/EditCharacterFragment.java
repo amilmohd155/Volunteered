@@ -1,9 +1,11 @@
 package com.angeltek.volunteered_trail.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,7 +27,10 @@ import mva2.adapter.util.OnSelectionChangedListener;
 
 class EditCharacterFragment extends Fragment implements View.OnClickListener {
 
+    private static final String TAG = "EditCharacterFragment";
+
     private RecyclerView recyclerView;
+    private ImageView closeBtn;
     private ArrayList<CharacterModel> characterModels;
 
     @Nullable
@@ -35,6 +40,8 @@ class EditCharacterFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_edit_character, container, false);
 
         recyclerView = view.findViewById(R.id.grid_view);
+        closeBtn = view.findViewById(R.id.edit_close);
+        closeBtn.setOnClickListener(this);
 
         characterModels = new ArrayList<>();
 
@@ -46,6 +53,7 @@ class EditCharacterFragment extends Fragment implements View.OnClickListener {
 
     private void setupRecyclerView() {
 
+        Log.d(TAG, "setupRecyclerView: populating recyclerView with character cards");
 
         characterModels.add(new CharacterModel(getResources().getString(R.string.animal), R.color.colorAnimal, R.drawable.icon1));
         characterModels.add(new CharacterModel(getResources().getString(R.string.art), R.color.colorArt, R.drawable.icon1));
@@ -87,6 +95,10 @@ class EditCharacterFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-
+        switch (view.getId()) {
+            case R.id.edit_close:
+                getActivity().onBackPressed();
+                break;
+        }
     }
 }
