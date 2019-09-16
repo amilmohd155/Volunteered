@@ -36,7 +36,14 @@ public class CharacterBinder extends ItemBinder<CharacterModel, CharacterBinder.
                 .load(item.getCharacterIcon())
                 .into(holder.characterIcon);
 
+        if (holder.isItemSelected()) {
+                holder.checkMark.setVisibility(View.VISIBLE);
+        }
+        else holder.checkMark.setVisibility(View.GONE);
+
     }
+
+    //Todo minimum selection 3, maximum selection 15; change color of check-mark using after min selection
 
     @Override
     public boolean canBindData(Object item) {
