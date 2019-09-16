@@ -18,37 +18,89 @@
         android:layout_below="@id/postMedia"
         android:id="@+id/relLayout1"
         android:layout_margin="10dp">
-        
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textColor="@color/colorFeedStats"
-            android:textSize="@dimen/feedStat"
-            android:id="@+id/postLikes"
-            android:text="11 Likes"
-            android:layout_marginEnd="10dp"/>
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/l1"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textColor="@color/colorFeedStats"
-            android:textSize="@dimen/feedStat"
-            android:id="@+id/postComments"
-            android:text="11 Comments"
-            android:layout_toRightOf="@id/postLikes"
-            android:layout_marginEnd="10dp"/>
+            android:layout_height="wrap_content">
 
-        <TextView
+            <TextView
+                android:id="@+id/postLikes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorDarkFontMajor"
+                android:textSize="@dimen/feedStat"
+                android:text="999"
+                android:layout_marginEnd="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorFeedStats"
+                android:textSize="@dimen/feedStat"
+                android:text="Likes"
+                android:layout_marginEnd="10dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/l2"
+            android:orientation="horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textColor="@color/colorFeedStats"
-            android:textSize="@dimen/feedStat"
-            android:id="@+id/postShares"
-            android:text="11 Shares"
-            android:layout_alignParentRight="true" />
+            android:layout_toRightOf="@id/l1">
+
+            <TextView
+                android:id="@+id/postComments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorDarkFontMajor"
+                android:textSize="@dimen/feedStat"
+                android:text="500"
+                android:layout_marginEnd="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorFeedStats"
+                android:textSize="@dimen/feedStat"
+                android:text="Comments"
+                android:layout_marginEnd="10dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <TextView
+                android:id="@+id/postShares"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorDarkFontMajor"
+                android:textSize="@dimen/feedStat"
+                android:text="11"
+                android:layout_marginEnd="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorFeedStats"
+                android:textSize="@dimen/feedStat"
+                android:text="Shares" />
+
+        </LinearLayout>
 
         
     </RelativeLayout>
