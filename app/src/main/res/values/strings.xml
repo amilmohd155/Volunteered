@@ -58,6 +58,7 @@
     <string name="new_element">New</string>
     <string name="created_on">Created on</string>
     <string name="joined_by">Joined by</string>
+    <string name="members">Members</string>
     <string name="details">Details</string>
     <string name="join">Join</string>
     <string name="ping">PING</string>
@@ -95,6 +96,8 @@
     <string name="specific_gender">Other</string>
     <string name="undisclosed_gender">Prefer not to disclose</string>
     <string name="specify_text">Specify...</string>
+    <string name="rating">Rating</string>
+    <string name="joined">Joined</string>
 
 
 </resources>

@@ -55,8 +55,9 @@
       <activity android:name=".forums.ForumRoomActivity"
           android:windowSoftInputMode="adjustResize"/>
     <activity android:name=".profile.Organisation" />
+      <activity android:name=".activity.ActActivity" />
 
-    <meta-data
+      <meta-data
         android:name="preloaded_fonts"
         android:resource="@array/preloaded_fonts" />
   </application>

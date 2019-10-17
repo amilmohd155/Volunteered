@@ -1,14 +1,20 @@
 package com.angeltek.volunteered_trail.profile;
 
 import android.content.Context;
+import android.graphics.Outline;
 import android.os.Bundle;
+
+import com.angeltek.volunteered_trail.utils.RoundedCorner;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,17 +35,20 @@ public class UserActivity extends AppCompatActivity {
 
     private static final String TAG = "UserActivity";
 
-    final Context mContext = UserActivity.this;
+    private final Context mContext = UserActivity.this;
+    private final int curveRadius = 15;
+    private final int ROUNDED_TOP = 1;
 
     //Variables
     public static int selectedPosition = -1;
 
-    //widgets
+    //UI
     private WrapContentViewPager viewPager;
     private Toolbar toolbar;
     private Spinner accountSpinner;
     private LinearLayout following, followers, linearLayout, linearLayout1, linearLayout2;
     private TextView editProfileBtn;
+    private ImageView coverPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +63,14 @@ public class UserActivity extends AppCompatActivity {
         linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
         linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
         linearLayout2 = (LinearLayout) findViewById(R.id.linearLayout2);
+        coverPhoto = findViewById(R.id.cover_photo);
 
         accountSpinner = (Spinner) findViewById(R.id.user_spinner);
         toolbar = (Toolbar) findViewById(R.id.toolbar_user);
         setSupportActionBar(toolbar);
 
+        RoundedCorner roundedCorner = new RoundedCorner(coverPhoto, curveRadius, ROUNDED_TOP);
+        roundedCorner.setRoundedCorner();
 
         setupBottomNavigationView();
         setupFragments();
@@ -67,6 +79,7 @@ public class UserActivity extends AppCompatActivity {
         setupEditFragment();
 
     }
+
 
     /**
      * gateway into edit profile fragment
@@ -188,12 +201,10 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tabLayout.getSelectedTabPosition() != 0) {
-                    linearLayout.setVisibility(View.GONE);
                     linearLayout1.setVisibility(View.GONE);
                     linearLayout2.setVisibility(View.GONE);
                 }
                 else {
-                    linearLayout.setVisibility(View.VISIBLE);
                     linearLayout1.setVisibility(View.VISIBLE);
                     linearLayout2.setVisibility(View.VISIBLE);
                 }

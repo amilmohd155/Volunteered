@@ -4,9 +4,61 @@
 
     <!--Todo RecyclerView infinite scroll-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/post_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/tab_post"
+        android:textSize="30sp"
+        android:layout_margin="30dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/tab_post"
+        android:textSize="30sp"
+        android:layout_margin="30dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/tab_post"
+        android:textSize="30sp"
+        android:layout_margin="30dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/tab_post"
+        android:textSize="30sp"
+        android:layout_margin="30dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/tab_post"
+        android:textSize="30sp"
+        android:layout_margin="30dp"/>
+
+
+
+
+
+</LinearLayout>
+
 
 </RelativeLayout>

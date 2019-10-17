@@ -9,7 +9,7 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@drawable/white_grey_border_bottom"
+        android:background="@color/colorWhite"
         app:layout_scrollFlags="scroll|enterAlways|snap">
 
         <androidx.appcompat.widget.Toolbar
@@ -41,6 +41,7 @@
                     />
 
                 <Button
+                    android:visibility="gone"
                     android:id="@+id/broadcast_btn"
                     android:layout_width="120dp"
                     android:layout_height="30dp"

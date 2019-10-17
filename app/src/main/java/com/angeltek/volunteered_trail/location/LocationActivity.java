@@ -28,7 +28,6 @@ public class LocationActivity extends AppCompatActivity {
 
 
 
-
     /**
      * Setting up BottomNavigationView
      */
@@ -36,7 +35,7 @@ public class LocationActivity extends AppCompatActivity {
 
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
 
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
 
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
