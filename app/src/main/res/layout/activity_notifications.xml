@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/search_tab">
 
-            <include layout="@layout/snippet_search_bar"/>
+            <include layout="@layout/snippet_search_bar_view_top"/>
 
         </RelativeLayout>
 

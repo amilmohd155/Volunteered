@@ -46,14 +46,28 @@ public class PeopleBinder extends ItemBinder<PeopleListModel, PeopleBinder.Peopl
         holder.TvFullName.setText(item.getFullName());
         holder.TvUserName.setText(item.getUsername());
 
-        //todo complete hide btn and show
         switch (item.getTypeOfLayout()) {
             case CUSTOM_SELECTION_TYPE:
+                holder.followBtn.setVisibility(View.GONE);
+                holder.ellipsesMenu.setVisibility(View.GONE);
                 break;
             case FOLLOWING_LIST:
+                holder.checkView.setVisibility(View.GONE);
+                holder.ellipsesMenu.setVisibility(View.GONE);
+                    holder.followBtn.setText(R.string.following);
+                    holder.followBtn.setBackgroundColor(context.getColor(R.color.colorWhite));
+                    holder.followBtn.setTextColor(context.getColor(R.color.colorBlack));
                 break;
             case FOLLOWER_LIST:
+                holder.checkView.setVisibility(View.GONE);
+                if (item.isFollowing()) {
+                    holder.followBtn.setText(R.string.following);
+                    holder.followBtn.setBackgroundColor(context.getColor(R.color.colorWhite));
+                    holder.followBtn.setTextColor(context.getColor(R.color.colorBlack));
+                }
+                holder.ellipsesMenu.setVisibility(View.VISIBLE); //click and slide up fragment comes to ask about un_following
                 break;
+                
         }
 
     }
@@ -66,7 +80,7 @@ public class PeopleBinder extends ItemBinder<PeopleListModel, PeopleBinder.Peopl
     public class PeopleViewHolder extends ItemViewHolder<PeopleListModel> {
 
         private CircleImageView profilePicture;
-        private ImageView checkView;
+        private ImageView checkView, ellipsesMenu;
         private Button followBtn;
         private TextView TvFullName, TvUserName;
 
@@ -75,6 +89,7 @@ public class PeopleBinder extends ItemBinder<PeopleListModel, PeopleBinder.Peopl
 
             profilePicture = itemView.findViewById(R.id.profile_picture);
             checkView = itemView.findViewById(R.id.check_view);
+            ellipsesMenu = itemView.findViewById(R.id.ellipse_menu);
             followBtn = itemView.findViewById(R.id.follow_btn);
             TvFullName = itemView.findViewById(R.id.full_name);
             TvUserName = itemView.findViewById(R.id.user_name);

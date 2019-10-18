@@ -15,7 +15,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 public class UniversalImageLoader {
 
-    private static final int defaultImage = R.drawable.ic_fb; //Todo must change default image
+    private static final int defaultImage = R.drawable.astronaut; //Todo must change default image
     private Context mContext;
 
     public UniversalImageLoader(Context context) {

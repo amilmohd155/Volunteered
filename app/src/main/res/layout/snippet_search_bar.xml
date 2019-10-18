@@ -8,30 +8,28 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/white_grey_border_bottom">
+            android:layout_height="match_parent">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical">
 
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_centerVertical="true"
-                    android:padding="12dp"
-                    android:id="@+id/search_badge"
-                    android:src="@drawable/ic_search" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@id/search_badge"
-                    android:layout_centerVertical="true"
-                    android:text="Search"
-                    android:textSize="@dimen/fs_top"
-                    android:textColor="@color/colorLighterFont"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorWhite"
+                    android:text="@string/search"
+                    android:textSize="18sp"
+                    android:textColor="@color/coloVLFont"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:paddingHorizontal="20dp"
+                    android:paddingVertical="10dp"/>
 
             </RelativeLayout>
 

@@ -13,10 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.angeltek.volunteered_trail.R;
+import com.angeltek.volunteered_trail.binder.PollBinder;
 import com.angeltek.volunteered_trail.models.PeopleListModel;
+import com.angeltek.volunteered_trail.models.PollOptionModel;
 
 import java.util.ArrayList;
 
+import mva2.adapter.ListSection;
 import mva2.adapter.MultiViewAdapter;
 
 public class PeopleFragment extends Fragment {
@@ -57,6 +60,13 @@ public class PeopleFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
+
+        adapter.registerItemBinders(new PollBinder(getContext()));
+
+        ListSection<PeopleListModel> listSection = new ListSection<>();
+        listSection.addAll(model);
+
+        adapter.addSection(listSection);
 
     }
 }
