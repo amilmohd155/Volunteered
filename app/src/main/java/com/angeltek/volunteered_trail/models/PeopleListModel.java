@@ -8,12 +8,14 @@ public class PeopleListModel {
     private String username;
     private int profilePhoto;
     private boolean isFollowing;
+    private int typeOfLayout;
 
-    public PeopleListModel(String fullName, String username, int profilePhoto, boolean isFollowing) {
+    public PeopleListModel(String fullName, String username, int profilePhoto, boolean isFollowing, int typeOfLayout) {
         this.fullName = fullName;
         this.username = username;
         this.profilePhoto = profilePhoto;
         this.isFollowing = isFollowing;
+        this.typeOfLayout = typeOfLayout;
     }
 
     public String getFullName() {
@@ -46,5 +48,13 @@ public class PeopleListModel {
 
     public void setFollowing(boolean following) {
         isFollowing = following;
+    }
+
+    public int getTypeOfLayout() {
+        return typeOfLayout;
+    }
+
+    public void setTypeOfLayout(int typeOfLayout) {
+        this.typeOfLayout = typeOfLayout;
     }
 }
