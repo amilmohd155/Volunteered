@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.angeltek.volunteered_trail.R;
 
+
 public class ActActivity extends AppCompatActivity {
 
     private  final Context context = ActActivity.this;

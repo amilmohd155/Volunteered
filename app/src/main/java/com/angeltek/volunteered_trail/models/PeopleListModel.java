@@ -4,24 +4,24 @@ public class PeopleListModel {
 
 //    ("Fullname", "username", R.drawable.avatar0, false)
 
-    private String fullname;
+    private String fullName;
     private String username;
     private int profilePhoto;
     private boolean isFollowing;
 
     public PeopleListModel(String fullName, String username, int profilePhoto, boolean isFollowing) {
-        this.fullname = fullName;
+        this.fullName = fullName;
         this.username = username;
         this.profilePhoto = profilePhoto;
         this.isFollowing = isFollowing;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getUsername() {
