@@ -75,4 +75,19 @@
     <item name="android:textColor">@color/colorWhite</item>
   </style>
 
+  <!--Rating Style-->
+  <style name="CustomRatingIndicator" parent="@android:style/Widget.RatingBar">
+    <item name="android:minHeight">24dp</item>
+    <item name="android:minWidth">24dp</item>
+    <item name="android:stepSize">0.5</item>
+    <item name="android:numStars">5</item>
+    <item name="android:isIndicator">true</item>
+    <item name="android:progressDrawable">@drawable/rating_bar_heart</item>
+  </style>
+  <style name="CustomRating" parent="Widget.AppCompat.RatingBar">
+    <item name="android:numStars">5</item>
+    <item name="android:stepSize">0.5</item>
+    <item name="android:isIndicator">false</item>
+  </style>
+
 </resources>

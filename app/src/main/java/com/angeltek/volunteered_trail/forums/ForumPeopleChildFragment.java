@@ -45,8 +45,8 @@ public class ForumPeopleChildFragment extends Fragment {
         
         ArrayList<PeopleListModel> arrayList = new ArrayList<>();
 
-        arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.avatar0, false));
-        arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.user, true));
+        arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.avatar0, false, 1));
+        arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.user, true, 1));
 
         //Recyclerview Required
 
