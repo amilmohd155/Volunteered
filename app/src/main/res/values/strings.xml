@@ -98,6 +98,8 @@
     <string name="specify_text">Specify...</string>
     <string name="rating">Rating</string>
     <string name="joined">Joined</string>
+    <string name="review_entry_hint">Type your review</string>
+    <string name="type_message">Type a message..</string>
 
 
 </resources>
