@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Volunteered</string>
     <string name="createPing">Create Ping</string>
+    <string name="placebo_short">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="placebo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  </string>
     <string name="create_post">Create Post</string>
     <string name="search">Search</string>
@@ -100,6 +101,8 @@
     <string name="joined">Joined</string>
     <string name="review_entry_hint">Type your review</string>
     <string name="type_message">Type a message..</string>
+    <string name="john_doe">John Doe</string>
+    <string name="johndoe123"><![CDATA[&#064;johndoe123]]></string>
 
 
 </resources>

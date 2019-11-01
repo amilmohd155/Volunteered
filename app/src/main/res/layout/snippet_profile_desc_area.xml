@@ -3,40 +3,44 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!--Full name-->
-    <TextView
-        android:id="@+id/full_name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="4dp"
-        android:text="Cristopher Cleveland Brenden"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorFeedText"
-        android:maxEms="12"
-        android:maxLines="1"
-        android:ellipsize="end"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--username-->
-    <TextView
-        android:id="@+id/username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="\@username"
-        android:textColor="@color/coloVLFont"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/full_name"
-        app:layout_constraintStart_toEndOf="@+id/full_name"
-        app:layout_constraintTop_toTopOf="@id/full_name" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!--Full name-->
+        <TextView
+            android:id="@+id/full_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cristopher Cleveland Brenden"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorFeedText"
+            android:maxEms="12"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <!--username-->
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\@docren155"
+            android:textColor="@color/coloVLFont"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
 
     <!--Bio-->
     <TextView
@@ -52,80 +56,14 @@
         android:textSize="13sp"
         android:maxLines="3"
         android:ellipsize="end"
-        android:maxEms="25"
-        android:textColor="@color/colorFeedStats"
+        android:maxEms="20"
+        android:textColor="@color/colorDarkFontMajor"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <!--character-->
 
-    <!--following&followers-->
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_bio">
 
-        <!--Followers-->
-        <LinearLayout
-            android:id="@+id/followers"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:clickable="true"
-            android:focusable="true">
-
-            <TextView
-                android:id="@+id/followers_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10K"
-                android:textColor="@color/colorBlack"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="0dp"
-                android:text="Followers"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-        <!--Following-->
-        <LinearLayout
-            android:id="@+id/following"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true">
-
-            <TextView
-                android:id="@+id/following_count"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1K"
-                android:textColor="@color/colorBlack"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="0dp"
-                android:text="Following"
-                android:textSize="12sp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 
     <!--Additional Details-->
     <LinearLayout
@@ -136,50 +74,145 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout1">
+        app:layout_constraintTop_toBottomOf="@id/user_bio">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_phone"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_web"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic__mail"
+            android:layout_marginEnd="10dp"
+            android:padding="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"/>
+
+    </LinearLayout>
+
+    <!--following&followers-->
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        android:gravity="center_horizontal">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="www.volunteered.com"
-                android:textSize="13sp"
-                android:maxEms="14"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:gravity="center_vertical"
-                android:textColor="@color/colorBlue63"
-                android:layout_gravity="center"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:id="@+id/activities"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="20dp"
-            android:layout_marginStart="20dp">
+            android:layout_marginEnd="30dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/activities_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textColor="@color/color685783"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+919123169564"
-                android:textSize="13sp"
-                android:maxEms="7"
-                android:maxLines="1"
-                android:ellipsize="end"
-                android:gravity="center_vertical"/>
-
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="0dp"
+                android:text="Activities"
+                android:textColor="@color/colorFeedStats"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
+
+        <!--Followers-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/followers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/followers_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10K"
+                android:textColor="@color/color685783"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="0dp"
+                android:text="Followers"
+                android:textColor="@color/colorFeedStats"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!--Following-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/following"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/following_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2K"
+                android:textColor="@color/color685783"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="0dp"
+                android:text="Following"
+                android:textColor="@color/colorFeedStats"
+                android:textSize="14sp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

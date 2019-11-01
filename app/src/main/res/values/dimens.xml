@@ -13,4 +13,5 @@
     <dimen name="character_bubble_n">18dp</dimen>
     <dimen name="top_bar_dimen">60dp</dimen>
     <dimen name="profile_picture_size">70dp</dimen>
+    <dimen name="act_setting_card_elevation">1dp</dimen>
 </resources>

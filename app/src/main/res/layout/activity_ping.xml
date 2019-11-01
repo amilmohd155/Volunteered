@@ -4,18 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Topbar -->
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relLayout1">
-
-        <include layout="@layout/snippet_top_bar_ping"/>
-
-    </RelativeLayout>
-
-    <!-- Text Area-->
-
-
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>

@@ -46,6 +46,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="opacityPercent" value="60" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -56,8 +57,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="C:\Users\Docren\Downloads\like (1).png" />
-                                      <entry key="outputName" value="png_heart_filled" />
+                                      <entry key="imageAsset" value="C:\Users\Docren\Documents\ic_home.svg" />
+                                      <entry key="outputName" value="ic_home" />
                                       <entry key="themeColor" value="707070" />
                                     </map>
                                   </option>
@@ -153,8 +154,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_like_outline" />
-                            <entry key="sourceFile" value="C:\Users\Docren\Downloads\like (1).svg" />
+                            <entry key="outputName" value="ic_home_outline" />
+                            <entry key="sourceFile" value="C:\Users\Docren\Documents\ic_home.svg" />
                           </map>
                         </option>
                       </PersistentState>

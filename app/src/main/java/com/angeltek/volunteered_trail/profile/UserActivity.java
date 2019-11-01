@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewOutlineProvider;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -47,7 +48,7 @@ public class UserActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Spinner accountSpinner;
     private LinearLayout following, followers, linearLayout, linearLayout1, linearLayout2;
-    private TextView editProfileBtn;
+    private Button editProfileBtn;
     private ImageView coverPhoto;
 
     @Override
@@ -59,9 +60,9 @@ public class UserActivity extends AppCompatActivity {
 
         followers = (LinearLayout) findViewById(R.id.followers);
         following = (LinearLayout) findViewById(R.id.following);
-        editProfileBtn = (TextView) findViewById(R.id.edit_profile);
+        editProfileBtn = (Button) findViewById(R.id.edit_profile);
         linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
-        linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
+//        linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
         linearLayout2 = (LinearLayout) findViewById(R.id.linearLayout2);
         coverPhoto = findViewById(R.id.cover_photo);
 
@@ -201,11 +202,11 @@ public class UserActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if (tabLayout.getSelectedTabPosition() != 0) {
-                    linearLayout1.setVisibility(View.GONE);
+//                    linearLayout1.setVisibility(View.GONE);
                     linearLayout2.setVisibility(View.GONE);
                 }
                 else {
-                    linearLayout1.setVisibility(View.VISIBLE);
+//                    linearLayout1.setVisibility(View.VISIBLE);
                     linearLayout2.setVisibility(View.VISIBLE);
                 }
             }
