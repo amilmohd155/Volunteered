@@ -9,11 +9,11 @@ public class RoundedCorner {
     private View view;
     private int curveRadius;
     private int type = 0;
-    private final int ALL_ROUNDED = 0;
-    private final int ROUNDED_TOP = 1;
-    private final int ROUNDED_BOTTOM = 2;
-    private final int ROUNDED_LEFT = 3;
-    private final int ROUNDED_RIGHT = 4;
+    public static final int ALL_ROUNDED = 0;
+    public static final int ROUNDED_TOP = 1;
+    public static final int ROUNDED_BOTTOM = 2;
+    public static final int ROUNDED_LEFT = 3;
+    public static final int ROUNDED_RIGHT = 4;
 
     public RoundedCorner(View view, int cornerRadius, int type) {
         this.view = view;

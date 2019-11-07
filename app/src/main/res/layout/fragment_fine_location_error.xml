@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFEFF">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:src="@drawable/enable_location"
+        android:layout_marginTop="40dp"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location Access"
+            android:textSize="25sp"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Please enable location access to use this feature"
+            android:textSize="18sp"
+            android:textColor="@color/colorFeedStats"
+            android:maxLines="2"
+            android:maxEms="10"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp" />
+
+
+        <Button
+            android:id="@+id/btn_enable"
+            android:layout_width="140dp"
+            android:layout_height="55dp"
+            android:text="@string/enable"
+            android:textSize="18sp"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"
+            android:background="@drawable/rounded_border_50dp"
+            android:layout_marginTop="50dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+
+    </LinearLayout>
+</LinearLayout>

@@ -2,19 +2,20 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/top_bar_dimen"
-        android:layout_alignParentTop="true">
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
 
-        <com.google.android.material.appbar.AppBarLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/white_grey_border_bottom">
+            android:layout_height="50dp"
+            app:contentInsetStart="0dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:clickable="true"
@@ -23,7 +24,7 @@
                     android:id="@+id/back_btn"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:padding="15dp"
+                    android:padding="12dp"
                     android:src="@drawable/ic_back"
                     android:layout_centerVertical="true"/>
 
@@ -45,11 +46,10 @@
                     android:id="@+id/ping_setting_btn"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:padding="15dp"
+                    android:padding="12dp"
                     android:src="@drawable/ic_setting"
                     android:layout_centerVertical="true"
                     android:layout_toStartOf="@id/close_btn"/>
-
 
                 <ImageView
                     android:clickable="true"
@@ -58,15 +58,16 @@
                     android:id="@+id/close_btn"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:padding="15dp"
+                    android:padding="12dp"
                     android:src="@drawable/ic_close"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"/>
 
             </RelativeLayout>
 
-        </com.google.android.material.appbar.AppBarLayout>
+        </androidx.appcompat.widget.Toolbar>
 
-    </RelativeLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
 
 </merge>

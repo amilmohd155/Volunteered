@@ -103,6 +103,9 @@
     <string name="type_message">Type a message..</string>
     <string name="john_doe">John Doe</string>
     <string name="johndoe123"><![CDATA[&#064;johndoe123]]></string>
+    <string name="map_fragment">MapFragment</string>
+    <string name="location_error_fragment">LocationErrorFragment</string>
+    <string name="enable">Enable</string>
 
 
 </resources>
