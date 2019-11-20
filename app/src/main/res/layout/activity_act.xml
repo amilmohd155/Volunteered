@@ -35,7 +35,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.angeltek.volunteered_trail.utils.CustomScrollView
+    <com.volunteerx.app.utils.CustomScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
@@ -254,7 +254,7 @@
                 android:layout_marginTop="8dp"
                 app:layout_constraintTop_toBottomOf="@id/btn_panel_space"/>
 
-            <com.angeltek.volunteered_trail.utils.WrapContentViewPager
+            <com.volunteerx.app.utils.WrapContentViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -262,6 +262,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.angeltek.volunteered_trail.utils.CustomScrollView>
+    </com.volunteerx.app.utils.CustomScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -106,6 +106,8 @@
     <string name="map_fragment">MapFragment</string>
     <string name="location_error_fragment">LocationErrorFragment</string>
     <string name="enable">Enable</string>
+    <string name="character_heading">Characters</string>
+    <string name="ping_text_fragment">FragmentPingText</string>
 
 
 </resources>

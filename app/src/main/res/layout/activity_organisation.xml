@@ -20,7 +20,7 @@
 
         </RelativeLayout>
 
-        <com.angeltek.volunteered_trail.utils.CustomScrollView
+        <com.volunteerx.app.utils.CustomScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
@@ -119,7 +119,7 @@
                     </com.google.android.material.tabs.TabLayout>
 
 
-                    <com.angeltek.volunteered_trail.utils.WrapContentViewPager
+                    <com.volunteerx.app.utils.WrapContentViewPager
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:id="@+id/user_tab_container"
@@ -130,7 +130,7 @@
 
             </RelativeLayout>
 
-        </com.angeltek.volunteered_trail.utils.CustomScrollView>
+        </com.volunteerx.app.utils.CustomScrollView>
 
         <!-- Bottom Navigation  -->
         <include layout="@layout/layout_bottom_navigation_view"/>

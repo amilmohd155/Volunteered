@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="112dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/colorWhite"
+    app:cardElevation="0dp"
+    android:layout_margin="1dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackgroundBorderless">
+
+    <LinearLayout
+        android:id="@+id/border_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:padding="10dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/character_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/astronaut"
+            android:layout_marginBottom="5dp"
+            />
+
+        <TextView
+            android:id="@+id/character_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/economic"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            android:textColor="@color/colorFeedText"
+            android:maxLines="2"
+            android:maxEms="6"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

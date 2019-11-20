@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.angeltek.volunteered_trail">
+    package="com.volunteerx.app">
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
@@ -37,7 +36,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".home.HomeActivity"
+        <activity android:name="com.volunteerx.app.home.HomeActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,56 +46,56 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".location.LocationActivity"
+        <activity android:name="com.volunteerx.app.location.LocationActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".notification.NotificationActivity"
+        <activity android:name="com.volunteerx.app.notification.NotificationActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ping.PingActivity"
+            android:name="com.volunteerx.app.ping.PingActivity"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".profile.UserActivity"
+        <activity android:name="com.volunteerx.app.profile.UserActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".forums.ForumsActivity"
+        <activity android:name="com.volunteerx.app.forums.ForumsActivity"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".post.PostActivity"
+            android:name="com.volunteerx.app.post.PostActivity"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".wizard.WizardActivity"
+            android:name="com.volunteerx.app.wizard.WizardActivity"
             android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".search.SearchActivity"
+        <activity android:name="com.volunteerx.app.search.SearchActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".startup.LoginActivity"
+        <activity android:name="com.volunteerx.app.startup.LoginActivity"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".startup.ForgotPasswordActivity"
+            android:name="com.volunteerx.app.startup.ForgotPasswordActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".startup.SignUpActivity"
+        <activity android:name="com.volunteerx.app.startup.SignUpActivity"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".forums.ForumRoomActivity"
+            android:name="com.volunteerx.app.forums.ForumRoomActivity"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".profile.Organisation"
+        <activity android:name="com.volunteerx.app.profile.Organisation"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".activity.ActActivity"
+        <activity android:name="com.volunteerx.app.activity.ActActivity"
             android:screenOrientation="portrait"/>
 
         <meta-data
