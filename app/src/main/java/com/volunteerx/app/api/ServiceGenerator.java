@@ -5,8 +5,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.volunteerx.app.api.APIUrl.BASE_URL;
+
 public class ServiceGenerator {
-    private static final String BASE_URL = "https://";
 
     private static GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create();
 
