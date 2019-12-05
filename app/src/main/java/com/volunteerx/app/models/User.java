@@ -1,5 +1,8 @@
 package com.volunteerx.app.models;
 
+import static com.volunteerx.app.utils.Constants.EMAIL_ENTRY;
+import static com.volunteerx.app.utils.Constants.PHONE_ENTRY;
+
 public class User {
 
     private int id;
@@ -18,6 +21,47 @@ public class User {
         this.password = password;
     }
 
+    public User(String userName, String emailAddress, String password) {
+        this.userName = userName;
+        this.emailAddress = emailAddress;
+        this.password = password;
+    }
 
 
+    public User(String username, String data, String password, int dataType) {
+        if (dataType == EMAIL_ENTRY) {
+            this.userName = username;
+            this.emailAddress = data;
+            this.password = password;
+        }
+        else if(dataType == PHONE_ENTRY) {
+            this.userName = username;
+            this.phone = data;
+            this.password = password;
+        }
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

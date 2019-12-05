@@ -15,7 +15,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.volunteerx.app.R;
+import com.volunteerx.app.utils.CheckerClass;
 
+import static com.volunteerx.app.utils.CheckerClass.isEmailValid;
+import static com.volunteerx.app.utils.CheckerClass.isValidMobile;
 import static com.volunteerx.app.utils.Constants.EMAIL_ENTRY;
 import static com.volunteerx.app.utils.Constants.PHONE_ENTRY;
 
@@ -96,12 +99,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    private boolean isEmailValid(CharSequence email) {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    private boolean isValidMobile(String phone) {
-        return android.util.Patterns.PHONE.matcher(phone).matches();
-    }
 
 }

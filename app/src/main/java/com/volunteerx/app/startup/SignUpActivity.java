@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +14,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.volunteerx.app.R;
+import com.volunteerx.app.api.APIInterface;
+import com.volunteerx.app.api.ServiceGenerator;
+import com.volunteerx.app.models.Response;
+import com.volunteerx.app.models.User;
 import com.volunteerx.app.utils.Constants;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.internal.EverythingIsNonNull;
 
 import static com.volunteerx.app.utils.Constants.EMAIL_ENTRY;
 import static com.volunteerx.app.utils.Constants.PHONE_ENTRY;
@@ -22,12 +31,15 @@ public class SignUpActivity extends AppCompatActivity  implements View.OnClickLi
 
     //Constants
     private final Context mContext = SignUpActivity.this;
+    private static final String TAG = "SignUpActivity";
 
     //Widgets
     private TextView login;
     private Button signUp;
     private ImageView facebookLogin, googleLogin, twitterLogin;
     private EditText dataEt, passwordEt, usernameEt;
+
+    //var
     private String data, password, username;
     private int dataType;
 
@@ -55,6 +67,49 @@ public class SignUpActivity extends AppCompatActivity  implements View.OnClickLi
 
     }
 
+    private void userSignUp() {
+        Log.d(TAG, "userSignUp: Sign up process started");
+
+        data = dataEt.getText().toString().trim();
+        password = passwordEt.getText().toString().trim();
+        username = usernameEt.getText().toString().trim();
+
+//        if (isEmailValid(data)) {
+//            dataType = EMAIL_ENTRY;
+//        }
+//        else if (isValidMobile(data)) {
+//            dataType = PHONE_ENTRY;
+//        }
+//        else { //handle error message
+//
+//        }
+
+        APIInterface apiInterface = ServiceGenerator.createService(APIInterface.class);
+
+        User user = new User(username, data, password, dataType);
+
+        Call<Response> call = apiInterface.createUser(
+                user.getUserName(),
+                data,
+                user.getPassword(),
+                dataType
+        );
+
+        call.enqueue(new Callback<Response>() {
+            @Override
+            @EverythingIsNonNull
+            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
+                Log.d(TAG, "onResponse: " + response.body().getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<Response> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+    }
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
@@ -64,27 +119,11 @@ public class SignUpActivity extends AppCompatActivity  implements View.OnClickLi
             }
             break;
             case R.id.signUpFinal: {
-                data = dataEt.getText().toString();
-                if (isEmailValid(data)) {
-                    dataType = EMAIL_ENTRY;
-                }
-                else if (isValidMobile(data)) {
-                    dataType = PHONE_ENTRY;
-                }
-                else { //handle error message
-
-                }
+                userSignUp();
             }
             break;
         }
     }
 
-    private boolean isEmailValid(CharSequence email) {
-        return Patterns.EMAIL_ADDRESS.matcher(email).matches();
-    }
-
-    private boolean isValidMobile(String phone) {
-        return android.util.Patterns.PHONE.matcher(phone).matches();
-    }
 
 }

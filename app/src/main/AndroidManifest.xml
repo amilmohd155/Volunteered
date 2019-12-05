@@ -22,7 +22,8 @@
         android:roundIcon="@mipmap/v_logo"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -36,14 +37,28 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name="com.volunteerx.app.home.HomeActivity"
+        <activity android:name="com.volunteerx.app.startup.LoginActivity"
             android:screenOrientation="portrait">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="com.volunteerx.app.startup.ForgotPasswordActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.volunteerx.app.startup.SignUpActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name="com.volunteerx.app.home.HomeActivity"
+            android:screenOrientation="portrait">
         </activity>
 
         <activity android:name="com.volunteerx.app.location.LocationActivity"
@@ -74,17 +89,6 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name="com.volunteerx.app.search.SearchActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.volunteerx.app.startup.LoginActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name="com.volunteerx.app.startup.ForgotPasswordActivity"
-            android:noHistory="true"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.volunteerx.app.startup.SignUpActivity"
             android:screenOrientation="portrait"/>
 
         <activity
