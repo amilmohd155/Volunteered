@@ -2,46 +2,38 @@ package com.volunteerx.app.models;
 
 public class CharacterModel {
 
-    private String characterName;
-    private int characterColor;
-    private int characterIcon;
-    private boolean selectedCharacter;
+    private int characterID;
+    private int characterColorID;
+    private int characterNameID;
 
-    public CharacterModel(String characterName, int characterColor, int characterIcon) {
-        this.characterName = characterName;
-        this.characterColor = characterColor;
-        this.characterIcon = characterIcon;
+
+    public CharacterModel(int characterID, int characterName, int characterImageID) {
+        this.characterID = characterID;
+        this.characterColorID = characterImageID;
+        this.characterNameID = characterName;
     }
 
-    public String getCharacterName() {
-        return characterName;
+    public int getCharacterID() {
+        return characterID;
     }
 
-    public void setCharacterName(String characterName) {
-        this.characterName = characterName;
+    public void setCharacterID(int characterID) {
+        this.characterID = characterID;
     }
 
-    public int getCharacterColor() {
-        return characterColor;
+    public int getCharacterColorID() {
+        return characterColorID;
     }
 
-    public void setCharacterColor(int characterColor) {
-        this.characterColor = characterColor;
+    public void setCharacterColorID(int characterColorID) {
+        this.characterColorID = characterColorID;
     }
 
-    public int getCharacterIcon() {
-        return characterIcon;
+    public int getCharacterNameID() {
+        return characterNameID;
     }
 
-    public void setCharacterIcon(int characterIcon) {
-        this.characterIcon = characterIcon;
-    }
-
-    public boolean isSelectedCharacter() {
-        return selectedCharacter;
-    }
-
-    public void setSelectedCharacter(boolean selectedCharacter) {
-        this.selectedCharacter = selectedCharacter;
+    public void setCharacterNameID(int characterNameID) {
+        this.characterNameID = characterNameID;
     }
 }

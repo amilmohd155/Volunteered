@@ -24,7 +24,7 @@ import android.widget.LinearLayout;
 
 import com.volunteerx.app.R;
 import com.volunteerx.app.binder.CharacterTypeBBinder;
-import com.volunteerx.app.models.CharacterModel;
+import com.volunteerx.app.models.CharacterModelOld;
 import com.volunteerx.app.utils.ClickInterface;
 import com.volunteerx.app.utils.RoundedCorner;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -59,7 +59,7 @@ public class PingActivity extends AppCompatActivity implements OnMapReadyCallbac
     final Context context = PingActivity.this;
 
     //Var
-    private ArrayList<CharacterModel> characterModels;
+    private ArrayList<CharacterModelOld> characterModels;
     private int buttonType = 1; //0 -- setting button || 1 -- enable button
 
     //UI
@@ -103,15 +103,11 @@ public class PingActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private void nextLevel() {
 
-        fabNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
+        fabNext.setOnClickListener((View v) -> {
                 bottomSheet.setVisibility(View.GONE);
                 fabNext.hide();
                 loadFragment(new FragmentPingText(), context.getString(R.string.ping_text_fragment), true);
 
-            }
         });
 
     }
@@ -122,9 +118,7 @@ public class PingActivity extends AppCompatActivity implements OnMapReadyCallbac
         //
         setupCharacterGrid();
 
-        fabCharacter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fabCharacter.setOnClickListener((View v) -> {
                 if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
 
                     sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
@@ -134,7 +128,7 @@ public class PingActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
                 else{
                 }
-            }
+
         });
 
         sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
@@ -171,21 +165,21 @@ public class PingActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         Log.d(TAG, "setupRecyclerView: populating recyclerView with character cards");
 
-        characterModels.add(new CharacterModel(getResources().getString(R.string.animal), R.color.colorAnimal, R.drawable.car_wan));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.art), R.color.colorArt, R.drawable.astronaut));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.children), R.color.colorChildren, R.drawable.fairy_tales));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.civil), R.color.colorCivil, R.drawable.thought));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.disaster), R.color.colorDisaster, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.economic), R.color.colorEconomics, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.education), R.color.colorEducation, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.environment), R.color.colorEnvironment, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.health), R.color.colorHealth, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.human), R.color.colorHuman, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.politics), R.color.colorPolitics, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.poverty), R.color.colorPoverty, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.science), R.color.colorScience, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.social), R.color.colorSocial, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.women), R.color.colorWomen, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.animal), R.color.colorAnimal, R.drawable.car_wan));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.art), R.color.colorArt, R.drawable.astronaut));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.children), R.color.colorChildren, R.drawable.fairy_tales));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.civil), R.color.colorCivil, R.drawable.thought));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.disaster), R.color.colorDisaster, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.economic), R.color.colorEconomics, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.education), R.color.colorEducation, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.environment), R.color.colorEnvironment, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.health), R.color.colorHealth, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.human), R.color.colorHuman, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.politics), R.color.colorPolitics, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.poverty), R.color.colorPoverty, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.science), R.color.colorScience, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.social), R.color.colorSocial, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.women), R.color.colorWomen, R.drawable.icon1));
 
         MultiViewAdapter adapter = new MultiViewAdapter();
         characterGrid.setLayoutManager(new GridLayoutManager(context, 3));
@@ -194,18 +188,15 @@ public class PingActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         adapter.registerItemBinders(new CharacterTypeBBinder(context));
 
-        ListSection<CharacterModel> gridSection = new ListSection<>();
+        ListSection<CharacterModelOld> gridSection = new ListSection<>();
         gridSection.addAll(characterModels);
 
         adapter.addSection(gridSection);
         adapter.setSelectionMode(Mode.MULTIPLE);
 
-        gridSection.setOnSelectionChangedListener(new OnSelectionChangedListener<CharacterModel>() {
-            @Override
-            public void onSelectionChanged(CharacterModel item, boolean isSelected, List<CharacterModel> selectedItems) {
+        gridSection.setOnSelectionChangedListener((CharacterModelOld item, boolean isSelected, List<CharacterModelOld> selectedItems) -> {
                 //Todo COde for handling the selected item
                 Log.d(TAG, "onSelectionChanged: " + item.getCharacterName());
-            }
         });
 
     }

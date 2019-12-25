@@ -9,13 +9,13 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 
 import com.volunteerx.app.R;
-import com.volunteerx.app.models.CharacterModel;
+import com.volunteerx.app.models.CharacterModelOld;
 import com.bumptech.glide.Glide;
 
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
 
-public class CharacterTypeABinder extends ItemBinder<CharacterModel, CharacterTypeABinder.CharacterViewHolder> {
+public class CharacterTypeABinder extends ItemBinder<CharacterModelOld, CharacterTypeABinder.CharacterViewHolder> {
 
     Context context;
 
@@ -29,7 +29,7 @@ public class CharacterTypeABinder extends ItemBinder<CharacterModel, CharacterTy
     }
 
     @Override
-    public void bindViewHolder(CharacterViewHolder holder, CharacterModel item) {
+    public void bindViewHolder(CharacterViewHolder holder, CharacterModelOld item) {
         holder.characterName.setText(item.getCharacterName());
         holder.characterCard.setCardBackgroundColor(context.getColor(item.getCharacterColor()));
         Glide.with(context)
@@ -47,10 +47,10 @@ public class CharacterTypeABinder extends ItemBinder<CharacterModel, CharacterTy
 
     @Override
     public boolean canBindData(Object item) {
-        return item instanceof CharacterModel;
+        return item instanceof CharacterModelOld;
     }
 
-    public class CharacterViewHolder extends ItemViewHolder<CharacterModel> {
+    public class CharacterViewHolder extends ItemViewHolder<CharacterModelOld> {
 
         TextView characterName;
         ImageView characterIcon, checkMark;

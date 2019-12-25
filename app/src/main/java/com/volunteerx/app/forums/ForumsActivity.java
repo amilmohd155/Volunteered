@@ -14,9 +14,6 @@ import android.widget.TextView;
 
 import com.volunteerx.app.R;
 import com.volunteerx.app.models.ForumListModel;
-import com.volunteerx.app.search.SearchActivity;
-import com.volunteerx.app.utils.ClickListener;
-import com.volunteerx.app.utils.RecyclerTouchListener;
 
 import java.util.ArrayList;
 
@@ -85,69 +82,69 @@ public class ForumsActivity extends AppCompatActivity {
             }
         }).start();
 
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(mContext, recyclerView, new ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-
-                if (position == 0) {
-                    Intent intent = new Intent(mContext, SearchActivity.class);
-                    mContext.startActivity(intent);
-                }
-                else {
-                    Intent intent = new Intent(mContext, ForumRoomActivity.class);
-                    mContext.startActivity(intent);
-                }
-
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-//Todo long click dialog box
-
-//                if (position != 0) {
+//        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(mContext, recyclerView, new ClickListener() {
+//            @Override
+//            public void onClick(View view, int position) {
 //
-//                    Log.d(TAG, "onLongClick: DialogFragment Opening");
-//
-//                    dialog = new Dialog(mContext);
-//                    dialog.setContentView(R.layout.dialog_more_options);
-//                    if (dialog.getWindow() != null) {
-//                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//                        dialog.show();
-//                    }
-//
-//                    TextView deleteForum = (TextView) dialog.findViewById(R.id.delete_forum);
-//                    TextView reportForum = (TextView) dialog.findViewById(R.id.report_forum);
-//                    TextView closeForum = (TextView) dialog.findViewById(R.id.close_forum);
-//
-//                    //Delete Forum
-//                    deleteForum.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//
-//                        }
-//                    });
-//
-//                    //Report Forum
-//                    reportForum.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//
-//                        }
-//                    });
-//
-//                    //Close Forum
-//                    closeForum.setOnClickListener(new View.OnClickListener() {
-//                        @Override
-//                        public void onClick(View v) {
-//
-//                        }
-//                    });
-//
+//                if (position == 0) {
+//                    Intent intent = new Intent(mContext, SearchActivity.class);
+//                    mContext.startActivity(intent);
 //                }
+//                else {
+//                    Intent intent = new Intent(mContext, ForumRoomActivity.class);
+//                    mContext.startActivity(intent);
+//                }
+//
+//            }
 
-            }
-        }));
+//            @Override
+//            public void onLongClick(View view, int position) {
+//
+////Todo long click dialog box
+//
+////                if (position != 0) {
+////
+////                    Log.d(TAG, "onLongClick: DialogFragment Opening");
+////
+////                    dialog = new Dialog(mContext);
+////                    dialog.setContentView(R.layout.dialog_more_options);
+////                    if (dialog.getWindow() != null) {
+////                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+////                        dialog.show();
+////                    }
+////
+////                    TextView deleteForum = (TextView) dialog.findViewById(R.id.delete_forum);
+////                    TextView reportForum = (TextView) dialog.findViewById(R.id.report_forum);
+////                    TextView closeForum = (TextView) dialog.findViewById(R.id.close_forum);
+////
+////                    //Delete Forum
+////                    deleteForum.setOnClickListener(new View.OnClickListener() {
+////                        @Override
+////                        public void onClick(View v) {
+////
+////                        }
+////                    });
+////
+////                    //Report Forum
+////                    reportForum.setOnClickListener(new View.OnClickListener() {
+////                        @Override
+////                        public void onClick(View v) {
+////
+////                        }
+////                    });
+////
+////                    //Close Forum
+////                    closeForum.setOnClickListener(new View.OnClickListener() {
+////                        @Override
+////                        public void onClick(View v) {
+////
+////                        }
+////                    });
+////
+////                }
+//
+//            }
+//        }));
 
     }
 

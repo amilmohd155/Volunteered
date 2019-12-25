@@ -43,5 +43,15 @@
     <color name="color685783">#685783</color>
     <color name="colorF6F6F6">#F6F6F6</color>
 
+    <color name="colorOffWhite">#F3F3F3</color>
+    <color name="colorSplash">#f7f7f7</color>
+    <color name="colorVolunteerX">#28a8ff</color>
+    <color name="colorButtonBGEnable">#FFFFFF</color>
+    <color name="colorButtonTextEnabled">#28a8ff</color>
+    <color name="colorButtonBGDisabled">#F3F3F3</color>
+    <color name="colorButtonTextDisabled">#8B8B8B</color>
+    <color name="colorOnBoardingScreen">#fff8f0</color>
+    <color name="colorCharacterDeselected">#F3F3F3</color>
+
 
 </resources>

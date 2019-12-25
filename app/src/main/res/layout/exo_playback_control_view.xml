@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:layoutDirection="ltr"
+    tools:targetApi="28">
+
+    <ImageButton
+        android:id="@+id/exo_full_screen"
+        android:layout_width="@dimen/exo_player_icon"
+        android:layout_height="@dimen/exo_player_icon"
+        android:src="@drawable/ic_full_screen_enter"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:visibility="invisible"
+        android:id="@+id/indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1/10"
+        android:textColor="@color/colorWhite"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:background="@drawable/gradient_color"
+        android:layout_alignParentEnd="true"/>
+
+    <ImageView
+        android:id="@+id/exo_volume_control"
+        android:layout_width="@dimen/exo_player_icon"
+        android:layout_height="@dimen/exo_player_icon"
+        android:src="@drawable/ic_volume_on"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"/>
+
+    <ProgressBar
+        android:id="@+id/exo_loading"
+        android:layout_width="@dimen/exo_player_icon"
+        android:layout_height="@dimen/exo_player_icon"
+        android:progressDrawable="@drawable/art"
+        android:layout_alignParentEnd="true"/>
+
+
+</RelativeLayout>

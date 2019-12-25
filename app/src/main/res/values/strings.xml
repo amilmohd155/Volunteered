@@ -82,6 +82,7 @@
 
 
     <string name="long_placebo">“As he crossed toward the pharmacy at the corner he involuntarily turned his head because of a burst of light that had ricocheted from his temple, and saw, with that quick smile with which we greet a rainbow or a rose, a blindingly white parallelogram of sky being unloaded from the van—a dresser with mirrors across which, as across a cinema screen, passed a flawlessly clear reflection of boughs sliding and swaying not arboreally, but with a human vacillation, produced by the nature of those who were carrying this sky, these boughs, this gliding façade.”</string>
+    <string name="placebo_s">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="title_activity_maps">Map</string>
     <string name="question">Add question</string>
     <string name="option">Add option</string>
@@ -96,7 +97,7 @@
     <string name="female_gender">Female</string>
     <string name="specific_gender">Other</string>
     <string name="undisclosed_gender">Prefer not to disclose</string>
-    <string name="specify_text">Specify...</string>
+    <string name="specify_text">Specify&#8230;</string>
     <string name="rating">Rating</string>
     <string name="joined">Joined</string>
     <string name="review_entry_hint">Type your review</string>
@@ -109,5 +110,18 @@
     <string name="character_heading">Characters</string>
     <string name="ping_text_fragment">FragmentPingText</string>
 
+    <string name="splash_fragment">SplashFragment</string>
+    <string name="sign_up_tab">Sign up</string>
+    <string name="login_tab">Login</string>
+    <string name="forgot_password_fragment">ForgotPasswordFragment</string>
+    <string name="fp_slide_alpha_fragment">FPSlideAFragment</string>
+    <string name="fp_slide_username_fragment">FPSlideUsernameFragment</string>
+    <string name="fp_slide_phone_fragment">FPSlidePhoneFragment</string>
+    <string name="fp_slide_email_fragment">FPSlideEmailFragment</string>
+    <string name="fp_slide_beta_fragment">FPSlideBetaFragment</string>
+    <string name="on_boarding_screen_opened_key">com.volunteerx.app.OnBoarding_Screen_Opened_Key</string>
+    <string name="saved_on_boarding_key">isOnBoardingOpened</string>
+    <string name="error_placebo">if a run-time error occurs, control branches to the specified line.</string>
+    <string name="media_volume_key">Media_Volume_Key</string>
 
 </resources>

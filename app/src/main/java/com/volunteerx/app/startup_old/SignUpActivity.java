@@ -1,4 +1,4 @@
-package com.volunteerx.app.startup;
+package com.volunteerx.app.startup_old;
 
 import android.app.ActivityOptions;
 import android.content.Context;
@@ -6,7 +6,6 @@ import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,14 +17,10 @@ import com.volunteerx.app.api.APIInterface;
 import com.volunteerx.app.api.ServiceGenerator;
 import com.volunteerx.app.models.Response;
 import com.volunteerx.app.models.User;
-import com.volunteerx.app.utils.Constants;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.internal.EverythingIsNonNull;
-
-import static com.volunteerx.app.utils.Constants.EMAIL_ENTRY;
-import static com.volunteerx.app.utils.Constants.PHONE_ENTRY;
 
 public class SignUpActivity extends AppCompatActivity  implements View.OnClickListener {
 

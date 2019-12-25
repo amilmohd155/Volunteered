@@ -37,9 +37,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name="com.volunteerx.app.startup.LoginActivity"
-            android:screenOrientation="portrait">
-
+        <activity android:name=".startup.StartupActivity"
+            android:theme="@style/splashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -48,13 +47,16 @@
             </intent-filter>
 
         </activity>
+        <activity android:name="com.volunteerx.app.startup_old.LoginActivity"
+            android:screenOrientation="portrait">
+        </activity>
 
         <activity
-            android:name="com.volunteerx.app.startup.ForgotPasswordActivity"
+            android:name="com.volunteerx.app.startup_old.ForgotPasswordActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.volunteerx.app.startup.SignUpActivity"
+        <activity android:name="com.volunteerx.app.startup_old.SignUpActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name="com.volunteerx.app.home.HomeActivity"

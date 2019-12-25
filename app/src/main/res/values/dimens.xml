@@ -14,4 +14,11 @@
     <dimen name="top_bar_dimen">60dp</dimen>
     <dimen name="profile_picture_size">70dp</dimen>
     <dimen name="act_setting_card_elevation">1dp</dimen>
+    <dimen name="auth_logo_dimens">40dp</dimen>
+    <dimen name="otp_code_dimen">60dp</dimen>
+    <dimen name="otp_space_dimen">30dp</dimen>
+    <dimen name="bottom_sheet_peek_value_aw">80dp</dimen>
+    <dimen name="card_corner_radius">25dp</dimen>
+    <dimen name="exo_player_icon">25dp</dimen>
+
 </resources>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:padding="25dp"
+    tools:context=".startup.SignUpFragment">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email address or phone"
+                android:textColor="#9C9C9C"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/et_user_data"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="Email address or phone"
+                android:textColorHint="#CCCCCC"
+                android:textSize="16sp"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="8dp"
+                android:padding="2dp"
+                android:inputType="text"
+                android:drawableEnd="@drawable/ic_next"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full name"
+                android:textColor="#9C9C9C"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/et_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="Full name"
+                android:textColorHint="#CCCCCC"
+                android:textSize="16sp"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="8dp"
+                android:padding="2dp"
+                android:inputType="text" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:textColor="#9C9C9C"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:hint="Password"
+                android:textColorHint="#CCCCCC"
+                android:textSize="16sp"
+                android:background="@android:color/transparent"
+                android:layout_marginBottom="8dp"
+                android:padding="2dp"
+                android:inputType="text" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#CCCCCC"/>
+
+        </LinearLayout>
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/btn_sign_up"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:text="Create account"
+            fancy:fb_radius="10dp"
+            fancy:fb_defaultColor="@color/colorBlack"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_login_invite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Already have an account? Login"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_terms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Term and conditions"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

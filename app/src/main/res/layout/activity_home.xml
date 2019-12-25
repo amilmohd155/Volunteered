@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".home.HomeActivity"
-    android:background="@color/colorGrey101">
+    android:background="@color/colorWhite">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,6 +28,8 @@
             android:layout_height="match_parent"
             android:layout_below="@id/relLayout1"
             android:background="@color/colorWhite">
+
+            <include layout="@layout/layout_post"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/post_fab"

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.volunteerx.app.R;
 import com.volunteerx.app.binder.CharacterTypeABinder;
-import com.volunteerx.app.models.CharacterModel;
+import com.volunteerx.app.models.CharacterModelOld;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ class EditCharacterFragment extends Fragment implements View.OnClickListener {
 
     private RecyclerView recyclerView;
     private ImageView closeBtn;
-    private ArrayList<CharacterModel> characterModels;
+    private ArrayList<CharacterModelOld> characterModels;
 
     @Nullable
     @Override
@@ -55,21 +55,21 @@ class EditCharacterFragment extends Fragment implements View.OnClickListener {
 
         Log.d(TAG, "setupRecyclerView: populating recyclerView with character cards");
 
-        characterModels.add(new CharacterModel(getResources().getString(R.string.animal), R.color.colorAnimal, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.art), R.color.colorArt, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.children), R.color.colorChildren, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.civil), R.color.colorCivil, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.disaster), R.color.colorDisaster, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.economic), R.color.colorEconomics, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.education), R.color.colorEducation, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.environment), R.color.colorEnvironment, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.health), R.color.colorHealth, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.human), R.color.colorHuman, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.politics), R.color.colorPolitics, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.poverty), R.color.colorPoverty, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.science), R.color.colorScience, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.social), R.color.colorSocial, R.drawable.icon1));
-        characterModels.add(new CharacterModel(getResources().getString(R.string.women), R.color.colorWomen, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.animal), R.color.colorAnimal, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.art), R.color.colorArt, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.children), R.color.colorChildren, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.civil), R.color.colorCivil, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.disaster), R.color.colorDisaster, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.economic), R.color.colorEconomics, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.education), R.color.colorEducation, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.environment), R.color.colorEnvironment, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.health), R.color.colorHealth, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.human), R.color.colorHuman, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.politics), R.color.colorPolitics, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.poverty), R.color.colorPoverty, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.science), R.color.colorScience, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.social), R.color.colorSocial, R.drawable.icon1));
+        characterModels.add(new CharacterModelOld(getResources().getString(R.string.women), R.color.colorWomen, R.drawable.icon1));
 
         MultiViewAdapter adapter = new MultiViewAdapter();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
@@ -78,15 +78,15 @@ class EditCharacterFragment extends Fragment implements View.OnClickListener {
 
         adapter.registerItemBinders(new CharacterTypeABinder(getContext()));
 
-        ListSection<CharacterModel> gridSection = new ListSection<>();
+        ListSection<CharacterModelOld> gridSection = new ListSection<>();
         gridSection.addAll(characterModels);
 
         adapter.addSection(gridSection);
         adapter.setSelectionMode(Mode.MULTIPLE);
 
-        gridSection.setOnSelectionChangedListener(new OnSelectionChangedListener<CharacterModel>() {
+        gridSection.setOnSelectionChangedListener(new OnSelectionChangedListener<CharacterModelOld>() {
             @Override
-            public void onSelectionChanged(CharacterModel item, boolean isSelected, List<CharacterModel> selectedItems) {
+            public void onSelectionChanged(CharacterModelOld item, boolean isSelected, List<CharacterModelOld> selectedItems) {
                 //Todo COde for handling the selected item
             }
         });

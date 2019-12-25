@@ -43,7 +43,6 @@
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"/>
 
-
             </RelativeLayout>
 
         </com.google.android.material.appbar.AppBarLayout>

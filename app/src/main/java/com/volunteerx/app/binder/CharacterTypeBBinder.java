@@ -9,14 +9,14 @@ import android.widget.TextView;
 
 
 import com.volunteerx.app.R;
-import com.volunteerx.app.models.CharacterModel;
+import com.volunteerx.app.models.CharacterModelOld;
 import com.bumptech.glide.Glide;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
 
-public class CharacterTypeBBinder extends ItemBinder<CharacterModel, CharacterTypeBBinder.CharacterViewHolder>  {
+public class CharacterTypeBBinder extends ItemBinder<CharacterModelOld, CharacterTypeBBinder.CharacterViewHolder>  {
 
     Context context;
 
@@ -31,7 +31,7 @@ public class CharacterTypeBBinder extends ItemBinder<CharacterModel, CharacterTy
 
 
     @Override
-    public void bindViewHolder(CharacterViewHolder holder, CharacterModel item) {
+    public void bindViewHolder(CharacterViewHolder holder, CharacterModelOld item) {
 
         holder.characterName.setText(item.getCharacterName());
 
@@ -59,10 +59,10 @@ public class CharacterTypeBBinder extends ItemBinder<CharacterModel, CharacterTy
 
     @Override
     public boolean canBindData(Object item) {
-        return item instanceof CharacterModel;
+        return item instanceof CharacterModelOld;
     }
 
-    public class CharacterViewHolder extends ItemViewHolder<CharacterModel> {
+    public class CharacterViewHolder extends ItemViewHolder<CharacterModelOld> {
 
         TextView characterName;
         CircleImageView characterIcon;

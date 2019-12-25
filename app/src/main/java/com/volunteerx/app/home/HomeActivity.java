@@ -2,6 +2,7 @@ package com.volunteerx.app.home;
 
 import android.content.Context;
 import android.content.Intent;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,26 +32,21 @@ public class HomeActivity extends AppCompatActivity {
 
         setupBottomNavigationView();
 
-        ImageButton forumButton = (ImageButton) findViewById(R.id.forum);
+
+        final ImageButton forumButton = findViewById(R.id.forum);
 
 
-        forumButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        forumButton.setOnClickListener((View v) -> {
                 Log.d(TAG, "onClick: Navigating to Forum Activity");
 
                 Intent intent = new Intent(mContext, ForumsActivity.class);
                 startActivity(intent);
-            }
         });
 
         FloatingActionButton fab = findViewById(R.id.post_fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        fab.setOnClickListener((View v) -> {
                 Intent intent = new Intent(mContext, PostActivity.class);
                 startActivity(intent);
-            }
         });
 
     }
@@ -65,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
 
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
 
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
 
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
