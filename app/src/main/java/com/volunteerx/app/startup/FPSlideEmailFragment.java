@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/14/19 8:58 PM
+ *
+ */
+
 package com.volunteerx.app.startup;
 
 import android.content.Context;

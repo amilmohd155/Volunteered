@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 11/26/19 9:25 PM
+ *
+ */
+
 package com.volunteerx.app.api;
 
 import okhttp3.OkHttpClient;
@@ -5,7 +13,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static com.volunteerx.app.api.APIUrl.BASE_URL;
+import static com.volunteerx.app.api.BaseURL.BASE_URL;
 
 public class ServiceGenerator {
 

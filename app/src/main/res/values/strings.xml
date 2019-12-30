@@ -1,3 +1,11 @@
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 12/25/19 8:20 PM
+  ~  */
+  -->
+
 <resources>
     <string name="app_name">Volunteered</string>
     <string name="createPing">Create Ping</string>
@@ -123,5 +131,7 @@
     <string name="saved_on_boarding_key">isOnBoardingOpened</string>
     <string name="error_placebo">if a run-time error occurs, control branches to the specified line.</string>
     <string name="media_volume_key">Media_Volume_Key</string>
+    <string name="network_error">Please check your internet connection and try again.</string>
+    <string name="try_again">Try again</string>
 
 </resources>

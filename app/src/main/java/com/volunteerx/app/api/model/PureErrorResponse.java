@@ -1,33 +1,36 @@
-package com.volunteerx.app.models;
+/*
+ * *
+ *  * Created by Amil Muhammed Hamza on 12/29/19 7:30 PM
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/29/19 7:30 PM
+ *
+ */
+
+package com.volunteerx.app.api.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Response {
+public class PureErrorResponse {
 
     @SerializedName("error")
     @Expose
     private Boolean error;
-    @SerializedName("message")
-    @Expose
-    private String message;
 
     /**
      * No args constructor for use in serialization
      *
      */
-    public Response() {
+    public PureErrorResponse() {
     }
 
     /**
      *
-     * @param error boolean value
-     * @param message string message
+     * @param error
      */
-    public Response(Boolean error, String message) {
+    public PureErrorResponse(Boolean error) {
         super();
         this.error = error;
-        this.message = message;
     }
 
     public Boolean getError() {
@@ -36,14 +39,6 @@ public class Response {
 
     public void setError(Boolean error) {
         this.error = error;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
     }
 
 }

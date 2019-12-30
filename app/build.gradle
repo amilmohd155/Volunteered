@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/25/19 8:10 PM
+ *
+ */
+
 apply plugin: 'com.android.application'
 
 android {
@@ -98,6 +106,13 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.10.4' //Core
     implementation 'com.google.android.exoplayer:exoplayer-dash:2.10.4' //DASH
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.10.4'
+
+    //afollestad/material-dialogs
+    implementation 'com.afollestad.material-dialogs:core:3.1.1'
+
+    // Material Dialog Library
+    implementation 'com.shreyaspatil:MaterialDialog:2.0'
+
 
 
 }

@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
 
-<resources>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 12/14/19 9:59 PM
+  ~  */
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools">
 
   <!-- Base application theme. -->
   <style parent="Theme.AppCompat.Light.NoActionBar" name="AppTheme">
@@ -15,6 +23,7 @@
     <item name="android:radioButtonStyle">@style/RadioButtonStyle</item>
     <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
     <item name="android:screenOrientation">portrait</item>
+
   </style>
 
   <!--Radio Button style-->
@@ -110,6 +119,16 @@
   <style name="AppModalStyle"
       parent="Widget.Design.BottomSheet.Modal">
     <item name="android:background">@drawable/rounded_top_corners</item>
+  </style>
+
+  <style name="FancyButtonCustom">
+    <item name="fb_radius">10dp</item>
+    <item name="fb_defaultColor">@color/colorBlack</item>
+    <item name="fb_borderColor">@color/colorBlack</item>
+    <item name="fb_borderWidth">2dp</item>
+    <item name="fb_disabledColor">@color/colorWhite</item>
+    <item name="fb_disabledTextColor">@color/colorFontMajor</item>
+    <item name="fb_disabledBorderColor">#D3D3D3</item>
   </style>
 
 </resources>

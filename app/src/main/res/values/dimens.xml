@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 12/25/19 7:47 PM
+  ~  */
+  -->
+
 <resources>
     <dimen name="feedStat">10sp</dimen>
     <dimen name="feedText">12sp</dimen>
@@ -20,5 +28,16 @@
     <dimen name="bottom_sheet_peek_value_aw">80dp</dimen>
     <dimen name="card_corner_radius">25dp</dimen>
     <dimen name="exo_player_icon">25dp</dimen>
+
+    //progressDialog
+    <dimen name="pp_margin_default">20dp</dimen>
+    <dimen name="pp_padding_default">20dp</dimen>
+    <dimen name="pp_loader_size">45dp</dimen>
+    <dimen name="pp_margin_end">5dp</dimen>
+    <dimen name="pp_corner_radius">10dp</dimen>
+    <dimen name="pp_card_elevation">5dp</dimen>
+    <dimen name="pp_padding_side">25dp</dimen>
+    <dimen name="pp_padding_tb">25dp</dimen>
+    <dimen name="w_button_corner_radius">10dp</dimen>
 
 </resources>

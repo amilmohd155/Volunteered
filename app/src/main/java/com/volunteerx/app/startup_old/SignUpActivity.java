@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/14/19 8:33 PM
+ *
+ */
+
 package com.volunteerx.app.startup_old;
 
 import android.app.ActivityOptions;
@@ -15,7 +23,7 @@ import android.widget.TextView;
 import com.volunteerx.app.R;
 import com.volunteerx.app.api.APIInterface;
 import com.volunteerx.app.api.ServiceGenerator;
-import com.volunteerx.app.models.Response;
+import com.volunteerx.app.api.model.Response;
 import com.volunteerx.app.models.User;
 
 import retrofit2.Call;

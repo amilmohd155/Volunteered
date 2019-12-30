@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 10/17/19 8:05 PM
+  ~  */
+  -->
+
 <merge
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

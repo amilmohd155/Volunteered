@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/25/19 8:20 PM
+ *
+ */
+
 package com.volunteerx.app.MediaSwipeVew.views.fragments;
 
 import android.content.Context;
@@ -96,14 +104,12 @@ public class MediaFragment extends Fragment implements Player.EventListener {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try {
+
+        if (getArguments() != null) {
             media = getArguments().getParcelable("media");
             intArray = getArguments().getIntArray("intArray");
             indicatorText = (intArray[0] + 1) + "/" + intArray[1];
-        }catch (NullPointerException e) {
-            e.getStackTrace();
         }
-
     }
 
     @Nullable

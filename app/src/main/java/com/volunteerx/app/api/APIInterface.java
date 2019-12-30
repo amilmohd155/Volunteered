@@ -1,11 +1,19 @@
+/*
+ * *
+ *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/25/19 9:09 PM
+ *
+ */
+
 package com.volunteerx.app.api;
 
-import com.volunteerx.app.models.Response;
+import com.volunteerx.app.api.model.PureErrorResponse;
+import com.volunteerx.app.api.model.Response;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface APIInterface {
@@ -13,9 +21,31 @@ public interface APIInterface {
     @FormUrlEncoded
     @POST("register")
     Call<Response> createUser(
-            @Field("username") String username,
+            @Field("full-name") String fullName,
+            @Field("user-data") String userData,
+            @Field("password") String password,
+            @Field("data-type") int dataType
+    );
+
+    @FormUrlEncoded
+    @POST("login")
+    Call<Response> userLogin(
             @Field("userData") String userData,
             @Field("password") String password,
-            @Field("dataType") int dataType
+            @Field("userDataType") int userDataType
     );
+
+    @FormUrlEncoded
+    @POST("isUsernameAvailable")
+    Call<PureErrorResponse> usernameAvailability(
+            @Field("user-name") String username
+    );
+
+    @FormUrlEncoded
+    @POST("addUsername")
+    Call<PureErrorResponse> addUsernameToDB(
+            @Field("user-id") int userID,
+            @Field("user-name") String username
+    );
+
 }

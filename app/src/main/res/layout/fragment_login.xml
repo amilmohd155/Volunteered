@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 12/14/19 9:47 PM
+  ~  */
+  -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
@@ -6,6 +14,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="25dp"
+    android:background="@color/colorWhite"
     tools:context=".startup.LoginFragment">
 
     <LinearLayout
@@ -33,10 +42,10 @@
             android:background="@android:color/transparent"
             android:layout_marginBottom="8dp"
             android:padding="2dp"
-            android:inputType="text"
-            android:drawableEnd="@drawable/ic_next"/>
+            android:inputType="text" />
 
         <View
+            android:id="@+id/user_data_underline"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#CCCCCC"/>
@@ -69,9 +78,11 @@
             android:background="@android:color/transparent"
             android:layout_marginBottom="8dp"
             android:padding="2dp"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"/>
 
         <View
+            android:id="@+id/password_underline"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#CCCCCC"/>
@@ -94,11 +105,12 @@
         android:id="@+id/btn_login"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:text="Login"
-        fancy:fb_radius="10dp"
-        fancy:fb_defaultColor="@color/colorBlack"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:text="Login"
+        style="@style/FancyButtonCustom"
+        android:enabled="false"
+        />
 
     <TextView
         android:id="@+id/tv_sign_invite"

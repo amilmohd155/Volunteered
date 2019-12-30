@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/25/19 8:15 PM
+ *
+ */
+
 package com.volunteerx.app.MediaSwipeVew.views;
 
 import android.content.Context;

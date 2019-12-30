@@ -1,3 +1,11 @@
+/*
+ * *
+ *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+ *  * Copyright (c) 2019 . All rights reserved.
+ *  * Last modified 12/25/19 7:50 PM
+ *
+ */
+
 package com.volunteerx.app.utils;
 
 public class Constants {
@@ -23,5 +31,10 @@ public class Constants {
 
     public static final int VOLUME_ON = 1;
     public static final int VOLUME_OFF = 0;
+
+    public static final int USER_DATA_ERROR = 1;
+    public static final int PASSWORD_ERROR = 2;
+
+    public static final int EXISTING_USER = 102;
 
 }

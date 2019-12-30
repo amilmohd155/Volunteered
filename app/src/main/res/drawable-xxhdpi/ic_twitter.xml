@@ -1,3 +1,11 @@
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 7/16/19 9:46 AM
+  ~  */
+  -->
+
 <vector android:height="35dp" android:viewportHeight="112.197"
     android:viewportWidth="112.197" android:width="35dp" xmlns:android="http://schemas.android.com/apk/res/android">
     <path android:fillColor="#55ACEE" android:pathData="M56.099,56.098m-56.098,0a56.098,56.098 0,1 1,112.196 0a56.098,56.098 0,1 1,-112.196 0"/>
