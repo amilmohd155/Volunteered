@@ -24,6 +24,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
+                                                <entry key="opacityPercent" value="80" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -46,7 +48,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="opacityPercent" value="60" />
+                                                <entry key="opacityPercent" value="80" />
+                                                <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -57,9 +60,10 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="C:\Users\Docren\Documents\ic_home.svg" />
-                                      <entry key="outputName" value="ic_home" />
-                                      <entry key="themeColor" value="707070" />
+                                      <entry key="imageAsset" value="C:\Users\Docren\Downloads\_ionicons_svg_md-more.svg" />
+                                      <entry key="outputName" value="ic_ellipses" />
+                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="000000" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -154,8 +158,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_home_outline" />
-                            <entry key="sourceFile" value="C:\Users\Docren\Documents\ic_home.svg" />
+                            <entry key="outputName" value="ic_send" />
+                            <entry key="sourceFile" value="C:\Users\Docren\Downloads\send-button.svg" />
                           </map>
                         </option>
                       </PersistentState>

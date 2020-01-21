@@ -11,11 +11,12 @@ package com.volunteerx.app.notification;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.volunteerx.app.R;
@@ -42,7 +43,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: Starting");
 
-        searchTab = (RelativeLayout) findViewById(R.id.search_tab);
+        searchTab = findViewById(R.id.action_bar);
 
         setupFragment();
         setupBottomNavigationView();
@@ -54,14 +55,11 @@ public class NotificationActivity extends AppCompatActivity {
 
         Log.d(TAG, "setupSearchActivity: going to search activity");
 
-        searchTab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        searchTab.setOnClickListener(v -> {
 
-                Intent intent = new Intent(mContext, SearchActivity.class);
-                startActivity(intent);
+            Intent intent = new Intent(mContext, SearchActivity.class);
+            startActivity(intent);
 
-            }
         });
 
 
@@ -72,13 +70,13 @@ public class NotificationActivity extends AppCompatActivity {
 
         Log.d(TAG, "setupFragmentCall: Fragment call started");
 
-        viewPager = (ViewPager) findViewById(R.id.container);
+        viewPager = findViewById(R.id.container);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         sectionsPagerAdapter.addFragment(new NotificationFragment());
         sectionsPagerAdapter.addFragment(new RequestFragment());
         viewPager.setAdapter(sectionsPagerAdapter);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.getTabAt(0).setText(R.string.tab_notification);
@@ -94,10 +92,13 @@ public class NotificationActivity extends AppCompatActivity {
 
         Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
 
-        BottomNavigationViewEx bottomNavigationViewEx = (BottomNavigationViewEx) findViewById(R.id.bottomNavViewBar);
+        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
+        FloatingActionButton pingFab = findViewById(R.id.ping_fab);
+
+        bottomNavigationViewEx.setCurrentItem(3);
 
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
+        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx, pingFab);
 
     }
 

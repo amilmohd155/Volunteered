@@ -12,17 +12,31 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true">
+        android:layout_height="match_parent">
+
 
         <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="50dp"
             android:id="@+id/bottomNavViewBar"
             android:background="@drawable/white_grey_border_top"
             app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/bottom_navigation_menu">
-        </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
+            app:itemBackground="@color/colorWhite"
+            app:itemIconTint="@color/bottom_nav_icon_tint"
+            app:menu="@menu/bottom_navigation_menu"
+            android:layout_alignParentBottom="true"
+            app:elevation="2dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/ping_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_character"
+            android:layout_marginBottom="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            app:backgroundTint="@color/colorWhite"
+            app:elevation="8dp"/>
 
     </RelativeLayout>
 

@@ -16,20 +16,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Top Search Bar -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/search_tab">
+            android:id="@+id/action_bar">
 
-            <include layout="@layout/snippet_search_bar_view_top"/>
+            <include layout="@layout/top_bar_only_title"/>
 
         </RelativeLayout>
 
         <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/search_tab"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_below="@id/action_bar"
             style="@style/CustomTabLayout"
             android:id="@+id/tabs">
 
@@ -41,9 +40,7 @@
             android:layout_height="match_parent"
             android:id="@+id/container"
             android:layout_below="@id/tabs"
-            android:layout_marginBottom="50dp"/>
-
-
+            android:layout_marginBottom="75dp"/>
 
         <!-- Bottom Navigation  -->
         <include layout="@layout/layout_bottom_navigation_view"/>

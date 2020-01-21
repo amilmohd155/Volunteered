@@ -1,0 +1,19 @@
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 1/10/20 8:21 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 1/10/20 8:21 PM
+  ~  */
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="535.5"
+    android:viewportHeight="535.5"
+    android:tint="#242424"
+    android:alpha="1">
+  <path
+      android:fillColor="#FF000000"
+      android:pathData="M0,497.25l535.5,-229.5l-535.5,-229.5l0,178.5l382.5,51l-382.5,51z"/>
+</vector>

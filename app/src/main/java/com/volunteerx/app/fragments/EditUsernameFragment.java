@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.volunteerx.app.R;
 
-class EditUsernameFragment extends Fragment implements View.OnClickListener {
+public class EditUsernameFragment extends Fragment implements View.OnClickListener {
 
 
     @Nullable

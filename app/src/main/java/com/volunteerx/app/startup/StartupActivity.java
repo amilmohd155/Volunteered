@@ -8,6 +8,8 @@
 
 package com.volunteerx.app.startup;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.FrameLayout;
@@ -20,10 +22,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.volunteerx.app.R;
+import com.volunteerx.app.home.HomeActivity;
+import com.volunteerx.app.utils.SharedPrefManager;
 
 public class StartupActivity extends AppCompatActivity {
 
     private static final String TAG = "StartupActivity";
+
+    private final Context context = StartupActivity.this;
 
     //UI
     private FrameLayout container;
@@ -45,30 +51,6 @@ public class StartupActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction()
                 .replace(container.getId(), new SplashFragment());
         fragmentTransaction.commit();
-
-    }
-
-    /**
-     *
-     * @param fragment f
-     * @param fragmentName String as fragment name
-     * @param fragmentType for backStack fragment -- true && ! == false
-     */
-    private void loadFragment(Fragment fragment, String fragmentName, Boolean fragmentType) {
-
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction;
-
-        if (fragmentType) {
-            fragmentTransaction= fragmentManager.beginTransaction()
-                    .replace(container.getId(), fragment, fragmentName)
-                    .addToBackStack(fragmentName);
-            fragmentTransaction.commit();
-        }else  {
-            fragmentTransaction= fragmentManager.beginTransaction()
-                    .replace(container.getId(), fragment, fragmentName);
-            fragmentTransaction.commit();
-        }
 
     }
 

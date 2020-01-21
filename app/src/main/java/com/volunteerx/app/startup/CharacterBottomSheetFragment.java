@@ -8,8 +8,10 @@
 
 package com.volunteerx.app.startup;
 
+import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,32 +73,88 @@ public class CharacterBottomSheetFragment extends BottomSheetDialogFragment {
         tvCharacterDescription = view.findViewById(R.id.tv_character_description);
         ivCharacterImage = view.findViewById(R.id.circleImageView);
 
-        setupFragmentLayout();
+        characterTypeFunction();
 
         return view;
 
     }
 
-    private void setupFragmentLayout() {
+    private void characterTypeFunction() {
 
-        switch (characterID) {
-            case 0: {
-                tvCharacterName.setText("Animal Welfare");
-                tvCharacterDescription.setText(getString(R.string.placebo_s));
-                Glide.with(getContext())
-                        .load(R.drawable.avatar0)
-                        .into(ivCharacterImage);
-            }
-            break;
+        String[] characterName = getResources().getStringArray(R.array.characterName);
+        String[] characterDescription = getResources().getStringArray(R.array.character_description);
+        TypedArray typedArray = getResources().obtainTypedArray(R.array.characterIcon);
 
-            case 1: {
-//todo complete the characters
-            }break;
-            case 2: {
-
-            }
+        int[] characterIcon = new int[typedArray.length()];
+        for (int i =0; i < characterIcon.length; ++i) {
+            characterIcon[i] = typedArray.getResourceId(i, 0);
         }
 
+        switch (characterID) {
+            case 0: {   //Animal welfare
+                layoutFix(characterName[0], characterDescription[0], characterIcon[0]);
+            }
+            break;
+            case 1:    //Art and Culture
+                layoutFix(characterName[1], characterDescription[1], characterIcon[1]);
+                break;
+            case 2: //Children
+                layoutFix(characterName[2], characterDescription[2], characterIcon[2]);
+            break;
+            case 3: //
+                layoutFix(characterName[3], characterDescription[3], characterIcon[3]);
+                break;
+            case 4:
+                layoutFix(characterName[4], characterDescription[4], characterIcon[4]);
+                break;
+            case 5:
+                layoutFix(characterName[5], characterDescription[5], characterIcon[5]);
+                break;
+            case 6:
+                layoutFix(characterName[6], characterDescription[6], characterIcon[6]);
+                break;
+            case 7:
+                layoutFix(characterName[7], characterDescription[7], characterIcon[7]);
+                break;
+            case 8:
+                layoutFix(characterName[8], characterDescription[8], characterIcon[8]);
+                break;
+            case 9:
+                layoutFix(characterName[9], characterDescription[9], characterIcon[9]);
+                break;
+            case 10:
+                layoutFix(characterName[10], characterDescription[10], characterIcon[10]);
+                break;
+            case 11:
+                layoutFix(characterName[11], characterDescription[11], characterIcon[11]);
+                break;
+            case 12:
+                layoutFix(characterName[12], characterDescription[12], characterIcon[12]);
+                break;
+            case 13:
+                layoutFix(characterName[13], characterDescription[13], characterIcon[13]);
+                break;
+            case 14:
+                layoutFix(characterName[14], characterDescription[14], characterIcon[14]);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + characterID);
+        }
+
+        typedArray.recycle();
+
     }
+
+    private void layoutFix(String characterName, String characterDescription, int imageRes) {
+
+        tvCharacterName.setText(characterName);
+        tvCharacterDescription.setText(characterDescription);
+        Glide.with(getContext())
+                .load(imageRes)
+                .into(ivCharacterImage);
+
+    }
+
+
 
 }

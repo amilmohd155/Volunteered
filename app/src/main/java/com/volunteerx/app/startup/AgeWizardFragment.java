@@ -22,25 +22,36 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.volunteerx.app.R;
+import com.volunteerx.app.api.APIInterface;
+import com.volunteerx.app.api.ServiceGenerator;
+import com.volunteerx.app.api.model.PureErrorResponse;
+import com.volunteerx.app.utils.SharedPrefManager;
 
 import java.util.Calendar;
 import java.util.Date;
 
 import mehdi.sakout.fancybuttons.FancyButton;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AgeWizardFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "AgeWizardFragment";
 
     //Var
-    private ViewGroup mContainer;
+    private String strDateOfBirthDB;
+
 
     //UI
+    private ViewGroup mContainer;
     DatePicker datePicker;
     EditText etDateOfBirth;
     TextView tvAge;
     FancyButton nextBtn;
+
 
     public AgeWizardFragment() {
     }
@@ -66,7 +77,7 @@ public class AgeWizardFragment extends Fragment implements View.OnClickListener 
 
         nextBtn.setOnClickListener(this);
 
-        setupDOB();
+        getDOB();
 
         return view;
 
@@ -87,46 +98,61 @@ public class AgeWizardFragment extends Fragment implements View.OnClickListener 
 
         if (view.getId() == nextBtn.getId()) {
 
-            getActivity().getSupportFragmentManager().beginTransaction()
-                    .replace(mContainer.getId(), CharacterWizardFragment.newInstance())
-                    .addToBackStack(null)
-                    .commit();
+            storeDOB();
 
         }
 
     }
 
-    private void setupDOB() {
+    private void storeDOB() {
+
+        final int userID = SharedPrefManager.getInstance(getContext()).getUserId();
+
+        APIInterface apiInterface = ServiceGenerator.createService(APIInterface.class);
+
+        Call<PureErrorResponse> call = apiInterface.setDOB(
+                userID,
+                strDateOfBirthDB
+        );
+
+        call.enqueue(new Callback<PureErrorResponse>() {
+            @Override
+            public void onResponse(Call<PureErrorResponse> call, Response<PureErrorResponse> response) {
+                if (!response.body().getError()) {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(mContainer.getId(), CharacterWizardFragment.newInstance())
+                            .addToBackStack(null)
+                            .commit();
+                }else {
+                    //error
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PureErrorResponse> call, Throwable t) {
+                //TODO store failed upload and do background save
+            }
+        });
+
+    }
+
+    private void getDOB() {
 
         final int currentYear = Calendar.getInstance().get(Calendar.YEAR);
 
         datePicker.setMaxDate(new Date().getTime());
 
         datePicker.init(datePicker.getYear(), datePicker.getMonth(), datePicker.getDayOfMonth(),
-                new DatePicker.OnDateChangedListener() {
-                    @Override
-                    public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                        String strDateOfBirth = dayOfMonth + "/" + (++month) + "/" + year;
-                        etDateOfBirth.setText(strDateOfBirth);
-                        String strAge = String.valueOf(currentYear - year) + " years";
-                        tvAge.setText(strAge);
+                (datePicker, year, month, dayOfMonth) -> {
+                    strDateOfBirthDB = year + "-" + (++month) + "-" + dayOfMonth;
+                    final String strDOB = dayOfMonth + "/" + ++month + "/" + year;
+                    etDateOfBirth.setText(strDOB);
+                    String strAge = (currentYear - year) + " years";
+                    tvAge.setText(strAge);
 
-                        if (currentYear - year < 12 ) {
+                    if (currentYear - year < 12 ) nextBtn.setEnabled(false);
+                    else nextBtn.setEnabled(true);
 
-                            nextBtn.setEnabled(false);
-                            nextBtn.setBackgroundColor(getContext().getColor(R.color.colorOffWhite)); //make it grey
-                            nextBtn.setTextColor(getContext().getColor(R.color.colorFontMajor));
-
-                        }
-                        else {
-
-                            nextBtn.setEnabled(true);
-                            nextBtn.setBackgroundColor(getContext().getColor(R.color.colorWhite));
-                            nextBtn.setTextColor(getContext().getColor(R.color.colorVolunteerX));
-
-                        }
-
-                    }
                 });
 
     }

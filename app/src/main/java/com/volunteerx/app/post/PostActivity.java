@@ -60,11 +60,11 @@ public class PostActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: Starting Post Activity");
 
         //Variable Init
-        etPost = (EditText) findViewById(R.id.post_description);
-        closeBtnPost = (ImageView) findViewById(R.id.post_close);
-        attachmentTab = (TabLayout) findViewById(R.id.attachment_tab);
-        profilePhoto = (CircleImageView) findViewById(R.id.profilePhoto);
-        postBtn = (Button) findViewById(R.id.submit_post);
+        etPost = findViewById(R.id.post_description);
+        closeBtnPost = findViewById(R.id.post_close);
+        attachmentTab = findViewById(R.id.attachment_tab);
+        profilePhoto = findViewById(R.id.profilePhoto);
+        postBtn = findViewById(R.id.submit_post);
 
 
         //function Call
@@ -119,26 +119,23 @@ public class PostActivity extends AppCompatActivity {
 
         Log.d(TAG, "setupPrivacySetting: privacy setting selected");
 
-        profilePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        profilePhoto.setOnClickListener(v -> {
 
-                Log.d(TAG, "onClick: privacySetting selected");
+            Log.d(TAG, "onClick: privacySetting selected");
 
-                FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                Fragment prev = getSupportFragmentManager().findFragmentByTag(getResources().getString(R.string.dialog_privacy));
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            Fragment prev = getSupportFragmentManager().findFragmentByTag(getResources().getString(R.string.dialog_privacy));
 
-                if (prev != null) {
-                    fragmentTransaction.remove(prev);
-                }
-
-                PrivacyDialogFragment privacyDialogFragment = new PrivacyDialogFragment();
-                Bundle bundle = new Bundle();
-                bundle.putInt("Privacy", privacy_setting_const);
-                privacyDialogFragment.setArguments(bundle);
-                privacyDialogFragment.show(fragmentTransaction, getResources().getString(R.string.dialog_privacy));
-
+            if (prev != null) {
+                fragmentTransaction.remove(prev);
             }
+
+            PrivacyDialogFragment privacyDialogFragment = new PrivacyDialogFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("Privacy", privacy_setting_const);
+            privacyDialogFragment.setArguments(bundle);
+            privacyDialogFragment.show(fragmentTransaction, getResources().getString(R.string.dialog_privacy));
+
         });
 
     }

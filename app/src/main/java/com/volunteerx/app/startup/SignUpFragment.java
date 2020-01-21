@@ -180,8 +180,8 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Te
 
         }
 
-        listener.buttonClick(WIZARD);
-//        apiService();
+//        listener.buttonClick(WIZARD);
+        apiService();
     }
 
     private void apiService() {

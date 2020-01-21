@@ -31,7 +31,7 @@
         android:layout_width="30dp"
         android:layout_height="3dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/rounded_corner"
+        android:background="@drawable/bottom_sheet_indicator"
         android:backgroundTint="@color/colorFontMajor"
         app:layout_constraintBottom_toTopOf="@+id/circleImageView"
         app:layout_constraintEnd_toEndOf="parent"

@@ -118,27 +118,24 @@ public class OnBoardingFragment extends Fragment implements View.OnClickListener
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_next: {
-                btnNext.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+                btnNext.setOnClickListener(view1 -> {
 
-                        position = viewPager.getCurrentItem();
 
-                        Log.d(TAG, "onClick: next button clicked going to:: " + position);
+                    position = viewPager.getCurrentItem();
 
-                        if (position < screenItemList.size()) {
-                            position ++;
-                            viewPager.setCurrentItem(position, true);
-                        }
+                    Log.d(TAG, "onClick: next button clicked going to:: " + position);
 
-                        if (position == screenItemList.size() -1) {
-                            loadLastScreen();
-                        }
-                        else {
-                            loadOtherScreens();
-                        }
+                    if (position < screenItemList.size()) {
+                        position ++;
+                        viewPager.setCurrentItem(position, true);
                     }
 
+                    if (position == screenItemList.size() -1) {
+                        loadLastScreen();
+                    }
+                    else {
+                        loadOtherScreens();
+                    }
                 });
             }
             break;

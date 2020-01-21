@@ -7,7 +7,7 @@
   -->
 
 <resources>
-    <string name="app_name">Volunteered</string>
+    <string name="app_name">VolunteerX</string>
     <string name="createPing">Create Ping</string>
     <string name="placebo_short">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
     <string name="placebo">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.  </string>
@@ -33,6 +33,23 @@
     <string name="science">Science &amp; Technology</string>
     <string name="social">Social Services</string>
     <string name="women">Women Welfare</string>
+
+    //CHARACTER DESCRIPTION
+    <string name="desc_animal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_art">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_children">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_civil">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_disaster">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_economic">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_education">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_environment">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_health">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_human">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_poverty">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_politics">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_science">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_social">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="desc_women">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
 
 
     //fragment names
@@ -111,7 +128,7 @@
     <string name="review_entry_hint">Type your review</string>
     <string name="type_message">Type a message..</string>
     <string name="john_doe">John Doe</string>
-    <string name="johndoe123"><![CDATA[&#064;johndoe123]]></string>
+    <string name="john_doe123"><![CDATA[&#64;johnDoe123]]></string>
     <string name="map_fragment">MapFragment</string>
     <string name="location_error_fragment">LocationErrorFragment</string>
     <string name="enable">Enable</string>
@@ -127,11 +144,13 @@
     <string name="fp_slide_phone_fragment">FPSlidePhoneFragment</string>
     <string name="fp_slide_email_fragment">FPSlideEmailFragment</string>
     <string name="fp_slide_beta_fragment">FPSlideBetaFragment</string>
-    <string name="on_boarding_screen_opened_key">com.volunteerx.app.OnBoarding_Screen_Opened_Key</string>
+    <string name="on_boarding_screen_opened_key">com.volunteerX.app.OnBoarding_Screen_Opened_Key</string>
     <string name="saved_on_boarding_key">isOnBoardingOpened</string>
     <string name="error_placebo">if a run-time error occurs, control branches to the specified line.</string>
     <string name="media_volume_key">Media_Volume_Key</string>
     <string name="network_error">Please check your internet connection and try again.</string>
     <string name="try_again">Try again</string>
+    <string name="unread_messages">%1d unread</string>
+    <string name="timestamp_today">Today at %1s</string>
 
 </resources>

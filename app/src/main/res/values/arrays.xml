@@ -48,7 +48,7 @@
     </array>
 
     <!-- Character Icon Array -->
-    <array name="characterIcon">
+    <integer-array name="characterIcon">
         <item>@drawable/icon1</item>
         <item>@drawable/icon1</item>
         <item>@drawable/icon1</item>
@@ -65,6 +65,24 @@
         <item>@drawable/icon1</item>
         <item>@drawable/icon1</item>
         <item>@drawable/icon1</item>
+    </integer-array>
+
+    <array name="character_description">
+        <item>@string/desc_animal</item>
+        <item>@string/desc_art</item>
+        <item>@string/desc_children</item>
+        <item>@string/desc_civil</item>
+        <item>@string/desc_disaster</item>
+        <item>@string/desc_economic</item>
+        <item>@string/desc_education</item>
+        <item>@string/desc_environment</item>
+        <item>@string/desc_health</item>
+        <item>@string/desc_human</item>
+        <item>@string/desc_politics</item>
+        <item>@string/desc_poverty</item>
+        <item>@string/desc_science</item>
+        <item>@string/desc_social</item>
+        <item>@string/desc_women</item>
     </array>
 
 </resources>

@@ -34,19 +34,21 @@
             app:contentInsetEnd="0dp">
 
             <RelativeLayout
+                android:id="@+id/user_dropdown"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Spinner
-                    android:id="@+id/user_spinner"
+                <TextView
+                    android:id="@+id/ab_username"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:spinnerMode="dropdown"
-                    android:layout_centerVertical="true"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:dropDownVerticalOffset="50dp"
-                    />
+                    android:text="JohnDoe123"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorBlack"
+                    android:gravity="center"
+                    android:drawablePadding="2dp"
+                    android:drawableEnd="@drawable/ic_dropdown"
+                    android:padding="15dp"/>
 
                 <Button
                     android:visibility="gone"
@@ -66,7 +68,6 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:padding="12dp"
-                    android:layout_marginEnd="10dp"
                     android:clickable="true"
                     android:focusable="true"
                     android:src="@drawable/ic_setting"

@@ -76,21 +76,18 @@ public class PollFragment extends Fragment {
 
     private void addMoreOption() {
 
-        moreOption.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        moreOption.setOnClickListener(view -> {
 
-                if (optionModels.size() < MAX_NUM_OPINIONS) {
+            if (optionModels.size() < MAX_NUM_OPINIONS) {
 
-                    optionModels.add(new PollOptionModel(R.drawable.circle_fill));
-                    initViews();
-                    Toast.makeText(getContext(), "Add more option, size::" + optionModels.size(), Toast.LENGTH_SHORT).show();
-                    if (optionModels.size() == MAX_NUM_OPINIONS) {
-                        moreOption.setVisibility(View.GONE);
-                    }
+                optionModels.add(new PollOptionModel(R.drawable.circle_fill));
+                initViews();
+                Toast.makeText(getContext(), "Add more option, size::" + optionModels.size(), Toast.LENGTH_SHORT).show();
+                if (optionModels.size() == MAX_NUM_OPINIONS) {
+                    moreOption.setVisibility(View.GONE);
                 }
-
             }
+
         });
 
     }

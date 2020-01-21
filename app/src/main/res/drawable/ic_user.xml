@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 1/9/20 11:10 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 1/9/20 11:10 PM
+  ~  */
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_user_filled" android:state_checked="true"/>
+
+    <item android:drawable="@drawable/ic_user_outline"/>
+</selector>

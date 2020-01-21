@@ -11,6 +11,8 @@ package com.volunteerx.app.api;
 import com.volunteerx.app.api.model.PureErrorResponse;
 import com.volunteerx.app.api.model.Response;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -48,4 +50,17 @@ public interface APIInterface {
             @Field("user-name") String username
     );
 
+    @FormUrlEncoded
+    @POST("setCharacter")
+    Call<PureErrorResponse> setCharacter(
+            @Field("user-id") int userID,
+            @Field("character-set[]") ArrayList<Integer> characterSet
+            );
+
+    @FormUrlEncoded
+    @POST("setDOB")
+    Call<PureErrorResponse> setDOB(
+            @Field("user-id") int user_id,
+            @Field("dob") String strDateOfBirth
+    );
 }

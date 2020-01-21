@@ -71,13 +71,10 @@
         android:enabled="false"
         android:padding="10dp"
         android:text="Next"
+        style="@style/FancyButtonCustom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        fancy:fb_disabledColor="@color/colorOffWhite"
-        fancy:fb_disabledTextColor="@color/colorFontMajor"
-        fancy:fb_radius="10dp"
-        fancy:fb_text="NEXT"
         fancy:fb_textSize="18sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

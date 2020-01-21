@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 1/12/20 11:31 AM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 1/12/20 11:31 AM
+  ~  */
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_profile_picture"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/astronaut" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/iv_profile_picture">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_sender_full_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/john_doe"
+                android:textSize="15sp"
+                android:textColor="#525252" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="0dp"/>
+
+            <View
+                android:layout_width="3dp"
+                android:layout_height="3dp"
+                android:background="@drawable/rounded_border_50dp"
+                android:backgroundTint="#6B6B6B"/>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="0dp"/>
+
+
+            <TextView
+                android:id="@+id/tv_send_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21:34"
+                android:textSize="13sp"
+                android:textColor="#A7A7A7"/>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tv_sender_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#1B1B1B"
+            android:lineSpacingExtra="1.2dp"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="0dp"
+            android:paddingBottom="5dp"
+            />
+
+        <com.github.piasy.biv.view.BigImageView
+            android:id="@+id/iv_sender_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:optimizeDisplay="true"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

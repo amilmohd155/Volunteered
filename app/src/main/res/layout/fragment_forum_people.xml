@@ -39,8 +39,8 @@
                 android:layout_height="wrap_content"
                 app:defaultQueryHint="Search..."
                 app:iconifiedByDefault="false"
-                app:searchHintIcon="@drawable/ic_search"
-                app:searchIcon="@drawable/ic_search"
+                app:searchHintIcon="@drawable/ic_north"
+                app:searchIcon="@drawable/ic_north"
                 />
 
         </androidx.appcompat.widget.Toolbar>

@@ -10,44 +10,118 @@ package com.volunteerx.app.models;
 
 public class ForumListModel {
 
-    private int profilePhoto;
+    private int forumId;
+
+    private String founder;
     private String activityName;
-    private String activeState;
+    private String timeStamp;
 
-    private String lastMessageText;
-    private int lastMessageProfilePicture;
-    private String lastMessageUsername;
+    private String  actImage;
+    private int popularityIndex;
+    private int unReadMessages;
 
-    public ForumListModel(int profilePhoto, String activityName, String activeState, String lastMessageText, int lastMessageProfilePicture, String lastMessageUsername) {
-        this.profilePhoto = profilePhoto;
+    private boolean isOwning; //true==Self-Owned
+    private boolean isClosed;
+    private boolean isFavorite; //true==Liked
+    private boolean state; //true==online
+
+
+    public ForumListModel(int forumId, String founder, String activityName, String timeStamp, String actImage, int unReadMessages, boolean isFavorite, boolean state) {
+        this.forumId = forumId;
+        this.founder = founder;
         this.activityName = activityName;
-        this.activeState = activeState;
-        this.lastMessageText = lastMessageText;
-        this.lastMessageProfilePicture = lastMessageProfilePicture;
-        this.lastMessageUsername = lastMessageUsername;
+        this.timeStamp = timeStamp;
+        this.actImage = actImage;
+        this.unReadMessages = unReadMessages;
+        this.isFavorite = isFavorite;
+        this.state = state;
     }
 
-    public int getProfilePhoto() {
-        return profilePhoto;
+    public String getFounder() {
+        return founder;
+    }
+
+    public void setFounder(String founder) {
+        this.founder = founder;
     }
 
     public String getActivityName() {
         return activityName;
     }
 
-    public String getActiveState() {
-        return activeState;
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
     }
 
-    public String getLastMessageText() {
-        return lastMessageText;
+    public String getTimeStamp() {
+        return timeStamp;
     }
 
-    public int getLastMessageProfilePicture() {
-        return lastMessageProfilePicture;
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
     }
 
-    public String getLastMessageUsername() {
-        return lastMessageUsername;
+    public String getActImage() {
+        return actImage;
+    }
+
+    public void setActImage(String  actImage) {
+        this.actImage = actImage;
+    }
+
+    public int getPopularityIndex() {
+        return popularityIndex;
+    }
+
+    public void setPopularityIndex(int popularityIndex) {
+        this.popularityIndex = popularityIndex;
+    }
+
+    public int getUnReadMessages() {
+        return unReadMessages;
+    }
+
+    public void setUnReadMessages(int unReadMessages) {
+        this.unReadMessages = unReadMessages;
+    }
+
+    public boolean isOwning() {
+        return isOwning;
+    }
+
+    public void setOwning(boolean owning) {
+        isOwning = owning;
+    }
+
+    public boolean isClosed() {
+        return isClosed;
+    }
+
+    public void setClosed(boolean closed) {
+        isClosed = closed;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
+    public int getForumId() {
+        return forumId;
+    }
+
+    public void setForumId(int forumId) {
+        this.forumId = forumId;
     }
 }

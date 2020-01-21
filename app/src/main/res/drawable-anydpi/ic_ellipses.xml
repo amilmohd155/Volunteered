@@ -1,0 +1,22 @@
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 1/21/20 8:17 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 1/21/20 8:17 PM
+  ~  */
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="341.33334"
+    android:viewportHeight="341.33334"
+    android:tint="#000000"
+    android:alpha="1">
+  <group android:translateX="-85.333336"
+      android:translateY="-85.333336">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M296,136c0,-22.002 -17.998,-40 -40,-40s-40,17.998 -40,40 17.998,40 40,40 40,-17.998 40,-40zM296,376c0,-22.002 -17.998,-40 -40,-40s-40,17.998 -40,40 17.998,40 40,40 40,-17.998 40,-40zM296,256c0,-22.002 -17.998,-40 -40,-40s-40,17.998 -40,40 17.998,40 40,40 40,-17.998 40,-40z"/>
+  </group>
+</vector>

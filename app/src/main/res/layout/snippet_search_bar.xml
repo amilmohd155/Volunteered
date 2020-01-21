@@ -11,33 +11,29 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="?attr/actionBarSize"
                 android:gravity="center_vertical">
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/colorWhite"
+                    android:background="@android:color/transparent"
                     android:text="@string/search"
                     android:textSize="18sp"
                     android:textColor="@color/coloVLFont"
-                    android:drawableStart="@drawable/ic_search"
+                    android:drawableStart="@drawable/ic_magnifying_glass_light"
                     android:drawablePadding="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"/>
+                    android:padding="12dp"/>
 
             </RelativeLayout>
 

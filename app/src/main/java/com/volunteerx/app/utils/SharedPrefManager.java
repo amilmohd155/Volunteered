@@ -14,7 +14,6 @@ import android.content.SharedPreferences;
 
 public class SharedPrefManager {
 
-    private static final String KEY_USER_EMAIL = "keyUserEmail";
     private static final String KEY_USER_ID = "keyUserId";
     private static final String KEY_WIZARD_COMPLETE = "KeyWizardComplete";
     private final int DEFAULT_INT_KEY_VALUE = -1;
@@ -36,11 +35,11 @@ public class SharedPrefManager {
      * @return boolean value
      * @param userId
      */
-    public boolean userLogin(long userId) {
+    public boolean userLogin(int userId) {
 
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putLong(KEY_USER_ID, userId);
+        editor.putInt(KEY_USER_ID, userId);
         editor.apply();
 
         return true;

@@ -8,28 +8,28 @@
 
 package com.volunteerx.app.home;
 
-import android.content.Context;
-import android.content.Intent;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
-import android.view.View;
-import android.widget.ImageButton;
 
-import com.volunteerx.app.forums.ForumsActivity;
 import com.volunteerx.app.R;
-import com.volunteerx.app.post.PostActivity;
-import com.volunteerx.app.utils.BottomNavigationViewHelper;
-import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.volunteerx.app.forum.ForumsFragment;
+import com.volunteerx.app.utils.ClickListener;
+import com.volunteerx.app.utils.SectionsStatePagerAdapter;
 
-public class HomeActivity extends AppCompatActivity {
+import static com.volunteerx.app.utils.Constants.FORUM_VIEW;
+import static com.volunteerx.app.utils.Constants.HOME_VIEW;
+import static com.volunteerx.app.utils.Constants.NEARBY_VIEW;
+
+public class HomeActivity extends AppCompatActivity  implements ClickListener {
 
     private static final String TAG = "HomeActivity";
 
-    final Context mContext = HomeActivity.this;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,42 +38,52 @@ public class HomeActivity extends AppCompatActivity {
 
         Log.d(TAG, "onCreate: Starting");
 
-        setupBottomNavigationView();
+        viewPager = findViewById(R.id.main_view_pager);
 
+        SectionsStatePagerAdapter adapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
 
-        final ImageButton forumButton = findViewById(R.id.forum);
+        Runnable runnable = () -> {
 
+            adapter.addFragment(NearbyFragment.newInstance(), "NearbyFragment");
+            adapter.addFragment(HomeFragment.newInstance(), "HomeFragment");
+            adapter.addFragment(ForumsFragment.newInstance(), "ForumsFragment");
 
-        forumButton.setOnClickListener((View v) -> {
-                Log.d(TAG, "onClick: Navigating to Forum Activity");
+        };
 
-                Intent intent = new Intent(mContext, ForumsActivity.class);
-                startActivity(intent);
-        });
+        runnable.run();
 
-        FloatingActionButton fab = findViewById(R.id.post_fab);
-        fab.setOnClickListener((View v) -> {
-                Intent intent = new Intent(mContext, PostActivity.class);
-                startActivity(intent);
-        });
+        viewPager.setAdapter(adapter);
+        viewPager.setCurrentItem(1);
+
 
     }
 
+    @Override
+    public void onBackPressed() {
 
+        if (viewPager.getCurrentItem() == 1) {
+            Log.d(TAG, "onBackPressed: super");
+            super.onBackPressed();
+        }else {
+            viewPager.setCurrentItem(1);
+        }
 
+    }
 
-    /**
-     * Setting up BottomNavigationView
-     */
-    private void setupBottomNavigationView() {
+    @Override
+    public void buttonClick(int type) {
+        switch (type) {
+            case NEARBY_VIEW: viewPager.setCurrentItem(0);
+                break;
+            case FORUM_VIEW:  viewPager.setCurrentItem(2);
+                break;
+            case HOME_VIEW: viewPager.setCurrentItem(1);
+        }
+    }
 
-        Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
-
-        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
-
-        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx);
-
+    @Override
+    public boolean onLongClick(int args) {
+        return false;
     }
 
 }

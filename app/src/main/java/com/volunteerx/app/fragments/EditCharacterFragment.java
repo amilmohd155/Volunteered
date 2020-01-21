@@ -33,7 +33,7 @@ import mva2.adapter.MultiViewAdapter;
 import mva2.adapter.util.Mode;
 import mva2.adapter.util.OnSelectionChangedListener;
 
-class EditCharacterFragment extends Fragment implements View.OnClickListener {
+public class EditCharacterFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "EditCharacterFragment";
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 1/10/20 2:49 AM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 1/10/20 2:49 AM
+  ~  */
+  -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/colorVolunteerX" />
+    <corners android:radius="25dp" />
+</shape>

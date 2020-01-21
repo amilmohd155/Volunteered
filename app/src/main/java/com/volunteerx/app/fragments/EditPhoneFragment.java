@@ -22,7 +22,7 @@ import androidx.fragment.app.Fragment;
 import com.volunteerx.app.R;
 import com.hbb20.CountryCodePicker;
 
-class EditPhoneFragment extends Fragment implements View.OnClickListener {
+public class EditPhoneFragment extends Fragment implements View.OnClickListener {
 
     private CountryCodePicker picker;
     private EditText phoneNumber;

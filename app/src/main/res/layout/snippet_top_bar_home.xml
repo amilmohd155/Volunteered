@@ -28,7 +28,6 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:padding="10dp"
-                    android:src="@drawable/ic_compass"
                     android:scaleType="centerCrop"
                     android:background="?attr/selectableItemBackground"
                     android:layout_centerVertical="true" />

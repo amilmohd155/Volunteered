@@ -85,7 +85,7 @@
         <activity android:name="com.volunteerx.app.profile.UserActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.volunteerx.app.forums.ForumsActivity"
+        <activity android:name="com.volunteerx.app.forum.ForumsActivity"
             android:screenOrientation="portrait"/>
 
         <activity
@@ -99,10 +99,11 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name="com.volunteerx.app.search.SearchActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing"/>
 
         <activity
-            android:name="com.volunteerx.app.forums.ForumRoomActivity"
+            android:name="com.volunteerx.app.forum.ForumRoomActivity"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
 

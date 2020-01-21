@@ -1,21 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ /**
-  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
-  ~  * Copyright (c) 2019 . All rights reserved.
-  ~  * Last modified 10/30/19 1:08 PM
+  ~  * Created by Amil Muhammed Hamza on 1/9/20 11:34 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 1/9/20 11:34 PM
   ~  */
   -->
 
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="15.9dp"
-    android:height="17.5dp"
-    android:viewportWidth="15.9"
-    android:viewportHeight="17.5">
-  <path
-      android:pathData="M0.75,6.35 L7.95,0.75l7.2,5.6v8.8A1.6,1.6 0,0 1,13.55 16.75L2.35,16.75A1.6,1.6 0,0 1,0.75 15.15Z"
-      android:strokeLineJoin="round"
-      android:strokeWidth="1.5"
-      android:fillColor="#00000000"
-      android:strokeColor="@color/colorBlack"
-      android:strokeLineCap="round"/>
-</vector>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_home_filled" android:state_checked="true"/>
+
+    <item android:drawable="@drawable/ic_home_outline"/>
+</selector>

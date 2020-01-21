@@ -31,7 +31,7 @@
             android:id="@+id/full_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cristopher Cleveland Brenden"
+            android:text="Christopher Cleveland Brenden"
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/colorFeedText"
@@ -75,7 +75,7 @@
 
     <!--Additional Details-->
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/ll_contact_info"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/ll_contact_info"
         android:gravity="center_horizontal">
 
         <LinearLayout

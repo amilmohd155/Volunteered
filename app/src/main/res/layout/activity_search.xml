@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/relLayout">
 
-        <include layout="@layout/snippet_top_bar_bb"/>
+        <include layout="@layout/snippet_search_bar"/>
 
     </RelativeLayout>
 
@@ -28,5 +28,7 @@
         android:layout_below="@id/relLayout">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <include layout="@layout/layout_bottom_navigation_view"/>
 
 </RelativeLayout>

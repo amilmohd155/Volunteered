@@ -8,7 +8,9 @@
 
 package com.volunteerx.app.startup;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.volunteerx.app.R;
+import com.volunteerx.app.home.HomeActivity;
+import com.volunteerx.app.utils.SharedPrefManager;
 import com.volunteerx.app.utils.StatusColorClass;
 
 import static com.volunteerx.app.utils.PreferenceCheckerClass.restorePrefsData;
@@ -38,18 +42,26 @@ public class SplashFragment extends Fragment {
 
         view.setBackgroundColor(getResources().getColor(R.color.colorSplash, getContext().getTheme()));
 
-        view.postDelayed(() -> {
-                if (restorePrefsData(getContext(), getString(R.string.on_boarding_screen_opened_key), getString(R.string.saved_on_boarding_key))) {
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(mContainer.getId(), new StartupFragment())
-                            .commit();
-                }else  {
-                    getActivity().getSupportFragmentManager().beginTransaction()
-                            .replace(mContainer.getId(), OnBoardingFragment.newInstance())
-                            .commit();
-                }
+        Handler handler = new Handler();
 
-        },1000);
+        handler.postDelayed(() -> {
+
+            if (SharedPrefManager.getInstance(getContext()).isLoggedIn()) {
+                Intent intent = new Intent(getActivity(), HomeActivity.class);
+                startActivity(intent);
+                getActivity().finish();
+            }
+            else if (restorePrefsData(getContext(), getString(R.string.on_boarding_screen_opened_key), getString(R.string.saved_on_boarding_key))) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(mContainer.getId(), new StartupFragment())
+                        .commit();
+            }else  {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(mContainer.getId(), OnBoardingFragment.newInstance())
+                        .commit();
+            }
+
+        }, 1000);
 
         return view;
     }

@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment;
 
 import com.volunteerx.app.R;
 
-class EditBioFragment extends Fragment implements View.OnClickListener {
+public class EditBioFragment extends Fragment implements View.OnClickListener {
 
     @Nullable
     @Override

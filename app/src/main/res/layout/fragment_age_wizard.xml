@@ -11,7 +11,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:fancy="http://schemas.android.com/tools">
+    android:background="@color/colorWhite">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -49,13 +49,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
+        android:id="@+id/ll_contact_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
-        android:background="#f6f6f6"
+        android:background="@drawable/rounded_border_10dp"
+        android:backgroundTint="#f6f6f6"
         android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -98,15 +99,11 @@
         android:layout_marginEnd="24dp"
         android:padding="10dp"
         android:text="Next"
-        fancy:fb_text="NEXT"
-        fancy:fb_textSize="18sp"
-        fancy:fb_disabledColor="@color/colorOffWhite"
-        fancy:fb_disabledTextColor="@color/colorFontMajor"
-        fancy:fb_radius="10dp"
+        style="@style/FancyButtonCustom"
         android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"/>
+        app:layout_constraintTop_toBottomOf="@+id/ll_contact_info"/>
 
 
     <TextView

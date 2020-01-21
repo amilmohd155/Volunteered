@@ -23,9 +23,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.volunteerx.app.R;
+import com.volunteerx.app.api.APIInterface;
+import com.volunteerx.app.api.ServiceGenerator;
+import com.volunteerx.app.api.model.PureErrorResponse;
 import com.volunteerx.app.binder.CharacterBinder;
 import com.volunteerx.app.models.CharacterModel;
 import com.volunteerx.app.utils.ClickListener;
+import com.volunteerx.app.utils.SharedPrefManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,24 +39,52 @@ import mva2.adapter.ListSection;
 import mva2.adapter.MultiViewAdapter;
 import mva2.adapter.util.Mode;
 import mva2.adapter.util.OnSelectionChangedListener;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
+import static com.volunteerx.app.utils.Constants.CHAR_ANI;
+import static com.volunteerx.app.utils.Constants.CHAR_ART;
+import static com.volunteerx.app.utils.Constants.CHAR_CLD;
+import static com.volunteerx.app.utils.Constants.CHAR_CVL;
+import static com.volunteerx.app.utils.Constants.CHAR_DSR;
+import static com.volunteerx.app.utils.Constants.CHAR_ECO;
+import static com.volunteerx.app.utils.Constants.CHAR_EDU;
+import static com.volunteerx.app.utils.Constants.CHAR_ENV;
+import static com.volunteerx.app.utils.Constants.CHAR_HLH;
+import static com.volunteerx.app.utils.Constants.CHAR_HMN;
+import static com.volunteerx.app.utils.Constants.CHAR_POL;
+import static com.volunteerx.app.utils.Constants.CHAR_POV;
+import static com.volunteerx.app.utils.Constants.CHAR_SCI;
+import static com.volunteerx.app.utils.Constants.CHAR_SCL;
+import static com.volunteerx.app.utils.Constants.CHAR_WMN;
 import static com.volunteerx.app.utils.Constants.MIN_NUM_CHARACTER;
 
 public class CharacterWizardFragment extends Fragment implements ClickListener {
 
     private static final String TAG = "CharacterWizardFragment";
 
-    private List<CharacterModel> characters;
+    private int userId;
+    private List<CharacterModel> characters = new ArrayList<>();
+    private ArrayList<Integer> characterSet = new ArrayList<>();
+    private ListSection<CharacterModel> listSection;
 
     //UI
     private RecyclerView recyclerView;
     private FancyButton nextBtn;
+
 
     public CharacterWizardFragment() {
     }
 
     public static CharacterWizardFragment newInstance() {
         return new CharacterWizardFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        userId = SharedPrefManager.getInstance(getContext()).getUserId();
     }
 
     @Nullable
@@ -73,30 +105,23 @@ public class CharacterWizardFragment extends Fragment implements ClickListener {
 
     private void initRecyclerView() {
 
-        Log.d(TAG, "initRecyclerView: creating recylerview staggered horizontal scrolling");
+        Log.d(TAG, "initRecyclerView: creating recyclerView staggered horizontal scrolling");
 
-        characters = new ArrayList<>();
-
-//        characters.add(new CharacterModelOld("Animal", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Art", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Children", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Civil", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Disaster", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Economic", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Education", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Environment", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Health", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Human rights", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Politics", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Poverty", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Technology", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Social", R.color.color_volunteer_x));
-//        characters.add(new CharacterModelOld("Women", R.color.color_volunteer_x));
-
-        characters.add(new CharacterModel(0, R.string.app_name, R.color.colorVolunteerX));
-        characters.add(new CharacterModel(1, R.string.art, R.color.colorVolunteerX));
-        characters.add(new CharacterModel(2, R.string.science, R.color.colorVolunteerX));
-        //TOdo complete the characters
+        characters.add(new CharacterModel(CHAR_ANI, R.string.animal, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_ART, R.string.art, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_CLD, R.string.children, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_CVL, R.string.civil, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_DSR, R.string.disaster, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_ECO, R.string.economic, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_EDU, R.string.education, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_ENV, R.string.environment, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_HLH, R.string.health, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_HMN, R.string.human, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_POL, R.string.politics, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_POV, R.string.poverty, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_SCI, R.string.science, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_SCL, R.string.social, R.color.colorVolunteerX));
+        characters.add(new CharacterModel(CHAR_WMN, R.string.women, R.color.colorVolunteerX));
 
         MultiViewAdapter adapter = new MultiViewAdapter();
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.HORIZONTAL);
@@ -107,37 +132,20 @@ public class CharacterWizardFragment extends Fragment implements ClickListener {
 
         adapter.registerItemBinders(new CharacterBinder(getContext(),this));
 
-        ListSection<CharacterModel> listSection = new ListSection<>();
+        listSection = new ListSection<>();
         listSection.addAll(characters);
 
         adapter.addSection(listSection);
         adapter.setSelectionMode(Mode.MULTIPLE);
 
-        listSection.setOnSelectionChangedListener(new OnSelectionChangedListener<CharacterModel>() {
-            @Override
-            public void onSelectionChanged(CharacterModel item, boolean isSelected, List<CharacterModel> selectedItems) {
+        listSection.setOnSelectionChangedListener((item, isSelected, selectedItems) -> {
 
-                if (selectedItems.size() >= MIN_NUM_CHARACTER) enableButton(true);
-                else enableButton(false);
+            if (selectedItems.size() >= MIN_NUM_CHARACTER) nextBtn.setEnabled(true);
+            else nextBtn.setEnabled(false);
 
-            }
         });
 
 
-    }
-
-    private void enableButton(boolean val) {
-        if (val) {
-            nextBtn.setEnabled(true);
-            nextBtn.setBackgroundColor(getContext().getColor(R.color.colorButtonBGEnable));
-            nextBtn.setTextColor(getContext().getColor(R.color.colorButtonTextEnabled));
-
-        }else {
-            nextBtn.setEnabled(false);
-            nextBtn.setBackgroundColor(getContext().getColor(R.color.colorButtonBGDisabled));
-            nextBtn.setTextColor(getContext().getColor(R.color.colorButtonTextDisabled));
-
-        }
     }
 
     @Override
@@ -162,11 +170,34 @@ public class CharacterWizardFragment extends Fragment implements ClickListener {
 
     private void setupNextButton() {
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Doorway to Home activity
+        nextBtn.setOnClickListener(view -> {
+            //Doorway to Home activity
+            //tODO handle db insertion and enter wizardComplete to sharedPreferences
+            characterSet.clear();
+
+            for (CharacterModel model: listSection.getSelectedItems()) {
+                characterSet.add(model.getCharacterID());
             }
+
+            APIInterface apiInterface = ServiceGenerator.createService(APIInterface.class);
+
+            Call<PureErrorResponse> call = apiInterface.setCharacter(userId, characterSet);
+
+            call.enqueue(new Callback<PureErrorResponse>() {
+                @Override
+                public void onResponse(Call<PureErrorResponse> call, Response<PureErrorResponse> response) {
+                    if (!response.body().getError()) {
+                        SharedPrefManager.getInstance(getContext()).wizardCompleted(true);
+                        //TODO go to home page with welcome note
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<PureErrorResponse> call, Throwable t) {
+
+                }
+            });
+
         });
 
     }
