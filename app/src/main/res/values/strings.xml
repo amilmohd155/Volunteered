@@ -152,5 +152,7 @@
     <string name="try_again">Try again</string>
     <string name="unread_messages">%1d unread</string>
     <string name="timestamp_today">Today at %1s</string>
+    <string name="remove">Remove</string>
+    <string name="suggestions">Suggestions for you</string>
 
 </resources>

@@ -45,7 +45,7 @@
                     android:layout_marginBottom="5dp">
 
                     <ImageView
-                        android:id="@+id/cover_photo"
+                        android:id="@+id/iv_cover_photo"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
                         android:adjustViewBounds="true"
@@ -63,12 +63,12 @@
                         android:layout_marginBottom="8dp"
                         android:elevation="2dp"
                         android:src="@drawable/avatar0"
-                        app:layout_constraintBottom_toBottomOf="@+id/cover_photo"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_cover_photo"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cover_photo" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_cover_photo" />
 
                     <TextView
-                        android:id="@+id/edit_profile"
+                        android:id="@+id/follow_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -90,7 +90,7 @@
                         android:textSize="15sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/cover_photo" />
+                        app:layout_constraintTop_toBottomOf="@+id/iv_cover_photo" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

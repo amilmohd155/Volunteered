@@ -8,34 +8,32 @@
 
 package com.volunteerx.app.profile.binder;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.RequestManager;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.volunteerx.app.R;
+import com.volunteerx.app.VolunteerXDialog.VolunteerXDialog;
 import com.volunteerx.app.profile.model.ProfilesModel;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
 
-import static com.volunteerx.app.utils.Constants.FOLLOWERS_LIST;
-import static com.volunteerx.app.utils.Constants.FOLLOWING_LIST;
-
 public class FollowBinder extends ItemBinder<ProfilesModel, FollowBinder.FollowViewHolder> {
 
     private RequestManager glide;
-    private int viewType;
+    private Context context;
 
-    public FollowBinder(RequestManager glide, int viewType) {
+    public FollowBinder(RequestManager glide, Context context) {
 
         this.glide = glide;
-        this.viewType = viewType;
-
+        this.context = context;
     }
 
     @Override
@@ -46,16 +44,75 @@ public class FollowBinder extends ItemBinder<ProfilesModel, FollowBinder.FollowV
     @Override
     public void bindViewHolder(FollowViewHolder holder, ProfilesModel item) {
 
+        Button btnRemove = holder.btnRemove;
+        ImageView ivMore = holder.ivMore;
+        Button btnFollow = holder.btnFollow;
+
         glide.load(item.getProfilePhoto())
                 .into(holder.civProfile);
 
-        switch (viewType) {
-            case FOLLOWING_LIST:
+        holder.tvName.setText(item.getName());
+        holder.tvUsername.setText(item.getUsername());
 
-                break;
-            case FOLLOWERS_LIST:
+        if (item.isFollower()) {
 
-                break;
+            btnRemove.setText(R.string.remove);
+            ivMore.setVisibility(View.GONE);
+            btnRemove.setVisibility(View.VISIBLE);
+            btnFollow.setVisibility(View.GONE);
+
+            btnRemove.setOnClickListener(v -> {
+                // dialog for handling remove follower
+                //TODO dialog stuffs
+                Toast.makeText(context, "remove button clicked", Toast.LENGTH_SHORT).show();
+            });
+
+
+        }
+        if (item.isFollowing()) {
+
+            btnRemove.setText(R.string.following);
+            ivMore.setVisibility(View.VISIBLE);
+            btnFollow.setVisibility(View.GONE);
+            btnRemove.setVisibility(View.VISIBLE);
+
+            btnRemove.setOnClickListener(v -> {
+
+                //dialog for handling not following
+                Toast.makeText(context, "following button clicked", Toast.LENGTH_SHORT).show();
+
+
+            });
+
+            ivMore.setOnClickListener(vi -> {
+
+                //notification and other handling
+                Toast.makeText(context, "more option clicked", Toast.LENGTH_SHORT).show();
+
+            });
+
+        }
+        if (item.isSuggested()){
+
+            btnRemove.setVisibility(View.GONE);
+            btnFollow.setText(R.string.follow);
+            ivMore.setVisibility(View.VISIBLE);
+            btnFollow.setVisibility(View.VISIBLE);
+
+            btnFollow.setOnClickListener(v -> {
+
+                //handle follow request
+                Toast.makeText(context, "follow button clicked", Toast.LENGTH_SHORT).show();
+
+            });
+
+            ivMore.setOnClickListener(vi -> {
+
+                //handle remove from suggestion kinda dialog
+                Toast.makeText(context, "more option clicked", Toast.LENGTH_SHORT).show();
+
+            });
+
         }
 
 
@@ -83,6 +140,8 @@ public class FollowBinder extends ItemBinder<ProfilesModel, FollowBinder.FollowV
             btnFollow = itemView.findViewById(R.id.follow_btn);
             btnRemove = itemView.findViewById(R.id.remove_btn);
             ivMore = itemView.findViewById(R.id.ellipse_menu);
+
+            itemView.setOnClickListener(v -> toggleItemSelection());
 
         }
     }

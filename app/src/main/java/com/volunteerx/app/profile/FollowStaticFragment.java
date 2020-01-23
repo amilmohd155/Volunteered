@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
- *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 11/18/19 11:54 AM
+ *  * Created by Amil Muhammed Hamza on 1/23/20 12:02 PM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 1/22/20 11:08 PM
  *
  */
 
-package com.volunteerx.app.fragments;
+package com.volunteerx.app.profile;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -21,13 +21,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.volunteerx.app.R;
-import com.volunteerx.app.profile.FollowersChildFragment;
-import com.volunteerx.app.profile.FollowingChildFragment;
+import com.volunteerx.app.utils.ClickListener;
 import com.volunteerx.app.utils.SectionsPagerAdapter;
 
-public class FollowStaticFragment extends Fragment {
+public class FollowStaticFragment extends Fragment{
 
     private static final String TAG = "FollowStaticFragment";
+    private static final String param = "tabSelector";
 
     //variable
     private int tabSelector;
@@ -38,29 +38,52 @@ public class FollowStaticFragment extends Fragment {
     private TabLayout tabLayout;
     private TextView topBarTitle;
 
+    public FollowStaticFragment() {
+    }
+
+    public static FollowStaticFragment newInstance(int tabSelector) {
+
+        FollowStaticFragment fragment = new FollowStaticFragment();
+
+        Bundle args = new Bundle();
+        args.putInt(param, tabSelector);
+
+        fragment.setArguments(args);
+
+        return fragment;
+
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getArguments() != null)
+            tabSelector = getArguments().getInt(param, 0);
+
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_follow_static, container, false);
+    }
 
-        View view = inflater.inflate(R.layout.fragment_follow_static, container, false);
 
-        viewPager = (ViewPager) view.findViewById(R.id.follow_viewpager);
-        tabLayout = (TabLayout) view.findViewById(R.id.follow_tabs);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        viewPager = view.findViewById(R.id.follow_viewpager);
+        tabLayout = view.findViewById(R.id.follow_tabs);
 
         final Toolbar toolbar = view.findViewById(R.id.toolbar);
 
-
-        if (getArguments() != null) {
-            tabSelector = getArguments().getInt("tabSelector", 0);
-        }
-
+        toolbar.setNavigationOnClickListener(view1 -> getActivity().onBackPressed());
 
         setupViewpager();
 
-        return view;
     }
-
 
     /**
      * Sets up the viewpager and nested fragment

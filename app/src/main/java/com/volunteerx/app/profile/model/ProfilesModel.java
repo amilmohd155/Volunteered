@@ -10,24 +10,28 @@ package com.volunteerx.app.profile.model;
 
 public class ProfilesModel {
 
-    private String fullName;
+    private String name;
     private String username;
-    private int profilePhoto;
+    private String profilePhoto;
     private boolean isFollowing;
+    private boolean isFollower;
+    private boolean isSuggested;
 
-    public ProfilesModel(String fullName, String username, int profilePhoto, boolean isFollowing) {
-        this.fullName = fullName;
+    public ProfilesModel(String fullName, String username, String profilePhoto, boolean isFollowing, boolean isFollower, boolean isSuggested) {
+        this.name = fullName;
         this.username = username;
         this.profilePhoto = profilePhoto;
         this.isFollowing = isFollowing;
+        this.isFollower = isFollower;
+        this.isSuggested = isSuggested;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getName() {
+        return name;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getUsername() {
@@ -38,11 +42,11 @@ public class ProfilesModel {
         this.username = username;
     }
 
-    public int getProfilePhoto() {
+    public String getProfilePhoto() {
         return profilePhoto;
     }
 
-    public void setProfilePhoto(int profilePhoto) {
+    public void setProfilePhoto(String profilePhoto) {
         this.profilePhoto = profilePhoto;
     }
 
@@ -52,5 +56,21 @@ public class ProfilesModel {
 
     public void setFollowing(boolean following) {
         isFollowing = following;
+    }
+
+    public boolean isFollower() {
+        return isFollower;
+    }
+
+    public void setFollower(boolean follower) {
+        isFollower = follower;
+    }
+
+    public boolean isSuggested() {
+        return isSuggested;
+    }
+
+    public void setSuggested(boolean suggested) {
+        isSuggested = suggested;
     }
 }

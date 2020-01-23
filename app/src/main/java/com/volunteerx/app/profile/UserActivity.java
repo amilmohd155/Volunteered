@@ -12,6 +12,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.volunteerx.app.utils.ClickListener;
 import com.volunteerx.app.utils.RoundedCorner;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
@@ -23,18 +24,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.volunteerx.app.R;
 import com.volunteerx.app.fragments.EditProfileFragment;
-import com.volunteerx.app.fragments.FollowStaticFragment;
 import com.volunteerx.app.utils.BottomNavigationViewHelper;
 import com.volunteerx.app.utils.WrapContentStatePagerAdapter;
 import com.volunteerx.app.utils.WrapContentViewPager;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 
-public class UserActivity extends AppCompatActivity {
+public class UserActivity extends AppCompatActivity implements ClickListener {
 
     private static final String TAG = "UserActivity";
 
@@ -60,11 +59,11 @@ public class UserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
-        llFollowers =  findViewById(R.id.followers);
-        llFollowing = findViewById(R.id.following);
+        llFollowers =  findViewById(R.id.ll_followers);
+        llFollowing = findViewById(R.id.ll_following);
         llContactInfo = findViewById(R.id.ll_contact_info);
-        editProfileBtn = findViewById(R.id.edit_profile);
-        ivCoverPhoto = findViewById(R.id.cover_photo);
+        editProfileBtn = findViewById(R.id.follow_btn);
+        ivCoverPhoto = findViewById(R.id.iv_cover_photo);
 
         toolbar = findViewById(R.id.toolbar_user);
         setSupportActionBar(toolbar);
@@ -102,30 +101,15 @@ public class UserActivity extends AppCompatActivity {
     private void setupFollowStatics() {
 
 
-        llFollowing.setOnClickListener((View v) -> {
-                Toast.makeText(mContext, "Following clicked",Toast.LENGTH_SHORT).show();
-                Bundle bundle = new Bundle();
-                bundle.putInt("tabSelector", 1);
-                Fragment fragment = new FollowStaticFragment();
-                fragment.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.relLayout, fragment, fragment.getClass().getSimpleName())
-                        .addToBackStack(null)
-                        .commit();
-        });
+        llFollowing.setOnClickListener((View v) -> getSupportFragmentManager().beginTransaction()
+                .replace(R.id.relLayout, FollowStaticFragment.newInstance(1))
+                .addToBackStack(null)
+                .commit());
 
-        llFollowers.setOnClickListener((View view) -> {
-                Toast.makeText(mContext, "Followers clicked",Toast.LENGTH_SHORT).show();
-                Bundle bundle = new Bundle();
-                bundle.putInt("tabSelector", 0);
-                Fragment fragment = new FollowStaticFragment();
-                fragment.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.relLayout, fragment, fragment.getClass().getSimpleName())
-                        .addToBackStack(null)
-                        .commit();
-
-        });
+        llFollowers.setOnClickListener((View view) -> getSupportFragmentManager().beginTransaction()
+                .replace(R.id.relLayout, FollowStaticFragment.newInstance(0))
+                .addToBackStack(null)
+                .commit());
 
     }
 
@@ -211,4 +195,13 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void buttonClick(int type) {
+
+    }
+
+    @Override
+    public boolean onLongClick(int args) {
+        return false;
+    }
 }

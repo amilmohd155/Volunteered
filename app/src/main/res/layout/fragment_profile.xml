@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ /**
-  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
-  ~  * Copyright (c) 2019 . All rights reserved.
-  ~  * Last modified 11/18/19 11:54 AM
+  ~  * Created by Amil Muhammed Hamza on 1/23/20 12:08 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 1/23/20 12:08 PM
   ~  */
   -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".profile.UserActivity">
+    tools:context=".profile.ProfileFragment">
 
     <RelativeLayout
-        android:id="@+id/relLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
+        <include
             android:id="@+id/top_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <include layout="@layout/snippet_top_bar_user"/>
-
-        </RelativeLayout>
+            layout="@layout/top_bar_layout"/>
 
         <com.volunteerx.app.utils.CustomScrollView
             android:layout_width="match_parent"
@@ -55,6 +49,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/civ_profile_picture"
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_centerVertical="true"
@@ -91,7 +86,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:gravity="center"
-                        android:text="Edit Profile"
+                        android:text="Follow"
                         android:textAllCaps="false"
                         android:textColor="@color/colorWhite"
                         android:textSize="15sp" />
@@ -144,9 +139,6 @@
 
         </com.volunteerx.app.utils.CustomScrollView>
 
-        <!-- Bottom Navigation  -->
-        <include layout="@layout/layout_bottom_navigation_view"/>
-
     </RelativeLayout>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -31,7 +31,7 @@ public class ActActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_act);
 
-        coverPhoto = findViewById(R.id.cover_photo);
+        coverPhoto = findViewById(R.id.iv_cover_photo);
 
 
 

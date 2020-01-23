@@ -40,9 +40,6 @@ public class Constants {
 
     public static final int EXISTING_USER = 102;
 
-    public static final int FOLLOWERS_LIST = 12;
-    public static final int FOLLOWING_LIST = 11;
-
     public static final int CHAR_ANI = 0;
     public static final int CHAR_ART = 1;
     public static final int CHAR_CLD = 2;

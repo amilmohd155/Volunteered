@@ -164,7 +164,7 @@
         <!--Followers-->
         <LinearLayout
             android:orientation="vertical"
-            android:id="@+id/followers"
+            android:id="@+id/ll_followers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
@@ -195,7 +195,7 @@
         <!--Following-->
         <LinearLayout
             android:orientation="vertical"
-            android:id="@+id/following"
+            android:id="@+id/ll_following"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:clickable="true"
