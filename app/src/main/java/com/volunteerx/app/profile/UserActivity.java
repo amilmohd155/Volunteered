@@ -12,6 +12,10 @@ import android.content.Context;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.volunteerx.app.profile.fragment.AccountBottomSheetFragment;
+import com.volunteerx.app.profile.fragment.FollowStaticFragment;
+import com.volunteerx.app.profile.fragment.UserActivitiesFragment;
+import com.volunteerx.app.profile.fragment.UserPostFragment;
 import com.volunteerx.app.utils.ClickListener;
 import com.volunteerx.app.utils.RoundedCorner;
 import com.google.android.material.tabs.TabLayout;

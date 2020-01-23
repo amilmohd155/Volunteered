@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 1/23/20 12:02 PM
+ *  * Created by Amil Muhammed Hamza on 1/23/20 2:38 PM
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/22/20 11:08 PM
+ *  * Last modified 1/23/20 2:16 PM
  *
  */
 
-package com.volunteerx.app.profile;
+package com.volunteerx.app.profile.fragment;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.volunteerx.app.R;
-import com.volunteerx.app.utils.ClickListener;
 import com.volunteerx.app.utils.SectionsPagerAdapter;
 
 public class FollowStaticFragment extends Fragment{
