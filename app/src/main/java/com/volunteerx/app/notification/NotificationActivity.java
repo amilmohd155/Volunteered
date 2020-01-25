@@ -20,7 +20,7 @@ import android.util.Log;
 import android.widget.RelativeLayout;
 
 import com.volunteerx.app.R;
-import com.volunteerx.app.search.SearchActivity;
+import com.volunteerx.app.explore.ExploreActivity;
 import com.volunteerx.app.utils.BottomNavigationViewHelper;
 import com.volunteerx.app.utils.SectionsPagerAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -57,7 +57,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         searchTab.setOnClickListener(v -> {
 
-            Intent intent = new Intent(mContext, SearchActivity.class);
+            Intent intent = new Intent(mContext, ExploreActivity.class);
             startActivity(intent);
 
         });

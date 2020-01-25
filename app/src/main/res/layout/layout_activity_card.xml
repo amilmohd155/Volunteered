@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 1/23/20 4:43 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 1/23/20 4:43 PM
+  ~  */
+  -->
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="300dp"
+    android:layout_height="250dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="10dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_act_image"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/fernando_nunes"
+            android:scaleType="centerCrop"
+            android:layout_alignParentEnd="true"
+            android:layout_above="@id/l"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#D3E9E9E9"
+            android:layout_centerHorizontal="true"
+            android:layout_above="@id/l"/>
+
+        <LinearLayout
+            android:id="@+id/l"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true">
+
+            <Button
+                android:id="@+id/btn_join"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/join"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="@color/colorBlack"
+                android:background="@color/colorWhite"
+                android:foreground="?attr/selectableItemBackgroundBorderless"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_character_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_character"
+            android:padding="10dp"
+            android:background="@drawable/character_background_10"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_alignParentEnd="true"/>
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_act_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alexander Describe Heart Donation Campaign"
+                android:maxLines="6"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/tv_act_creator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="By Monica Christ"
+                android:textSize="12sp"
+                tools:ignore="SmallSp"
+                android:layout_marginTop="10dp"/>
+
+            <RatingBar
+                android:id="@+id/act_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:rating="2"
+                android:isIndicator="true"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="bottom">
+
+                <TextView
+                    android:id="@+id/tv_act_followers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="4M Followers"
+                    android:textColor="@color/colorVolunteerX"
+                    android:layout_gravity="bottom"
+                    android:drawableTint="@color/colorBlack"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>

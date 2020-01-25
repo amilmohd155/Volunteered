@@ -82,7 +82,7 @@ public class ForumsActivity extends AppCompatActivity {
 //            public void onClick(View view, int position) {
 //
 //                if (position == 0) {
-//                    Intent intent = new Intent(mContext, SearchActivity.class);
+//                    Intent intent = new Intent(mContext, ExploreActivity.class);
 //                    mContext.startActivity(intent);
 //                }
 //                else {

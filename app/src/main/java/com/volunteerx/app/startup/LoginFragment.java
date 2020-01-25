@@ -11,6 +11,7 @@ package com.volunteerx.app.startup;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
@@ -45,6 +46,7 @@ import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
 import retrofit2.Callback;
 
+import static androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY;
 import static com.volunteerx.app.SimpleProgressDialog.ProgressDialog.LIGHT_THEME;
 import static com.volunteerx.app.utils.CheckerClass.isEmailValid;
 import static com.volunteerx.app.utils.CheckerClass.isValidMobile;
@@ -127,8 +129,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener,Text
         etPassword.addTextChangedListener(this);
         etUserData.addTextChangedListener(this);
 
-        String inviteText = "<Font color=#000>Don't have an account?</Font><Font color=#28a8ff> Sign up</Font>";
-        tvSignUpInvite.setText(Html.fromHtml(inviteText));
+        String inviteText = getString(R.string.signUpInviteText);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            tvSignUpInvite.setText(Html.fromHtml(inviteText, FROM_HTML_MODE_LEGACY));
+        }else {
+            tvSignUpInvite.setText(Html.fromHtml(inviteText));
+        }
 
         etPassword.setOnEditorActionListener((TextView textView, int i, KeyEvent keyEvent) -> {
             if (i == EditorInfo.IME_ACTION_DONE) {

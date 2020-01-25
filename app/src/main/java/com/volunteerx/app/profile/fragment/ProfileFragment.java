@@ -29,6 +29,7 @@ import com.volunteerx.app.utils.WrapContentStatePagerAdapter;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+//TOdo connect between the lists
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private LinearLayout llFollowers, llFollowing, llContactInfo;

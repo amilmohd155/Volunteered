@@ -14,14 +14,13 @@ import android.content.Intent;
 import android.util.Log;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.volunteerx.app.explore.ExploreActivity;
 import com.volunteerx.app.home.HomeActivity;
-import com.volunteerx.app.location.LocationActivity;
 import com.volunteerx.app.notification.NotificationActivity;
 import com.volunteerx.app.R;
 import com.volunteerx.app.ping.PingActivity;
 import com.volunteerx.app.profile.UserActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
-import com.volunteerx.app.search.SearchActivity;
 
 public class BottomNavigationViewHelper {
 
@@ -58,7 +57,7 @@ public class BottomNavigationViewHelper {
                     break;
 
                 case R.id.ic_search:
-                    Intent intentLocation = new Intent(context, SearchActivity.class);
+                    Intent intentLocation = new Intent(context, ExploreActivity.class);
                     context.startActivity(intentLocation);
                     break;
 

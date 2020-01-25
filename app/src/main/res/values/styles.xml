@@ -18,7 +18,8 @@
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@color/colorAccent</item>
-    <item name="android:statusBarColor">#323643</item>
+    <item name="android:statusBarColor">#FFFFFF</item>
+    <item name="android:windowLightStatusBar">true</item>
     <item name="android:windowBackground">@color/colorWhite</item>
     <item name="radioButtonStyle">@style/RadioButtonStyle</item>
     <item name="android:radioButtonStyle">@style/RadioButtonStyle</item>

@@ -7,219 +7,216 @@
   ~  */
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="5dp"
-    android:paddingBottom="20dp"
     android:background="@color/colorWhite">
 
-    <com.volunteerx.app.MediaSwipeVew.views.MediaSwipeView
+<!--    <com.volunteerx.app.MediaSwipeVew.views.MediaSwipeView-->
+<!--        android:id="@+id/postMedia"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"/>-->
+
+    <ImageView
         android:id="@+id/postMedia"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/postMedia"
-        android:id="@+id/relLayout1"
-        android:layout_margin="10dp">
-
-        <LinearLayout
-            android:id="@+id/l1"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/postLikes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/colorDarkFontMajor"
-                android:textSize="@dimen/feedStat"
-                android:text="999"
-                android:layout_marginEnd="2dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/colorFeedStats"
-                android:textSize="@dimen/feedStat"
-                android:text="Likes"
-                android:layout_marginEnd="10dp"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/fairy_tales"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/l2"
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/l1">
-
-            <TextView
-                android:id="@+id/postComments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/colorDarkFontMajor"
-                android:textSize="@dimen/feedStat"
-                android:text="500"
-                android:layout_marginEnd="2dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/colorFeedStats"
-                android:textSize="@dimen/feedStat"
-                android:text="Comments"
-                android:layout_marginEnd="10dp"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true">
-
-            <TextView
-                android:id="@+id/postShares"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/colorDarkFontMajor"
-                android:textSize="@dimen/feedStat"
-                android:text="11"
-                android:layout_marginEnd="2dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textColor="@color/colorFeedStats"
-                android:textSize="@dimen/feedStat"
-                android:text="Shares" />
-
-        </LinearLayout>
-
-        
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/relLayout2"
-        android:layout_below="@id/relLayout1"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp">
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:id="@+id/profilePhoto"
-            android:layout_centerVertical="true"/>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_toEndOf="@id/profilePhoto"
-            android:layout_marginStart="10dp"
-            android:layout_centerVertical="true">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DocRen155"
-                android:textColor="@color/colorFontMajor"
-                android:textSize="15sp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="5h ago"
-                android:textColor="@color/colorTimeStamp"
-                android:textSize="12sp"/>
-
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_ellipses"
-            android:id="@+id/post_ellipses"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true" />
-
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/relLayout3"
-        android:layout_below="@id/relLayout2"
-        android:layout_margin="15dp">
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postMedia">
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/postLikes"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/postDescription"
-            android:text="@string/placebo"
-            android:textSize="@dimen/feedText"
-            android:textColor="@color/colorFeedText"
-            android:lineSpacingExtra="1.5dp"/>
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="2dp"
+            android:text="999"
+            android:textColor="@color/colorDarkFontMajor"
+            android:textSize="@dimen/feedStat" />
 
-    </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:text="Likes"
+            android:textColor="@color/colorFeedStats"
+            android:textSize="@dimen/feedStat" />
 
-    <RelativeLayout
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/l2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/l1"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/l1"
+        app:layout_constraintTop_toBottomOf="@+id/postMedia">
+
+        <TextView
+            android:id="@+id/postComments"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="2dp"
+            android:text="500"
+            android:textColor="@color/colorDarkFontMajor"
+            android:textSize="@dimen/feedStat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:text="Comments"
+            android:textColor="@color/colorFeedStats"
+            android:textSize="@dimen/feedStat" />
+
+
+    </LinearLayout>
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profilePhoto"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/fernando_nunes"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/l1" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@id/profilePhoto"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/profilePhoto"
+        app:layout_constraintStart_toEndOf="@+id/profilePhoto"
+        app:layout_constraintTop_toTopOf="@+id/profilePhoto">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/john_doe"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5 hours ago"
+            android:textColor="@color/colorTimeStamp"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/post_ellipses"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:padding="7dp"
+        android:src="@drawable/ic_ellipses"
+        app:layout_constraintBottom_toBottomOf="@+id/profilePhoto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/profilePhoto" />
+
+
+    <TextView
+        android:id="@+id/postDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/relLayout4"
-        android:layout_below="@id/relLayout3"
-        android:layout_marginStart="15dp"
-        android:layout_marginEnd="15dp"
-        android:layout_marginTop="5dp">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ic_heart"
-            android:id="@+id/postLikeBtn"/>
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ic_forum"
-            android:layout_toEndOf="@id/postLikeBtn"
-            android:id="@+id/postCommentBtn"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"/>
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ic_share"
-            android:id="@+id/postShareBtn"
-            android:layout_toEndOf="@id/postCommentBtn"/>
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/ic_flag"
-            android:id="@+id/postFlagBtn"
-            android:layout_alignParentEnd="true"/>
-
-    </RelativeLayout>
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:lineSpacingExtra="1.5dp"
+        android:text="@string/placebo"
+        android:textColor="@color/colorFeedText"
+        android:textSize="@dimen/feedText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePhoto" />
 
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/postLikeBtn"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="3dp"
+        android:src="@drawable/ic_heart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postDescription" />
+
+    <ImageView
+        android:id="@+id/postCommentBtn"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="3dp"
+        android:src="@drawable/ic_forum"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/postLikeBtn"
+        app:layout_constraintTop_toBottomOf="@+id/postDescription" />
+
+    <ImageView
+        android:id="@+id/postShareBtn"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="3dp"
+        android:src="@drawable/ic_share"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/postCommentBtn"
+        app:layout_constraintTop_toBottomOf="@+id/postDescription" />
+
+    <ImageView
+        android:id="@+id/postFlagBtn"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:padding="3dp"
+        android:src="@drawable/ic_flag"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postDescription" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

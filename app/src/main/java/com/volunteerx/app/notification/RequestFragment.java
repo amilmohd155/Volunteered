@@ -41,9 +41,9 @@ public class RequestFragment extends Fragment {
 
         Log.d(TAG, "onCreateView: Fragment Created");
 
-        View view = inflater.inflate(R.layout.fragment_request, container, false);
+        View view = inflater.inflate(R.layout.fragment_recycler_view_only, container, false);
 
-        recyclerView = view.findViewById(R.id.request_container);
+        recyclerView = view.findViewById(R.id.recycler_view);
 
         setupRecyclerView();
 

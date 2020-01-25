@@ -94,7 +94,7 @@ public class PeopleBinder extends ItemBinder<PeopleListModel, PeopleBinder.Peopl
         public PeopleViewHolder(View itemView) {
             super(itemView);
 
-            profilePicture = itemView.findViewById(R.id.profile_picture);
+            profilePicture = itemView.findViewById(R.id.civ_profile_picture);
             checkView = itemView.findViewById(R.id.check_view);
             ellipsesMenu = itemView.findViewById(R.id.ellipse_menu);
             followBtn = itemView.findViewById(R.id.follow_btn);

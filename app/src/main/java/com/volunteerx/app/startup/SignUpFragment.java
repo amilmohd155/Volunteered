@@ -100,9 +100,9 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Te
         etPassword = view.findViewById(R.id.et_password);
 
 
-        String inviteText = "<Font color=#000>Already have an account?</Font><Font color=#28a8ff> Login</Font>";
+        String inviteText = getString(R.string.loginInviteText);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            tvLoginInvite.setText(Html.fromHtml(inviteText, Html.FROM_HTML_MODE_COMPACT));
+            tvLoginInvite.setText(Html.fromHtml(inviteText, Html.FROM_HTML_MODE_LEGACY));
         }else {
             tvLoginInvite.setText(Html.fromHtml(inviteText));
         }

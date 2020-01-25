@@ -87,27 +87,19 @@ public class FPSlideAlphaFragment extends Fragment {
         etUserData = view.findViewById(R.id.et_user_data);
         nextButton = view.findViewById(R.id.btn_next);
 
-        etUserData.setOnEditorActionListener(new EditText.OnEditorActionListener(){
-            @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if (i == EditorInfo.IME_ACTION_DONE || keyEvent != null &&
-                keyEvent.getAction() == KeyEvent.ACTION_DOWN &&
-                keyEvent.getAction() == KeyEvent.KEYCODE_ENTER) {
-                    if (keyEvent == null || !keyEvent.isShiftPressed()) {
-                        setupNextButton();
-                    }
+        etUserData.setOnEditorActionListener((textView, i, keyEvent) -> {
+            if (i == EditorInfo.IME_ACTION_DONE || keyEvent != null &&
+            keyEvent.getAction() == KeyEvent.ACTION_DOWN &&
+            keyEvent.getAction() == KeyEvent.KEYCODE_ENTER) {
+                if (keyEvent == null || !keyEvent.isShiftPressed()) {
+                    setupNextButton();
                 }
-
-                return false;
             }
+
+            return false;
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setupNextButton();
-            }
-        });
+        nextButton.setOnClickListener(view1 -> setupNextButton());
 
         setupBackButton();
 
@@ -139,14 +131,11 @@ public class FPSlideAlphaFragment extends Fragment {
     private void setupBackButton() {
 
         Log.d(TAG, "setupBackButton: closing fragment");
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    getActivity().onBackPressed();
-                }catch (NullPointerException e) {
-                    e.getStackTrace();
-                }
+        toolbar.setNavigationOnClickListener(view -> {
+            try {
+                getActivity().onBackPressed();
+            }catch (NullPointerException e) {
+                e.getStackTrace();
             }
         });
     }

@@ -23,7 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.volunteerx.app.R;
 import com.volunteerx.app.profile.binder.FollowBinder;
-import com.volunteerx.app.profile.binder.HeaderItemBinder;
+import com.volunteerx.app.profile.binder.FlwHeaderItemBinder;
 import com.volunteerx.app.profile.model.ProfilesModel;
 
 import java.util.ArrayList;
@@ -83,7 +83,7 @@ public class FollowingChildFragment extends Fragment {
         MultiViewAdapter adapter = new MultiViewAdapter();
 
         FollowBinder followBinder = new FollowBinder(Glide.with(getContext()), getContext());
-        HeaderItemBinder headerBinder = new HeaderItemBinder();
+        FlwHeaderItemBinder headerBinder = new FlwHeaderItemBinder();
 
         adapter.setSelectionMode(Mode.SINGLE);
         adapter.unRegisterAllItemBinders();

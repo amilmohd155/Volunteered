@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.RequestManager;
 import com.volunteerx.app.R;
-import com.volunteerx.app.VolunteerXDialog.VolunteerXDialog;
 import com.volunteerx.app.profile.model.ProfilesModel;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -134,7 +133,7 @@ public class FollowBinder extends ItemBinder<ProfilesModel, FollowBinder.FollowV
         public FollowViewHolder(View itemView) {
             super(itemView);
 
-            civProfile = itemView.findViewById(R.id.profile_picture);
+            civProfile = itemView.findViewById(R.id.civ_profile_picture);
             tvName = itemView.findViewById(R.id.full_name);
             tvUsername = itemView.findViewById(R.id.user_name);
             btnFollow = itemView.findViewById(R.id.follow_btn);

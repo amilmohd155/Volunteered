@@ -67,12 +67,16 @@
     <string name="tab_post">Posts</string>
     <string name="tab_activities">Activities</string>
     <string name="tab_media">Media</string>
-    <string name="tab_character">character</string>
+    <string name="tab_character">Character</string>
 
     <string name="tab_ping">Ping</string>
     <string name="tab_people">People</string>
 
     <string name="tab_document">Document</string>
+
+    <string name="tab_for_you">For you</string>
+    <string name="tab_top">Top</string>
+    <string name="tab_organisation">Organisation</string>
 
     //DialogTag
     <string name="dialog_privacy">dialogPrivacy</string>
@@ -126,9 +130,9 @@
     <string name="rating">Rating</string>
     <string name="joined">Joined</string>
     <string name="review_entry_hint">Type your review</string>
-    <string name="type_message">Type a message..</string>
+    <string name="type_message">Type a message…</string>
     <string name="john_doe">John Doe</string>
-    <string name="john_doe123"><![CDATA[&#64;johnDoe123]]></string>
+    <string name="john_doe123">johnDoe123</string>
     <string name="map_fragment">MapFragment</string>
     <string name="location_error_fragment">LocationErrorFragment</string>
     <string name="enable">Enable</string>
@@ -138,6 +142,8 @@
     <string name="splash_fragment">SplashFragment</string>
     <string name="sign_up_tab">Sign up</string>
     <string name="login_tab">Login</string>
+    <string name="loginInviteText">Already have an account? <font color="#28a8ff"><b>Login</b></font></string>
+    <string name="signUpInviteText">"Don't" have an account?<font color="#28a8ff"><b> Sign up</b></font></string>
     <string name="forgot_password_fragment">ForgotPasswordFragment</string>
     <string name="fp_slide_alpha_fragment">FPSlideAFragment</string>
     <string name="fp_slide_username_fragment">FPSlideUsernameFragment</string>
@@ -150,9 +156,13 @@
     <string name="media_volume_key">Media_Volume_Key</string>
     <string name="network_error">Please check your internet connection and try again.</string>
     <string name="try_again">Try again</string>
-    <string name="unread_messages">%1d unread</string>
-    <string name="timestamp_today">Today at %1s</string>
+    <string name="unread_messages">%1$d unread</string>
+    <string name="timestamp_today">Today at %1$s</string>
     <string name="remove">Remove</string>
     <string name="suggestions">Suggestions for you</string>
+    <string name="fragment_act_recommended">FragmentActRecommended</string>
+    <string name="more_value">+%1$d</string>
+    <string name="followers_static">%1$s followers</string>
+    <string name="by_creator">By %1$s</string>
 
 </resources>

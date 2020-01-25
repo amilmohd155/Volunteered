@@ -42,7 +42,6 @@ public class UserActivity extends AppCompatActivity implements ClickListener {
     private static final String TAG = "UserActivity";
 
     private final Context mContext = UserActivity.this;
-    private final int curveRadius = 30;
 
     //Variables
     public static int selectedPosition = -1;
@@ -73,6 +72,7 @@ public class UserActivity extends AppCompatActivity implements ClickListener {
         setSupportActionBar(toolbar);
 
 
+        int curveRadius = 50;
         RoundedCorner.setRoundedCorner(ivCoverPhoto, curveRadius, RoundedCorner.ROUNDED_TOP);
 
         setupBottomNavigationView();

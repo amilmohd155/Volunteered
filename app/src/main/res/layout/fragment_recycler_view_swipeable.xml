@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ /**
-  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
-  ~  * Copyright (c) 2019 . All rights reserved.
-  ~  * Last modified 9/6/19 9:42 AM
+  ~  * Created by Amil Muhammed Hamza on 1/26/20 12:37 AM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 1/26/20 12:37 AM
   ~  */
   -->
 
-<RelativeLayout
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Requests -->
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/request_container"
+        android:id="@+id/recycler_view"
         android:background="@color/colorWhite">
 
     </androidx.recyclerview.widget.RecyclerView>
 
-</RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -17,7 +17,7 @@ import com.volunteerx.app.R;
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
 
-public class HeaderItemBinder extends ItemBinder<String, HeaderItemBinder.TextInfoViewHolder> {
+public class FlwHeaderItemBinder extends ItemBinder<String, FlwHeaderItemBinder.TextInfoViewHolder> {
 
     @Override
     public TextInfoViewHolder createViewHolder(ViewGroup parent) {
