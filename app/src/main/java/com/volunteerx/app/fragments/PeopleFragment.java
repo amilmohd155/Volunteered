@@ -20,7 +20,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.volunteerx.app.R;
+import com.volunteerx.app.binder.PeopleBinder;
 import com.volunteerx.app.binder.PollBinder;
 import com.volunteerx.app.models.PeopleListModel;
 
@@ -68,7 +70,7 @@ public class PeopleFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
 
-        adapter.registerItemBinders(new PollBinder(getContext()));
+        adapter.registerItemBinders(new PeopleBinder(getContext(), Glide.with(getContext())));
 
         ListSection<PeopleListModel> listSection = new ListSection<>();
         listSection.addAll(model);

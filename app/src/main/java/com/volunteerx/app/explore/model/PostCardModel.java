@@ -1,14 +1,13 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 1/24/20 11:36 AM
+ *  * Created by Amil Muhammed Hamza on 1/27/20 5:21 PM
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/24/20 11:36 AM
+ *  * Last modified 1/25/20 8:22 PM
  *
  */
 
-package com.volunteerx.app.explore.binder;
+package com.volunteerx.app.explore.model;
 
-import java.util.ArrayList;
 
 import static com.volunteerx.app.utils.Constants.NUM_CHAR_POST_CARD;
 

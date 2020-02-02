@@ -25,7 +25,7 @@ import com.volunteerx.app.R;
 import com.volunteerx.app.explore.binder.ExHeaderItemBinder;
 import com.volunteerx.app.explore.binder.HorizontalScrollBinder;
 import com.volunteerx.app.explore.binder.PostCardBinder;
-import com.volunteerx.app.explore.binder.PostCardModel;
+import com.volunteerx.app.explore.model.PostCardModel;
 import com.volunteerx.app.explore.model.ActivityCardModel;
 import com.volunteerx.app.explore.model.EventCardModel;
 import com.volunteerx.app.explore.model.ExHeaderTextModel;
@@ -176,6 +176,8 @@ public class ExRecommendedFragment extends Fragment {
         nestedSection.addSection(postCardSection);
         nestedSection.addSection(headerSection2);
         nestedSection.addSection(activityCardSection);
+        nestedSection.addSection(headerSection1);
+        nestedSection.addSection(postCardSection);
 
 
         adapter.addSection(nestedSection);
@@ -184,7 +186,6 @@ public class ExRecommendedFragment extends Fragment {
 
         recyclerView.setItemViewCacheSize(10);
         recyclerView.setAdapter(adapter);
-        recyclerView.setNestedScrollingEnabled(false);
 
 
     }

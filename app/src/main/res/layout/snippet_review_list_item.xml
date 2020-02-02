@@ -29,11 +29,12 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_weight="3"
+                android:layout_weight="2.5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent">
 
                 <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ_profile"
                     android:layout_width="@dimen/profile_picture_size"
                     android:layout_height="@dimen/profile_picture_size"
                     android:src="@drawable/avatar0" />
@@ -50,41 +51,37 @@
                 android:gravity="center_vertical|start">
 
                 <TextView
+                    android:id="@+id/tv_reviewer_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="John Doe"
+                    android:text="@string/john_doe"
                     android:textColor="@color/colorBlack" />
 
                 <TextView
+                    android:id="@+id/tv_reviewer_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="&#64;johndoe"
+                    android:text="@string/john_doe123"
                     android:textSize="12sp"/>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:orientation="horizontal"
+            <TextView
+                android:id="@+id/tv_review_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:text="4.5/5"
+                android:textColor="@color/colorBlack"
+                android:drawableStart="@drawable/png_heart_filled"
+                android:drawablePadding="5dp"
                 android:gravity="center_vertical"
-                android:layout_marginEnd="30dp">
+                android:layout_marginEnd="10dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="4.5/5"
-                    android:textColor="@color/colorBlack"
-                    android:drawableStart="@drawable/png_heart_filled"
-                    android:drawablePadding="5dp"
-                    android:gravity="center_vertical"/>
-
-            </LinearLayout>
 
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_review_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/placebo"

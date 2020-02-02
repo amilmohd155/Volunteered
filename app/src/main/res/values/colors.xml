@@ -10,7 +10,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#FF0066</color>
+    <color name="colorAccent">#000000</color>
 
     <color name="colorGrey101">#ECEAEA</color>
     <color name="colorWhite">#FFFFFF</color>
@@ -61,6 +61,7 @@
     <color name="colorOnBoardingScreen">#fff8f0</color>
     <color name="colorCharacterDeselected">#F3F3F3</color>
     <color name="color_following_text">#B8B8B8</color>
+    <color name="line_color">#E7E7E7</color>
 
 
 </resources>

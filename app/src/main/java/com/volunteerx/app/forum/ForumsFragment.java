@@ -27,10 +27,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.volunteerx.app.R;
-import com.volunteerx.app.binder.ForumListBinder;
+import com.volunteerx.app.forum.binder.ForumListBinder;
+import com.volunteerx.app.forum.room.ForumRoomActivity;
+import com.volunteerx.app.forum.room.fragment.ForumRoomFragment;
 import com.volunteerx.app.models.ForumListModel;
 import com.volunteerx.app.utils.ClickListener;
-import com.volunteerx.app.utils.GlideApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,21 +85,12 @@ public class ForumsFragment extends Fragment implements View.OnClickListener{
 
         forums.add(new ForumListModel(1,
                 getString(R.string.john_doe),
-                "Golden Boro",
+                "Golden Bo",
                 "20 dec 2019",
                 "https://www.gstatic.com/webp/gallery/1.jpg",
                 34,
                 true,
                 false));
-
-        forums.add(new ForumListModel(2,
-                getString(R.string.john_doe),
-                "Hispanic War",
-                "01 Jan 2020",
-                "https://www.gstatic.com/webp/gallery/1.jpg",
-                15,
-                false,
-                true));
 
     }
 
@@ -125,11 +117,10 @@ public class ForumsFragment extends Fragment implements View.OnClickListener{
 
         listSection.setOnSelectionChangedListener((item, isSelected, selectedItems) -> {
 
-            //move to new fragment
+//            move to new fragment
             Intent intent = new Intent(getActivity(), ForumRoomActivity.class);
             intent.putExtra("Forum ID", item.getForumId());
             startActivity(intent);
-
 
         });
 

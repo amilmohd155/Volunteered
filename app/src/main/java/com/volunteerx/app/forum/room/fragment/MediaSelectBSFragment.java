@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 1/12/20 10:10 PM
+ *  * Created by Amil Muhammed Hamza on 1/29/20 9:28 PM
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/12/20 10:10 PM
+ *  * Last modified 1/16/20 9:59 PM
  *
  */
 
-package com.volunteerx.app.forum;
+package com.volunteerx.app.forum.room.fragment;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -85,9 +85,6 @@
         <activity android:name="com.volunteerx.app.profile.UserActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name="com.volunteerx.app.forum.ForumsActivity"
-            android:screenOrientation="portrait"/>
-
         <activity
             android:name="com.volunteerx.app.post.PostActivity"
             android:windowSoftInputMode="adjustResize"
@@ -103,7 +100,7 @@
             android:windowSoftInputMode="adjustNothing"/>
 
         <activity
-            android:name="com.volunteerx.app.forum.ForumRoomActivity"
+            android:name="com.volunteerx.app.forum.room.ForumRoomActivity"
             android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait"/>
 

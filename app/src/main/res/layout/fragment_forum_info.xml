@@ -7,91 +7,137 @@
   ~  */
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite">
 
     <RelativeLayout
-        android:id="@+id/relLayout1"
+        android:id="@+id/relLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <include layout="@layout/snippet_top_bar_form_info"/>
+        <include layout="@layout/top_bar_layout" />
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/relLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relLayout1">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:text="@string/join"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/rounded_border_5dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"/>
 
-        <include layout="@layout/snippet_activity_details"/>
 
-    </RelativeLayout>
-
-    <RelativeLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/relLayout2"
-        android:layout_above="@id/relLayout3">
+        android:layout_below="@id/relLayout">
 
-        <com.google.android.material.tabs.TabLayout
+        <Switch
+            android:id="@+id/sw_mute"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            style="@style/CustomTabLayout"
-            android:id="@+id/tabs_forum_info"
-            app:tabMode="fixed"
-            app:tabMaxWidth="0dp"
-            app:tabGravity="fill"/>
-
-        <androidx.viewpager.widget.ViewPager
-            android:id="@+id/wrap_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@id/tabs_forum_info">
-
-        </androidx.viewpager.widget.ViewPager>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/relLayout3"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/white_grey_border_top">
+            android:layout_height="wrap_content"
+            android:text="Mute Messages"
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"/>
 
         <TextView
-            android:id="@+id/invite_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:paddingHorizontal="30dp"
-            android:text="Invite your followers"
-            android:textColor="@color/colorVlt"
-            android:textSize="16sp"/>
-
-        <TextView
-            android:id="@+id/review_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
-            android:paddingHorizontal="30dp"
-            android:text="Rate this Activity"
+            android:id="@+id/tv_starred"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Starred Messages"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/tv_invite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Invite"
+            android:textColor="@color/colorVolunteerX"
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <TextView
+            android:id="@+id/tv_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rate this activity"
+            android:textColor="@color/colorVolunteerX"
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:id="@+id/tv_act_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Report"
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"/>
 
 
-    </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_act_leave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Leave activity"
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp" />
+
+        <TextView
+            android:id="@+id/tv_act_block"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Block activity"
+            android:textSize="16sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"/>
+
+    </LinearLayout>
 
 </RelativeLayout>

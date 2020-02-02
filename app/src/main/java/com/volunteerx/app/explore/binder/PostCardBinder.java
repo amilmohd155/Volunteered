@@ -18,13 +18,13 @@ import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
 import com.volunteerx.app.R;
+import com.volunteerx.app.explore.model.PostCardModel;
 import com.volunteerx.app.utils.CharacterHelper;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
 
-import static com.volunteerx.app.utils.Constants.NUM_CHAR_POST_CARD;
 import static com.volunteerx.app.utils.Converter.NumberFormatting;
 
 public class PostCardBinder extends ItemBinder<PostCardModel, PostCardBinder.PostViewHolder> {
@@ -151,7 +151,7 @@ public class PostCardBinder extends ItemBinder<PostCardModel, PostCardBinder.Pos
             super(itemView);
 
             civProfilePicture = itemView.findViewById(R.id.civ_profile_picture);
-            tvName = itemView.findViewById(R.id.tv_name);
+            tvName = itemView.findViewById(R.id.tv_reviewer_name);
             tvPostText = itemView.findViewById(R.id.tv_post_text);
             tvLikeCount = itemView.findViewById(R.id.tv_post_like);
             tvCommentCount = itemView.findViewById(R.id.tv_post_comment);

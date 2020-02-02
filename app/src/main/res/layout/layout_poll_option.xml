@@ -39,7 +39,7 @@
             android:maxLength="30"
             android:maxLines="1"
             android:lines="1"
-            android:singleLine="true"/>
+            android:singleLine="true" />
 
     </LinearLayout>
 

@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.RequestManager;
 import com.volunteerx.app.R;
 import com.volunteerx.app.models.PeopleListModel;
 import com.bumptech.glide.Glide;
@@ -28,14 +29,16 @@ public class PeopleBinder extends ItemBinder<PeopleListModel, PeopleBinder.Peopl
     private static final String TAG = "PeopleBinder";
 
     private Context context;
+    private RequestManager glide;
 
 //    Constants
     private final int CUSTOM_SELECTION_TYPE = 0;
     private final int FOLLOWING_LIST = 1;
     private final int FOLLOWER_LIST = 2;
 
-    public PeopleBinder(Context context) {
+    public PeopleBinder(Context context, RequestManager glide) {
         this.context = context;
+        this.glide = glide;
     }
 
     @Override
@@ -46,8 +49,7 @@ public class PeopleBinder extends ItemBinder<PeopleListModel, PeopleBinder.Peopl
     @Override
     public void bindViewHolder(PeopleViewHolder holder, PeopleListModel item) {
 
-        Glide.with(context)
-                .load(item.getProfilePhoto())
+        glide.load(item.getProfilePhoto())
                 .into(holder.profilePicture);
 
         holder.TvFullName.setText(item.getFullName());

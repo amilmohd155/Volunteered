@@ -1,16 +1,17 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 1/14/20 9:59 PM
+ *  * Created by Amil Muhammed Hamza on 1/29/20 9:28 PM
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/14/20 9:59 PM
+ *  * Last modified 1/29/20 9:20 PM
  *
  */
 
 
-package com.volunteerx.app.forum;
+package com.volunteerx.app.forum.room.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+import com.volunteerx.app.forum.room.model.Conversation;
 
 import java.util.List;
 

@@ -19,7 +19,6 @@ import android.widget.TextView;
 import com.bumptech.glide.RequestManager;
 import com.volunteerx.app.R;
 import com.volunteerx.app.explore.model.ActivityCardModel;
-import com.volunteerx.app.utils.Converter;
 
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
@@ -64,14 +63,14 @@ public class ActivityCardBinder extends ItemBinder<ActivityCardModel, ActivityCa
         return item instanceof ActivityCardModel;
     }
 
-    public class CardViewHolder extends ItemViewHolder<ActivityCardModel> {
+    class CardViewHolder extends ItemViewHolder<ActivityCardModel> {
 
         ImageView ivActImage, ivCharacterIcon;
         Button btnJoin;
         TextView tvActName, tvActCreator, tvActFollower;
         RatingBar ratingBar;
 
-        public CardViewHolder(View itemView) {
+        CardViewHolder(View itemView) {
             super(itemView);
 
             ivActImage = itemView.findViewById(R.id.iv_act_image);

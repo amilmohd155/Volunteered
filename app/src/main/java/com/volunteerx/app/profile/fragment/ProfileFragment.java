@@ -25,7 +25,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.volunteerx.app.R;
+import com.volunteerx.app.utils.RoundedCorner;
 import com.volunteerx.app.utils.WrapContentStatePagerAdapter;
+import com.volunteerx.app.utils.WrapContentViewPager;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,7 +39,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private ImageView ivCoverPhoto;
     private CircleImageView civProfile;
     private RecyclerView rely;
-    private ViewPager viewPager;
+    private WrapContentViewPager viewPager;
     private TabLayout tabLayout;
 
     public ProfileFragment() {
@@ -87,6 +89,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         toolbar.setTitle(R.string.john_doe);
 
+        int curveRadius = 50;
+        RoundedCorner.setRoundedCorner(ivCoverPhoto, curveRadius, RoundedCorner.ROUNDED_TOP);
 
         setupTabs();
 

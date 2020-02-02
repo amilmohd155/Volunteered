@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 1/15/20 10:48 PM
+ *  * Created by Amil Muhammed Hamza on 1/29/20 9:18 PM
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/15/20 10:48 PM
+ *  * Last modified 1/16/20 9:38 PM
  *
  */
 
-package com.volunteerx.app.forum;
+package com.volunteerx.app.forum.room.model;
 
 public class Conversation {
 

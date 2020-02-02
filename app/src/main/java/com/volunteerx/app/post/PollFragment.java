@@ -29,15 +29,21 @@ import com.volunteerx.app.binder.PollBinder;
 import com.volunteerx.app.models.PollOptionModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import mva2.adapter.ListSection;
 import mva2.adapter.MultiViewAdapter;
+import mva2.adapter.util.OnItemClickListener;
+import mva2.adapter.util.OnSelectionChangedListener;
 
 public class PollFragment extends Fragment {
 
     private static final String TAG = "PollFragment";
 
     private final int MAX_NUM_OPINIONS = 4;
+
+    private MultiViewAdapter adapter;
+    private ListSection<PollOptionModel> listSection;
 
     private EditText pollQuestion;
     private TextView questionCount, optionCount;
@@ -75,15 +81,18 @@ public class PollFragment extends Fragment {
     }
 
     private void addMoreOption() {
-
+//Todo Bug fix
         moreOption.setOnClickListener(view -> {
 
-            if (optionModels.size() < MAX_NUM_OPINIONS) {
+            if (listSection.size() < MAX_NUM_OPINIONS) {
 
-                optionModels.add(new PollOptionModel(R.drawable.circle_fill));
-                initViews();
-                Toast.makeText(getContext(), "Add more option, size::" + optionModels.size(), Toast.LENGTH_SHORT).show();
-                if (optionModels.size() == MAX_NUM_OPINIONS) {
+                PollOptionModel item = new PollOptionModel(R.drawable.circle);
+
+                listSection.add(item);
+                adapter.notifyItemInserted(listSection.size());
+
+                Toast.makeText(getContext(), "Add more option, size::" + listSection.size(), Toast.LENGTH_SHORT).show();
+                if (listSection.size() == MAX_NUM_OPINIONS) {
                     moreOption.setVisibility(View.GONE);
                 }
             }
@@ -94,19 +103,33 @@ public class PollFragment extends Fragment {
 
     private void initViews() {
 
-        Log.d(TAG, "initViews: recycerview init");
+        Log.d(TAG, "initViews: recyclerView init");
 
-        MultiViewAdapter adapter = new MultiViewAdapter();
+        adapter = new MultiViewAdapter();
 
         optionList.setLayoutManager(new LinearLayoutManager(getContext()));
         optionList.setAdapter(adapter);
 
-        adapter.registerItemBinders(new PollBinder(getContext()));
-
-        ListSection<PollOptionModel> listSection = new ListSection<>();
+        listSection = new ListSection<>();
         listSection.addAll(optionModels);
 
+        adapter.registerItemBinders(new PollBinder(getContext()));
+
         adapter.addSection(listSection);
+
+        listSection.setOnItemClickListener((position, item) -> {
+            Log.d(TAG, "onClick: " + position );
+            if (position > -1 && !item.isEmpty()) {
+                Log.d(TAG, "onClick: " + position);
+                listSection.remove(position);
+                adapter.notifyItemRemoved(position);
+
+                if(listSection.size() < 4) {
+                    moreOption.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
 
 
     }

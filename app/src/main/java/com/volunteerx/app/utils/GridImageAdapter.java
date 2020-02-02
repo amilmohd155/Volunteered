@@ -57,14 +57,14 @@ public class GridImageAdapter extends ArrayAdapter<String>{
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         /*
-        Viewholder build pattern (Similar to recyclerview)
+        ViewHolder build pattern (Similar to recyclerView)
          */
         final ViewHolder holder;
         if(convertView == null){
             convertView = mInflater.inflate(layoutResource, parent, false);
             holder = new ViewHolder();
-            holder.mProgressBar = (ProgressBar) convertView.findViewById(R.id.gridImageProgressbar);
-            holder.image = (SquareImageView) convertView.findViewById(R.id.gridImageView);
+            holder.mProgressBar = convertView.findViewById(R.id.gridImageProgressbar);
+            holder.image = convertView.findViewById(R.id.gridImageView);
 
             convertView.setTag(holder);
         }

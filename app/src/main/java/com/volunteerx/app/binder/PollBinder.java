@@ -22,8 +22,11 @@ import com.volunteerx.app.R;
 import com.volunteerx.app.models.PollOptionModel;
 import com.volunteerx.app.utils.GlideApp;
 
+import java.util.ArrayList;
+
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
+import mva2.adapter.ListSection;
 
 
 public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionViewHolder> {
@@ -31,7 +34,6 @@ public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionVie
     private static final String TAG = "PollBinder";
 
     private Context context;
-    private PollOptionModel model;
 
     public PollBinder(Context context) {
         this.context = context;
@@ -45,14 +47,13 @@ public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionVie
     @Override
     public void bindViewHolder(OptionViewHolder holder, PollOptionModel item) {
 
-        model = item;
 //        holder.etOption.setText(item.getOptionText());
 //        holder.tvOptionCount.setText(String.valueOf(item.getOptionCount()));
-        GlideApp.with(context)
-                .load(item.getCircle())
-                .into(holder.ivCircle);
+        holder.ivCircle.setImageResource(item.getCircle());
 
     }
+
+
 
     @Override
     public boolean canBindData(Object item) {
@@ -73,6 +74,7 @@ public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionVie
             tvOptionCount = itemView.findViewById(R.id.option_word_count);
             ivCircle = itemView.findViewById(R.id.option_circle);
 
+
             etOption.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -83,22 +85,18 @@ public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionVie
                 public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                     if (charSequence.length() > 25) {
                         tvOptionCount.setVisibility(View.VISIBLE);
-                        tvOptionCount.setText( String.valueOf(charSequence.length()) + "/30");
+                        tvOptionCount.setText(itemView.getContext().getString(R.string.poll_max_length, charSequence.length()));
                     }
                     else {
                         tvOptionCount.setVisibility(View.GONE);
                     }
 
                     if (charSequence.length() > 0) {
-                        GlideApp.with(context)
-                                .load(R.drawable.circle_fill)
-                                .into(ivCircle);
+                        ivCircle.setImageResource(R.drawable.ic_close);
                         isEmpty = false;
                     }
                     else {
-                        GlideApp.with(context)
-                                .load(R.drawable.circle)
-                                .into(ivCircle);
+                        ivCircle.setImageResource(R.drawable.circle);
                         isEmpty = true;
                     }
 
@@ -110,19 +108,15 @@ public class PollBinder extends ItemBinder<PollOptionModel, PollBinder.OptionVie
                 }
             });
 
-            ivCircle.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Log.d(TAG, "onClick: " + getAdapterPosition() );
-                    if (getAdapterPosition() > 1) {
-//                        Todo remove item from recycler view
-                        if (isEmpty == true) {
 
-                        }
-                    }
-                }
+            ivCircle.setOnClickListener(view -> {
+
+                getItem().setEmpty(isEmpty);
+                onItemClick();
+                etOption.setText(null);
             });
 
         }
+
     }
 }

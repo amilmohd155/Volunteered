@@ -37,4 +37,5 @@ public class CustomScrollView extends ScrollView {
             return (Math.abs(distanceY) > Math.abs(distanceX));
         }
     }
+
 }

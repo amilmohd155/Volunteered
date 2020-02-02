@@ -18,22 +18,12 @@
         android:background="@color/colorWhite">
 
         <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_review"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways|snap"
-            android:contentInsetLeft="0dp"
-            android:contentInsetStart="0dp"
-            app:contentInsetLeft="0dp"
-            app:contentInsetStart="0dp"
-            android:contentInsetRight="0dp"
-            android:contentInsetEnd="0dp"
-            app:contentInsetRight="0dp"
-            app:contentInsetEnd="0dp"
             app:navigationIcon="@drawable/ic_back"
-            app:title="Reviews">
-
-
-        </androidx.appcompat.widget.Toolbar>
+            app:title="Reviews"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -90,6 +80,7 @@
                 android:textSize="17sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorWhite"
+
                 android:background="@drawable/rounded_border_5dp"
                 android:backgroundTint="@color/colorBlack"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -106,7 +97,14 @@
                 android:layout_marginTop="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/review_btn"/>
+                app:layout_constraintTop_toBottomOf="@id/review_btn">
+
+                <ProgressBar
+                    android:id="@+id/progress_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </androidx.recyclerview.widget.RecyclerView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

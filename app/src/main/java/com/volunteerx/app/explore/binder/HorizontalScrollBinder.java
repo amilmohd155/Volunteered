@@ -18,6 +18,7 @@ import com.bumptech.glide.RequestManager;
 import com.volunteerx.app.R;
 import com.volunteerx.app.explore.model.ActivityCardModel;
 import com.volunteerx.app.explore.model.EventCardModel;
+import com.volunteerx.app.utils.Converter;
 
 import java.util.ArrayList;
 
@@ -25,6 +26,7 @@ import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
 import mva2.adapter.ListSection;
 import mva2.adapter.MultiViewAdapter;
+
 
 public class HorizontalScrollBinder extends ItemBinder<Integer, HorizontalScrollBinder.HSViewHolder> {
 
@@ -83,15 +85,17 @@ public class HorizontalScrollBinder extends ItemBinder<Integer, HorizontalScroll
         return item instanceof Integer;
     }
 
-    public class HSViewHolder extends ItemViewHolder<Integer> {
+    class HSViewHolder extends ItemViewHolder<Integer> {
 
         RecyclerView recyclerView;
 
-        public HSViewHolder(View itemView) {
+        HSViewHolder(View itemView) {
             super(itemView);
 
             recyclerView = itemView.findViewById(R.id.recycler_view);
-            recyclerView.setLayoutManager(new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false));
+            LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext(), LinearLayoutManager.HORIZONTAL, false);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(layoutManager);
             recyclerView.setNestedScrollingEnabled(false);
             recyclerView.setItemViewCacheSize(10);
 

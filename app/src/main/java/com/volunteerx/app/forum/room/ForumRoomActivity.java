@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
- *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 11/18/19 11:54 AM
+ *  * Created by Amil Muhammed Hamza on 1/29/20 9:21 PM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 1/10/20 4:08 PM
  *
  */
 
-package com.volunteerx.app.forum;
+package com.volunteerx.app.forum.room;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
 import com.volunteerx.app.R;
+import com.volunteerx.app.forum.info.ForumInfoFragment;
+import com.volunteerx.app.forum.room.fragment.ForumRoomFragment;
 
 public class ForumRoomActivity extends AppCompatActivity {
 
@@ -53,17 +55,5 @@ public class ForumRoomActivity extends AppCompatActivity {
         fragmentTransaction.commit();
 
     }
-
-    private void setupForumInfoFragment() {
-
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.forum_room_container, new ForumInfoFragment(), getResources().getString(R.string.forum_info_fragment))
-                .remove(getSupportFragmentManager().findFragmentByTag(getResources().getString(R.string.forum_room_fragment)))
-                .addToBackStack(null);
-        fragmentTransaction.commit();
-
-    }
-
 
 }

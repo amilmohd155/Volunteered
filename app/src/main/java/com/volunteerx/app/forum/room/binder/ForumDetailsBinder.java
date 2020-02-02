@@ -1,15 +1,17 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 1/14/20 10:29 PM
+ *  * Created by Amil Muhammed Hamza on 1/29/20 9:23 PM
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/14/20 10:29 PM
+ *  * Last modified 1/29/20 9:20 PM
  *
  */
 
-package com.volunteerx.app.forum;
+package com.volunteerx.app.forum.room.binder;
 
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.volunteerx.app.forum.room.model.ChatInfoModel;
 
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;

@@ -13,6 +13,7 @@ public class PollOptionModel {
     private int circle;
     private String optionText;
     private int optionCount;
+    private boolean isEmpty;
 
     public PollOptionModel(int circle) {
         this.circle = circle;
@@ -40,5 +41,13 @@ public class PollOptionModel {
 
     public void setOptionCount(int optionCount) {
         this.optionCount = optionCount;
+    }
+
+    public boolean isEmpty() {
+        return isEmpty;
+    }
+
+    public void setEmpty(boolean empty) {
+        isEmpty = empty;
     }
 }

@@ -30,7 +30,7 @@
     <string name="human">Human Rights</string>
     <string name="poverty">Poverty Alleviation</string>
     <string name="politics">Politics</string>
-    <string name="science">Science &amp; Technology</string>
+    <string name="science">Technology</string>
     <string name="social">Social Services</string>
     <string name="women">Women Welfare</string>
 
@@ -164,5 +164,10 @@
     <string name="more_value">+%1$d</string>
     <string name="followers_static">%1$s followers</string>
     <string name="by_creator">By %1$s</string>
+    <string name="poll_max_length">%1$d/30</string>
+    <string name="rating_5">%1$f/5</string>
+    <string name="tab_review">Review</string>
+    <string name="tab_about">About</string>
+    <string name="tab_event">Events</string>
 
 </resources>

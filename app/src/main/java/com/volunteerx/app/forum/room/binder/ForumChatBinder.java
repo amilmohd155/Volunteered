@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 1/14/20 9:58 PM
+ *  * Created by Amil Muhammed Hamza on 1/29/20 9:23 PM
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/14/20 9:58 PM
+ *  * Last modified 1/29/20 9:20 PM
  *
  */
 
-package com.volunteerx.app.forum;
+package com.volunteerx.app.forum.room.binder;
 
 import android.content.Context;
 import android.net.Uri;
@@ -16,12 +16,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
-import com.github.piasy.biv.BigImageViewer;
-import com.github.piasy.biv.loader.glide.GlideImageLoader;
 import com.github.piasy.biv.view.BigImageView;
 import com.volunteerx.app.R;
+import com.volunteerx.app.forum.room.model.Conversation;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
