@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 2/3/20 10:43 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 2/3/20 10:43 PM
+  ~  */
+  -->
+
+<RelativeLayout android:id="@+id/bottom_sheet"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
+    android:padding="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/tv_main_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/character_heading"
+        android:textSize="30sp"
+        android:textColor="@color/colorBlack"
+        android:drawableEnd="@drawable/ic_character"
+        android:drawablePadding="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_desc_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select at least 1 characters"
+        android:textColor="@color/colorFeedStats"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@id/tv_main_heading"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/character_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:layout_below="@id/tv_desc_heading"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:visibility="gone"
+        android:id="@+id/next_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_ping"
+        app:backgroundTint="@color/colorWhite"
+        app:fabCustomSize="@dimen/fab_custom_size"
+        app:rippleColor="@color/colorGrey101"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="5dp"/>
+
+</RelativeLayout>

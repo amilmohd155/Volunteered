@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 10/18/19 10:04 PM
+  ~  */
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include android:id="@+id/top_bar"
+        layout="@layout/top_bar_only_title"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        style="@style/CustomTabLayout"
+        android:id="@+id/tabs"
+        android:layout_below="@id/top_bar"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/view_pager"
+        android:layout_below="@id/tabs"/>
+
+    <!-- Bottom Navigation  -->
+    <include layout="@layout/layout_bottom_navigation_view"/>
+
+</RelativeLayout>

@@ -13,62 +13,31 @@
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite">
+        android:background="@drawable/rounded_border_5dp"
+        android:backgroundTint="@color/colorWhite"
+        android:layout_margin="10dp"
+        android:elevation="1dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:contentInsetStart="0dp">
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_back">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?attr/selectableItemBackground"
-                    android:id="@+id/back_btn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_back"
-                    android:layout_centerVertical="true"/>
-
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
                     android:id="@+id/profilePhoto"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@id/back_btn"
-                    android:layout_marginStart="10dp"
+                    android:padding="10dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/avatar0"
-                    android:background="?attr/selectableItemBackgroundBorderless"/>
-
-                <ImageView
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="?attr/selectableItemBackground"
-                    android:id="@+id/ping_setting_btn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_setting"
-                    android:layout_centerVertical="true"
-                    android:layout_toStartOf="@id/close_btn"/>
-
-                <ImageView
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="?attr/selectableItemBackground"
-                    android:id="@+id/close_btn"
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_close"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"/>
 
             </RelativeLayout>
@@ -76,6 +45,5 @@
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
-
 
 </merge>

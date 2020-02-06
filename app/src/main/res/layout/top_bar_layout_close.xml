@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ /**
-  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
-  ~  * Copyright (c) 2019 . All rights reserved.
-  ~  * Last modified 12/5/19 12:06 PM
+  ~  * Created by Amil Muhammed Hamza on 2/5/20 8:14 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 2/5/20 8:14 PM
   ~  */
   -->
 
 <com.google.android.material.appbar.AppBarLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorWhite"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        app:title="Notifications"
-        app:titleTextAppearance="@style/ToolbarTitle"/>
+        app:navigationIcon="@drawable/ic_close"
+        android:layoutDirection="rtl"/>
 
 </com.google.android.material.appbar.AppBarLayout>
-
-
-
