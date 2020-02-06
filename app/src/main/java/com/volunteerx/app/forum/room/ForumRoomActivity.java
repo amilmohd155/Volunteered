@@ -16,8 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 
 import com.volunteerx.app.R;
-import com.volunteerx.app.forum.info.ForumInfoFragment;
-import com.volunteerx.app.forum.room.fragment.ForumRoomFragment;
 
 public class ForumRoomActivity extends AppCompatActivity {
 

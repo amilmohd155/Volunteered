@@ -13,12 +13,19 @@ public class CharacterModel {
     private int characterID;
     private int characterColorID;
     private int characterNameID;
-
+    private int characterIcon;
 
     public CharacterModel(int characterID, int characterName, int characterImageID) {
         this.characterID = characterID;
         this.characterColorID = characterImageID;
         this.characterNameID = characterName;
+    }
+
+    public CharacterModel(int characterID, int characterColorID, int characterNameID, int characterIcon) {
+        this.characterID = characterID;
+        this.characterColorID = characterColorID;
+        this.characterNameID = characterNameID;
+        this.characterIcon = characterIcon;
     }
 
     public int getCharacterID() {
@@ -43,5 +50,13 @@ public class CharacterModel {
 
     public void setCharacterNameID(int characterNameID) {
         this.characterNameID = characterNameID;
+    }
+
+    public int getCharacterIcon() {
+        return characterIcon;
+    }
+
+    public void setCharacterIcon(int characterIcon) {
+        this.characterIcon = characterIcon;
     }
 }

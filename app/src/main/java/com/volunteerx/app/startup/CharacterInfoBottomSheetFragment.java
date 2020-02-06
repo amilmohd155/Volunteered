@@ -11,7 +11,6 @@ package com.volunteerx.app.startup;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.volunteerx.app.R;
 
-public class CharacterBottomSheetFragment extends BottomSheetDialogFragment {
+public class CharacterInfoBottomSheetFragment extends BottomSheetDialogFragment {
 
     private static final String TAG = "CharacterBottomSheet";
     private static final String params = "characterID";
@@ -40,11 +39,11 @@ public class CharacterBottomSheetFragment extends BottomSheetDialogFragment {
 
     private View view;
 
-    public CharacterBottomSheetFragment() {
+    public CharacterInfoBottomSheetFragment() {
     }
 
-    public static CharacterBottomSheetFragment newInstance(int characterID) {
-        CharacterBottomSheetFragment fragment = new CharacterBottomSheetFragment();
+    public static CharacterInfoBottomSheetFragment newInstance(int characterID) {
+        CharacterInfoBottomSheetFragment fragment = new CharacterInfoBottomSheetFragment();
         Bundle args = new Bundle();
         args.putInt(params, characterID);
         fragment.setArguments(args);
@@ -67,7 +66,7 @@ public class CharacterBottomSheetFragment extends BottomSheetDialogFragment {
 
         Log.d(TAG, "onCreateView: bottomSheet created");
 
-        view = inflater.inflate(R.layout.fragment_character_bottom_sheet, container, false);
+        view = inflater.inflate(R.layout.fragment_character_info_bs, container, false);
 
         tvCharacterName = view.findViewById(R.id.tv_character_name);
         tvCharacterDescription = view.findViewById(R.id.tv_character_description);

@@ -20,6 +20,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.volunteerx.app.R;
@@ -91,17 +92,25 @@ public class ActivityFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_a: //Forum
-                break;
-            case R.id.btn_b: //Edit
-                break;
             case R.id.cv_about:
-                getFragmentManager().beginTransaction()     //Todo Error
-                        .replace(R.id.container, ActAboutFragment.newInstance())
-                        .addToBackStack(null)
-                        .commit();
+                replaceFragment(ActAboutFragment.newInstance(), "ActAboutFragment");
                 break;
 
         }
+    }
+
+    private void replaceFragment(Fragment fragment, String fragmentName) {
+
+        FragmentManager fragmentManager = getFragmentManager();
+
+        if (fragmentManager != null) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container,fragment , fragmentName)
+                    .addToBackStack(fragmentName)
+                    .commit();
+        }else {
+            throw new RuntimeException("FragmentManager is null");
+        }
+
     }
 }

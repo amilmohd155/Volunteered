@@ -55,17 +55,6 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="com.volunteerx.app.startup_old.LoginActivity"
-            android:screenOrientation="portrait">
-        </activity>
-
-        <activity
-            android:name="com.volunteerx.app.startup_old.ForgotPasswordActivity"
-            android:noHistory="true"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.volunteerx.app.startup_old.SignUpActivity"
-            android:screenOrientation="portrait"/>
 
         <activity android:name="com.volunteerx.app.home.HomeActivity"
             android:screenOrientation="portrait">
@@ -77,22 +66,12 @@
         <activity android:name="com.volunteerx.app.notification.NotificationActivity"
             android:screenOrientation="portrait" />
 
-        <activity
-            android:name="com.volunteerx.app.ping.PingActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:screenOrientation="portrait"/>
-
         <activity android:name="com.volunteerx.app.profile.UserActivity"
             android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.volunteerx.app.post.PostActivity"
             android:windowSoftInputMode="adjustResize"
-            android:screenOrientation="portrait"/>
-
-        <activity
-            android:name="com.volunteerx.app.wizard.WizardActivity"
-            android:windowSoftInputMode="adjustNothing"
             android:screenOrientation="portrait"/>
 
         <activity android:name="com.volunteerx.app.explore.ExploreActivity"

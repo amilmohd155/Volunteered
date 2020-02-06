@@ -38,7 +38,6 @@ import mehdi.sakout.fancybuttons.FancyButton;
 import mva2.adapter.ListSection;
 import mva2.adapter.MultiViewAdapter;
 import mva2.adapter.util.Mode;
-import mva2.adapter.util.OnSelectionChangedListener;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -145,7 +144,6 @@ public class CharacterWizardFragment extends Fragment implements ClickListener {
 
         });
 
-
     }
 
     @Override
@@ -162,7 +160,7 @@ public class CharacterWizardFragment extends Fragment implements ClickListener {
     @Override
     public boolean onLongClick(int characterID) {
 
-        final CharacterBottomSheetFragment fragment = CharacterBottomSheetFragment.newInstance(characterID);
+        final CharacterInfoBottomSheetFragment fragment = CharacterInfoBottomSheetFragment.newInstance(characterID);
         fragment.show(getChildFragmentManager(), fragment.getTag());
 
         return true;

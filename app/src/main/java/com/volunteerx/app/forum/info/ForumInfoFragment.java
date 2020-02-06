@@ -33,6 +33,18 @@ import com.volunteerx.app.utils.SectionsStatePagerAdapter;
 
 public class ForumInfoFragment extends Fragment {
 
+    public ForumInfoFragment() {
+    }
+
+    public static ForumInfoFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        ForumInfoFragment fragment = new ForumInfoFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

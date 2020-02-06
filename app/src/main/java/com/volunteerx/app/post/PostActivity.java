@@ -158,7 +158,8 @@ public class PostActivity extends AppCompatActivity {
 
                 Log.d(TAG, "onTabSelected: position:: " + position);
 
-                if (Permissions.checkPermissionArray(Permissions.PERMISSIONS, mContext)) {
+
+                if (true) {
                     switch (position) {
 
                         case 0:
@@ -176,7 +177,7 @@ public class PostActivity extends AppCompatActivity {
 
                     }
                 }
-                else Permissions.verifyPermission(Permissions.PERMISSIONS, PostActivity.this, VERIFY_PERMISSION_REQUEST_CODE);
+//                else Permissions.verifyPermission(Permissions.PERMISSIONS, PostActivity.this, VERIFY_PERMISSION_REQUEST_CODE);
             }
 
             @Override

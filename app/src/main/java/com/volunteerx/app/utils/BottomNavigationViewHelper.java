@@ -13,14 +13,18 @@ import android.content.Intent;
 
 import android.util.Log;
 
+import androidx.fragment.app.FragmentManager;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.volunteerx.app.explore.ExploreActivity;
+import com.volunteerx.app.explore.ExploreFragment;
 import com.volunteerx.app.home.HomeActivity;
-import com.volunteerx.app.notification.NotificationActivity;
 import com.volunteerx.app.R;
-import com.volunteerx.app.ping.PingActivity;
+import com.volunteerx.app.notification.NotificationCenter;
+import com.volunteerx.app.ping.PingFragment;
 import com.volunteerx.app.profile.UserActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+
+import static com.volunteerx.app.utils.FragmentLoadFunction.replaceFragment;
 
 public class BottomNavigationViewHelper {
 
@@ -37,14 +41,13 @@ public class BottomNavigationViewHelper {
 
     }
 
-    public static void enableNavigation(final Context context, BottomNavigationViewEx viewEx, FloatingActionButton pingFab) {
+    public static void enableNavigation(final Context context, BottomNavigationViewEx viewEx, FloatingActionButton pingFab, FragmentManager fragmentManager) {
 
         Log.d(TAG, "enableNavigation: Enabling Navigation");
 //        pingFab.bringToFront();
 
         pingFab.setOnClickListener(view -> {
-            Intent intentPing = new Intent(context, PingActivity.class);
-            context.startActivity(intentPing);
+            replaceFragment(PingFragment.newInstance(), "PingFragment", fragmentManager);
         });
 
         viewEx.setOnNavigationItemSelectedListener(menuItem -> {
@@ -57,13 +60,19 @@ public class BottomNavigationViewHelper {
                     break;
 
                 case R.id.ic_search:
-                    Intent intentLocation = new Intent(context, ExploreActivity.class);
-                    context.startActivity(intentLocation);
+//                    Intent intentLocation = new Intent(context, ExploreActivity.class);
+//                    context.startActivity(intentLocation);
+
+                    replaceFragment(ExploreFragment.newInstance(), "ExploreFragment", fragmentManager);
+
                     break;
 
                 case R.id.ic_notification:
-                    Intent intentNotifications = new Intent(context, NotificationActivity.class);
-                    context.startActivity(intentNotifications);
+//                    Intent intentNotifications = new Intent(context, NotificationActivity.class);
+//                    context.startActivity(intentNotifications);
+
+                    replaceFragment(NotificationCenter.newInstance(), "NotificationCenter", fragmentManager);
+
                     break;
 
                 case R.id.ic_user:
@@ -76,5 +85,6 @@ public class BottomNavigationViewHelper {
         });
 
     }
+
 
 }

@@ -25,11 +25,11 @@ public class ExploreActivity extends AppCompatActivity implements ClickListener 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_container);
-
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, ExploreFragment.newInstance())
-                .commit();
+//        setContentView(R.layout.layout_container);
+//
+//        getSupportFragmentManager().beginTransaction()
+//                .add(R.id.container, ExploreFragment.newInstance())
+//                .commit();
 
     }
 

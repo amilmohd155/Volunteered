@@ -27,31 +27,12 @@ public class LocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.view_pager);
 
         Log.d(TAG, "onCreate: Starting");
 
-        setupBottomNavigationView();
 
     }
 
-
-
-    /**
-     * Setting up BottomNavigationView
-     */
-    private void setupBottomNavigationView() {
-
-        Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
-
-        BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
-        FloatingActionButton pingFab = findViewById(R.id.ping_fab);
-
-        bottomNavigationViewEx.setCurrentItem(1);
-
-        BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx, pingFab);
-
-    }
 
 }

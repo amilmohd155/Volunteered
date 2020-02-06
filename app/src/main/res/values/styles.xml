@@ -102,6 +102,7 @@
     <item name="android:isIndicator">true</item>
     <item name="android:progressDrawable">@drawable/rating_bar_heart</item>
   </style>
+
   <style name="CustomRating" parent="Widget.AppCompat.RatingBar">
     <item name="android:numStars">5</item>
     <item name="android:stepSize">0.5</item>
@@ -135,6 +136,12 @@
     <item name="fb_disabledColor">@color/colorWhite</item>
     <item name="fb_disabledTextColor">@color/colorFontMajor</item>
     <item name="fb_disabledBorderColor">#D3D3D3</item>
+  </style>
+
+  <style name="ToolbarTitle">
+    <item name="android:textColor">@color/colorBlack</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">25sp</item>
   </style>
 
 </resources>

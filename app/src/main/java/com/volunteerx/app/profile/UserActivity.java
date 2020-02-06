@@ -195,7 +195,7 @@ public class UserActivity extends AppCompatActivity implements ClickListener {
         bottomNavigationViewEx.setCurrentItem(4);
 
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx, pingFab);
+        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx, pingFab, getSupportFragmentManager());
 
     }
 

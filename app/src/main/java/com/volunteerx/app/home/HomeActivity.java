@@ -9,51 +9,47 @@
 package com.volunteerx.app.home;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.Fragment;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 
 import com.volunteerx.app.R;
-import com.volunteerx.app.forum.ForumsFragment;
-import com.volunteerx.app.utils.ClickListener;
-import com.volunteerx.app.utils.SectionsStatePagerAdapter;
+import com.volunteerx.app.utils.IOonBackPressed;
 
-import static com.volunteerx.app.utils.Constants.FORUM_VIEW;
-import static com.volunteerx.app.utils.Constants.HOME_VIEW;
-import static com.volunteerx.app.utils.Constants.NEARBY_VIEW;
-
-public class HomeActivity extends AppCompatActivity  implements ClickListener {
+public class HomeActivity extends AppCompatActivity {
 
     private static final String TAG = "HomeActivity";
 
-    private ViewPager viewPager;
+//    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.frame_layout);
 
         Log.d(TAG, "onCreate: Starting");
 
-        viewPager = findViewById(R.id.main_view_pager);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, MainFragment.newInstance(), "MainFragment")
+                .commit();
 
-        SectionsStatePagerAdapter adapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
-
-        Runnable runnable = () -> {
-
-            adapter.addFragment(NearbyFragment.newInstance(), "NearbyFragment");
-            adapter.addFragment(HomeFragment.newInstance(), "HomeFragment");
-            adapter.addFragment(ForumsFragment.newInstance(), "ForumsFragment");
-
-        };
-
-        runnable.run();
-
-        viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(1);
+//        viewPager = findViewById(R.id.container);
+//
+//        SectionsStatePagerAdapter adapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
+//
+//        Runnable runnable = () -> {
+//
+//            adapter.addFragment(NearbyFragment.newInstance(), "NearbyFragment");
+//            adapter.addFragment(HomeFragment.newInstance(), "HomeFragment");
+//            adapter.addFragment(ForumsFragment.newInstance(), "ForumsFragment");
+//
+//        };
+//
+//        runnable.run();
+//
+//        viewPager.setAdapter(adapter);
+//        viewPager.setCurrentItem(1);
 
 
     }
@@ -61,29 +57,30 @@ public class HomeActivity extends AppCompatActivity  implements ClickListener {
     @Override
     public void onBackPressed() {
 
-        if (viewPager.getCurrentItem() == 1) {
-            Log.d(TAG, "onBackPressed: super");
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.container);
+        if (!(fragment instanceof IOonBackPressed) || !((IOonBackPressed) fragment).onBackPressed()){
             super.onBackPressed();
-        }else {
-            viewPager.setCurrentItem(1);
         }
+        else return;
+
+//        if (viewPager.getCurrentItem() == 1) {
+//            Log.d(TAG, "onBackPressed: super");
+//            super.onBackPressed();
+//        }else {
+//            viewPager.setCurrentItem(1);
+//        }
 
     }
 
-    @Override
-    public void buttonClick(int type) {
-        switch (type) {
-            case NEARBY_VIEW: viewPager.setCurrentItem(0);
-                break;
-            case FORUM_VIEW:  viewPager.setCurrentItem(2);
-                break;
-            case HOME_VIEW: viewPager.setCurrentItem(1);
-        }
-    }
-
-    @Override
-    public boolean onLongClick(int args) {
-        return false;
-    }
+//    @Override
+//    public void buttonClick(int type) {
+//        switch (type) {
+//            case NEARBY_VIEW: viewPager.setCurrentItem(0);
+//                break;
+//            case FORUM_VIEW:  viewPager.setCurrentItem(2);
+//                break;
+//            case HOME_VIEW: viewPager.setCurrentItem(1);
+//        }
+//    }
 
 }

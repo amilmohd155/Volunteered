@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
 
     private static final String TAG = "HomeFragment";
 
-    private ClickListener listener;
+    private OnFragmentInteractionListener listener;
     private FloatingActionButton pingFab;
     private BottomNavigationViewEx bottomNavigationViewEx;
 
@@ -65,8 +65,8 @@ public class HomeFragment extends Fragment {
 
         setupBottomNavigationView();
 
-        toolbar.setNavigationOnClickListener(view1 -> listener.buttonClick(NEARBY_VIEW));
-        forumBtn.setOnClickListener(view12 -> listener.buttonClick(FORUM_VIEW));
+        toolbar.setNavigationOnClickListener(view1 -> listener.onFragmentInteraction(NEARBY_VIEW));
+        forumBtn.setOnClickListener(view12 -> listener.onFragmentInteraction(FORUM_VIEW));
         fab.setOnClickListener(v -> startActivity(new Intent(getActivity(), PostActivity.class)));
 
         return view;
@@ -76,11 +76,11 @@ public class HomeFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (getActivity() instanceof ClickListener) {
-            listener = (ClickListener) getActivity();
+        if (getParentFragment() instanceof OnFragmentInteractionListener) {
+            listener = (OnFragmentInteractionListener) getParentFragment();
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement ClickListener");
+            throw new RuntimeException(getParentFragment().getClass().getName()
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 
@@ -94,7 +94,7 @@ public class HomeFragment extends Fragment {
         bottomNavigationViewEx.setCurrentItem(0);
 
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(getContext(), bottomNavigationViewEx, pingFab);
+        BottomNavigationViewHelper.enableNavigation(getContext(), bottomNavigationViewEx, pingFab, getParentFragment().getFragmentManager());
 
     }
 }

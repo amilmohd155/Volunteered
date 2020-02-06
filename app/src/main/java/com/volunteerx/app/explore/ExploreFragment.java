@@ -38,7 +38,7 @@ public class ExploreFragment extends Fragment {
     private BottomNavigationViewEx bottomNavigationViewEx;
     private TabLayout tabLayout;
     private NonSwipeableViewPager viewPager;
-    private ClickListener listener;
+//    private ClickListener listener;
 
     public ExploreFragment() {
     }
@@ -104,7 +104,7 @@ public class ExploreFragment extends Fragment {
         bottomNavigationViewEx.setCurrentItem(1);
 
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(getContext(), bottomNavigationViewEx, pingFab);
+        BottomNavigationViewHelper.enableNavigation(getContext(), bottomNavigationViewEx, pingFab, getFragmentManager());
 
     }
 
@@ -112,19 +112,19 @@ public class ExploreFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
 
-        if (getActivity() instanceof ClickListener) {
-            listener = (ClickListener) getActivity();
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement ClickListener");
-        }
+//        if (getActivity() instanceof ClickListener) {
+//            listener = (ClickListener) getActivity();
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement ClickListener");
+//        }
 
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        listener = null;
+//        listener = null;
     }
 }
 

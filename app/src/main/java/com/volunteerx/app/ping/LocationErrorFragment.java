@@ -8,6 +8,7 @@
 
 package com.volunteerx.app.ping;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,7 +27,19 @@ public class LocationErrorFragment extends Fragment {
 
     private static final String TAG = "LocationErrorFragment";
 
-    private ClickInterface clickInterface;
+    private OnFragmentInteractionListener listener;
+
+    public LocationErrorFragment() {
+    }
+
+    public static LocationErrorFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        LocationErrorFragment fragment = new LocationErrorFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Nullable
     @Override
@@ -37,20 +50,31 @@ public class LocationErrorFragment extends Fragment {
 
         Button enableBtn = view.findViewById(R.id.btn_enable);
 
-        enableBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickInterface.buttonClick();
-            }
-        });
+        enableBtn.setOnClickListener(view1 -> listener.onFragmentInteraction());
 
         return view;
 
     }
 
-    public void setClickInterface(ClickInterface clickInterface) {
-        this.clickInterface = clickInterface;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (getParentFragment() instanceof OnFragmentInteractionListener) {
+            listener = (OnFragmentInteractionListener) getParentFragment();
+        } else {
+            throw new RuntimeException(getParentFragment().getClass().getName()
+                    + " must implement OnFragmentInteractionListener");
+        }
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
+    public interface OnFragmentInteractionListener{
+        void onFragmentInteraction();
+    }
 
 }

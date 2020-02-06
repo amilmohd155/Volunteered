@@ -23,23 +23,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.volunteerx.app.R;
 import com.volunteerx.app.binder.CharacterTypeABinder;
-import com.volunteerx.app.models.CharacterModelOld;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import mva2.adapter.ListSection;
 import mva2.adapter.MultiViewAdapter;
 import mva2.adapter.util.Mode;
-import mva2.adapter.util.OnSelectionChangedListener;
 
+//todo correct the chsracter error
 public class EditCharacterFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "EditCharacterFragment";
 
     private RecyclerView recyclerView;
     private ImageView closeBtn;
-    private ArrayList<CharacterModelOld> characterModels;
+//    private ArrayList<ICharacterModel> characterModels;
 
     @Nullable
     @Override
@@ -51,8 +49,6 @@ public class EditCharacterFragment extends Fragment implements View.OnClickListe
         closeBtn = view.findViewById(R.id.edit_close);
         closeBtn.setOnClickListener(this);
 
-        characterModels = new ArrayList<>();
-
         setupRecyclerView();
 
         return view;
@@ -63,21 +59,21 @@ public class EditCharacterFragment extends Fragment implements View.OnClickListe
 
         Log.d(TAG, "setupRecyclerView: populating recyclerView with character cards");
 
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.animal), R.color.colorAnimal, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.art), R.color.colorArt, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.children), R.color.colorChildren, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.civil), R.color.colorCivil, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.disaster), R.color.colorDisaster, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.economic), R.color.colorEconomics, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.education), R.color.colorEducation, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.environment), R.color.colorEnvironment, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.health), R.color.colorHealth, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.human), R.color.colorHuman, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.politics), R.color.colorPolitics, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.poverty), R.color.colorPoverty, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.science), R.color.colorScience, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.social), R.color.colorSocial, R.drawable.icon1));
-        characterModels.add(new CharacterModelOld(getResources().getString(R.string.women), R.color.colorWomen, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.animal), R.color.colorAnimal, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.art), R.color.colorArt, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.children), R.color.colorChildren, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.civil), R.color.colorCivil, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.disaster), R.color.colorDisaster, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.economic), R.color.colorEconomics, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.education), R.color.colorEducation, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.environment), R.color.colorEnvironment, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.health), R.color.colorHealth, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.human), R.color.colorHuman, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.politics), R.color.colorPolitics, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.poverty), R.color.colorPoverty, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.science), R.color.colorScience, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.social), R.color.colorSocial, R.drawable.icon1));
+//        characterModels.add(new ICharacterModel(getResources().getString(R.string.women), R.color.colorWomen, R.drawable.icon1));
 
         MultiViewAdapter adapter = new MultiViewAdapter();
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
@@ -86,18 +82,15 @@ public class EditCharacterFragment extends Fragment implements View.OnClickListe
 
         adapter.registerItemBinders(new CharacterTypeABinder(getContext()));
 
-        ListSection<CharacterModelOld> gridSection = new ListSection<>();
-        gridSection.addAll(characterModels);
+//        ListSection<ICharacterModel> gridSection = new ListSection<>();
+//        gridSection.addAll(characterModels);
 
-        adapter.addSection(gridSection);
-        adapter.setSelectionMode(Mode.MULTIPLE);
-
-        gridSection.setOnSelectionChangedListener(new OnSelectionChangedListener<CharacterModelOld>() {
-            @Override
-            public void onSelectionChanged(CharacterModelOld item, boolean isSelected, List<CharacterModelOld> selectedItems) {
-                //Todo COde for handling the selected item
-            }
-        });
+//        adapter.addSection(gridSection);
+//        adapter.setSelectionMode(Mode.MULTIPLE);
+//
+//        gridSection.setOnSelectionChangedListener((item, isSelected, selectedItems) -> {
+//            //Todo COde for handling the selected item
+//        });
 
     }
 

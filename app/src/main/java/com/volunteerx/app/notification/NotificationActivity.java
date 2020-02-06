@@ -9,7 +9,6 @@
 package com.volunteerx.app.notification;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -17,10 +16,8 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.RelativeLayout;
 
 import com.volunteerx.app.R;
-import com.volunteerx.app.explore.ExploreActivity;
 import com.volunteerx.app.utils.BottomNavigationViewHelper;
 import com.volunteerx.app.utils.SectionsPagerAdapter;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -33,35 +30,17 @@ public class NotificationActivity extends AppCompatActivity {
     final Context mContext = NotificationActivity.this;
 
     //widgets
-    RelativeLayout searchTab;
     ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notifications);
+        setContentView(R.layout.fragment_notifications);
 
         Log.d(TAG, "onCreate: Starting");
 
-        searchTab = findViewById(R.id.action_bar);
-
         setupFragment();
         setupBottomNavigationView();
-        setupSearchActivity();
-
-    }
-
-    private void setupSearchActivity() {
-
-        Log.d(TAG, "setupSearchActivity: going to search activity");
-
-        searchTab.setOnClickListener(v -> {
-
-            Intent intent = new Intent(mContext, ExploreActivity.class);
-            startActivity(intent);
-
-        });
-
 
     }
 
@@ -70,7 +49,7 @@ public class NotificationActivity extends AppCompatActivity {
 
         Log.d(TAG, "setupFragmentCall: Fragment call started");
 
-        viewPager = findViewById(R.id.container);
+        viewPager = findViewById(R.id.view_pager);
         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         sectionsPagerAdapter.addFragment(new NotificationFragment());
         sectionsPagerAdapter.addFragment(new RequestFragment());
@@ -98,7 +77,7 @@ public class NotificationActivity extends AppCompatActivity {
         bottomNavigationViewEx.setCurrentItem(3);
 
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
-        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx, pingFab);
+        BottomNavigationViewHelper.enableNavigation(mContext, bottomNavigationViewEx, pingFab, getSupportFragmentManager());
 
     }
 

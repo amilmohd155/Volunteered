@@ -30,7 +30,7 @@
         android:icon="@drawable/ic_attachment"/>
 
     <item
-        android:id="@+id/location"
+        android:id="@+id/cv_location"
         android:title=""
         android:icon="@drawable/ic_pin_o"/>
 

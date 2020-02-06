@@ -1,18 +1,19 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 1/29/20 9:21 PM
+ *  * Created by Amil Muhammed Hamza on 2/2/20 11:57 PM
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/29/20 9:20 PM
+ *  * Last modified 2/2/20 11:34 PM
  *
  */
 
-package com.volunteerx.app.forum.room.fragment;
+package com.volunteerx.app.forum.room;
 
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,8 +30,10 @@ import com.github.piasy.biv.loader.glide.GlideImageLoader;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.volunteerx.app.R;
 import com.volunteerx.app.activity.ActivityFragment;
+import com.volunteerx.app.activity.fragment.ActAboutFragment;
 import com.volunteerx.app.forum.info.ForumInfoFragment;
 import com.volunteerx.app.forum.room.binder.ForumChatBinder;
+import com.volunteerx.app.forum.room.fragment.MediaSelectBSFragment;
 import com.volunteerx.app.forum.room.model.Conversation;
 
 import java.util.ArrayList;
@@ -40,12 +43,13 @@ import java.util.List;
 import mva2.adapter.ListSection;
 import mva2.adapter.MultiViewAdapter;
 
-//Todo make recyclerview with image, video, document support
+//Todo make recycler_view with image, video, document support
 public class ForumRoomFragment extends Fragment implements View.OnClickListener  {
 
     private static final String TAG = "ForumRoomFragment";
 
     //Constants
+    private static final String param = "Forum ID";
 
     //Variables
 
@@ -57,6 +61,20 @@ public class ForumRoomFragment extends Fragment implements View.OnClickListener 
     private Conversation conversation;
     private List<Conversation> conversationList = new ArrayList<>();
     private ListSection<Conversation> listSection;
+
+    public ForumRoomFragment() {
+    }
+
+    public static ForumRoomFragment newInstance(int forumId) {
+
+        Bundle args = new Bundle();
+
+        args.putInt(param, forumId);
+
+        ForumRoomFragment fragment = new ForumRoomFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -144,42 +162,17 @@ public class ForumRoomFragment extends Fragment implements View.OnClickListener 
                 if (attachmentTab.getVisibility() == View.GONE) attachmentTab.setVisibility(View.VISIBLE);
                 else if (attachmentTab.getVisibility() == View.VISIBLE) attachmentTab.setVisibility(View.GONE);
             }break;
-
-            case R.id.back_btn:{
-                if (getActivity()!= null) {
-                    getActivity().onBackPressed();
-                }
-            }break;
-
             case R.id.forum_info_btn: {
-                goToForumInfoFragment();
+                replaceFragment(ForumInfoFragment.newInstance(), getResources().getString(R.string.forum_info_fargment));
                 break;
             }
             case R.id.send_btn:
                 getMessageText();
                 break;
             case R.id.title_layout:
-                goToProfileFragment();
+                replaceFragment(ActivityFragment.newInstance(), "ActivityFragment");
                 break;
         }
-    }
-
-
-    private void goToForumInfoFragment() {
-
-        Log.d(TAG, "goToForumInfoFragment: creating info fragment");
-        try {
-
-            FragmentTransaction fragmentTransaction = getFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.forum_room_container, new ForumInfoFragment(), getResources().getString(R.string.forum_info_fargment))
-                    .addToBackStack(null);
-            fragmentTransaction.commit();
-
-        }catch (NullPointerException ex) {
-            Log.d(TAG, "goToForumInfoFragment: Error encountered in fragment Transaction" + ex);
-        }
-
     }
 
     private void setupForumRecyclerView() {
@@ -251,12 +244,18 @@ public class ForumRoomFragment extends Fragment implements View.OnClickListener 
 
     }
 
-    private void goToProfileFragment() {
+    private void replaceFragment(Fragment fragment, String fragmentName) {
 
-        getFragmentManager().beginTransaction()
-                .replace(R.id.forum_room_container, ActivityFragment.newInstance())
-                .addToBackStack(null)
-                .commit();
+        FragmentManager fragmentManager = getFragmentManager();
+
+        if (fragmentManager != null) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container,fragment , fragmentName)
+                    .addToBackStack(fragmentName)
+                    .commit();
+        }else {
+            throw new RuntimeException("FragmentManager is null");
+        }
 
     }
 }

@@ -9,27 +9,35 @@
 package com.volunteerx.app.binder;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
+import android.content.res.ColorStateList;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import androidx.cardview.widget.CardView;
+
+import com.bumptech.glide.RequestManager;
 import com.volunteerx.app.R;
-import com.volunteerx.app.models.CharacterModelOld;
+import com.volunteerx.app.models.CharacterModel;
 import com.bumptech.glide.Glide;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import mva2.adapter.ItemBinder;
 import mva2.adapter.ItemViewHolder;
 
-public class CharacterTypeBBinder extends ItemBinder<CharacterModelOld, CharacterTypeBBinder.CharacterViewHolder>  {
+public class CharacterTypeBBinder extends ItemBinder<CharacterModel, CharacterTypeBBinder.CharacterViewHolder>  {
 
-    Context context;
+    private static final String TAG = "CharacterTypeBBinder";
 
-    public CharacterTypeBBinder(Context context) {
+    private Context context;
+    private RequestManager glide;
+
+    public CharacterTypeBBinder(Context context, RequestManager glide) {
         this.context = context;
+        this.glide = glide;
     }
 
     @Override
@@ -39,42 +47,37 @@ public class CharacterTypeBBinder extends ItemBinder<CharacterModelOld, Characte
 
 
     @Override
-    public void bindViewHolder(CharacterViewHolder holder, CharacterModelOld item) {
+    public void bindViewHolder(CharacterViewHolder holder, CharacterModel item) {
 
-        holder.characterName.setText(item.getCharacterName());
+        holder.characterName.setText(item.getCharacterNameID());
 
-        Glide.with(context)
-                .load(item.getCharacterIcon())
+        glide.load(item.getCharacterColorID())
                 .into(holder.characterIcon);
 
-        GradientDrawable border = new GradientDrawable();
-
         if (holder.isItemSelected()) {
-            holder.borderLayout.setBackgroundColor(context.getColor(R.color.colorBlack));
-            holder.characterName.setTextColor(context.getColor(R.color.colorWhite));
-            holder.characterIcon.setBorderWidth(2);
-            holder.characterIcon.setBorderColor(context.getColor(R.color.colorWhite));
+            Log.d(TAG, "bindViewHolder: " + item.getCharacterID());
+            holder.borderLayout.setCardElevation(2);
+//            holder.borderLayout.setBackgroundResource(R.drawable.stroke_border_background_5_1);
+//            holder.borderLayout.setBackgroundColor(context.getColor(R.color.colorVolunteerX));
         }
         else {
-            holder.borderLayout.setBackgroundColor(context.getColor(R.color.colorWhite));
-            holder.characterName.setTextColor(context.getColor(R.color.colorBlack));
-            holder.characterIcon.setBorderWidth(0);
+            holder.borderLayout.setCardElevation(0);
+//            holder.borderLayout.setBackgroundResource(R.drawable.rounded_border_5dp);
+//            holder.borderLayout.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.colorWhite)));
         }
 
     }
-
-    //Todo minimum selection 3, maximum selection 15; change color of check-mark using after min selection
 
     @Override
     public boolean canBindData(Object item) {
-        return item instanceof CharacterModelOld;
+        return item instanceof CharacterModel;
     }
 
-    public class CharacterViewHolder extends ItemViewHolder<CharacterModelOld> {
+    public class CharacterViewHolder extends ItemViewHolder<CharacterModel> {
 
         TextView characterName;
         CircleImageView characterIcon;
-        LinearLayout borderLayout;
+        CardView borderLayout;
 
         public CharacterViewHolder(View itemView) {
             super(itemView);
@@ -83,12 +86,7 @@ public class CharacterTypeBBinder extends ItemBinder<CharacterModelOld, Characte
             characterIcon = itemView.findViewById(R.id.character_icon);
             borderLayout = itemView.findViewById(R.id.border_layout);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    toggleItemSelection();
-                }
-            });
+            itemView.setOnClickListener(view -> toggleItemSelection());
 
         }
     }
