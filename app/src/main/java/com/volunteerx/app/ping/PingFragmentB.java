@@ -27,13 +27,13 @@ import com.volunteerx.app.utils.IOonBackPressed;
 public class PingFragmentB extends Fragment implements IOonBackPressed {
 
     /**
-     * 0 == 'BackPressable'
-     * 1 == 'Not BackPressable'
+     * false == 'BackPressable'
+     * true == 'Not BackPressable'
      */
-    private int isBackPressable = 0;
+    private boolean isBackPressable = true;
 
     private RelativeLayout relativeLayout;
-    private IOBackPressed listener;
+    private IOonBackPressed listener;
 
     public PingFragmentB() {
     }
@@ -51,6 +51,8 @@ public class PingFragmentB extends Fragment implements IOonBackPressed {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        listener = this;
+
     }
 
     @Nullable
@@ -65,25 +67,26 @@ public class PingFragmentB extends Fragment implements IOonBackPressed {
 
         Toolbar toolbar = view.findViewById(R.id.toolbar);
 
-        toolbar.setNavigationOnClickListener(view1 -> {
-
-            new VolunteerXDialog.Builder(getActivity())
-                    .setMessage("Discard your ping")
-                    .setTitle("Discard")
-                    .isCancellable(false)
-                    .setPositiveBtnText("Discard")
-                    .setNegativeBtnText("Cancel")
-                    .OnPositiveClicked(dialog -> isBackPressable = 0)
-                    .OnNegativeClicked(dialog -> isBackPressable = 1)
-                    .build();
-
-            listener.onBackPressed();
-        });
+        toolbar.setNavigationOnClickListener(view1 -> listener.onBackPressed());
 
     }
 
     @Override
     public boolean onBackPressed() {
-        return true;
+
+        new VolunteerXDialog.Builder(getActivity())
+                .setMessage("Discard your ping")
+                .setTitle("Discard")
+                .isCancellable(true)
+                .setPositiveBtnText("Discard")
+                .setNegativeBtnText("Cancel")
+                .OnPositiveClicked(dialog -> {
+                    isBackPressable = false;
+                    listener.onBackPressed();
+                })
+                .OnNegativeClicked(dialog -> isBackPressable = true)
+                .build();
+
+        return true; //can't back press
     }
 }

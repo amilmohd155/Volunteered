@@ -9,49 +9,96 @@
 
 <RelativeLayout android:id="@+id/bottom_sheet"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorWhite"
-    android:padding="20dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="100dp"
+    app:layout_behavior="@string/bottom_sheet_behavior"
+    android:elevation="2dp"
 
-    <TextView
-        android:id="@+id/tv_main_heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/character_heading"
-        android:textSize="30sp"
-        android:textColor="@color/colorBlack"
-        android:drawableEnd="@drawable/ic_character"
-        android:drawablePadding="10dp"/>
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp">
 
-    <TextView
-        android:id="@+id/tv_desc_heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Select at least 1 characters"
-        android:textColor="@color/colorFeedStats"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@id/tv_main_heading"/>
+    <RelativeLayout
+        android:id="@+id/rely"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@android:color/transparent"
+        android:layout_margin="20dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/character_grid"
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/close_btn"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:padding="10dp"
+            android:src="@drawable/ic_close"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/character_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_character"
+            app:backgroundTint="@color/colorWhite"
+            app:fabCustomSize="@dimen/fab_custom_size"
+            app:rippleColor="@color/colorGrey101"
+            app:elevation="0dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:visibility="gone"
+            android:id="@+id/next_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_ping"
+            app:backgroundTint="@color/colorWhite"
+            app:fabCustomSize="@dimen/fab_custom_size"
+            app:rippleColor="@color/colorGrey101"
+            android:layout_centerInParent="true"
+            app:elevation="0dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:layout_below="@id/tv_desc_heading"/>
+        android:padding="10dp"
+        android:layout_below="@id/rely"
+        android:background="@color/colorWhite">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:visibility="gone"
-        android:id="@+id/next_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_ping"
-        app:backgroundTint="@color/colorWhite"
-        app:fabCustomSize="@dimen/fab_custom_size"
-        app:rippleColor="@color/colorGrey101"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="5dp"/>
+        <TextView
+            android:id="@+id/tv_main_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/character_heading"
+            android:textSize="30sp"
+            android:textColor="@color/colorBlack"
+            android:drawableEnd="@drawable/ic_character"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_desc_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select at least 1 characters"
+            android:textSize="12sp"
+            android:textColor="#949494"
+            android:layout_marginBottom="10dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/character_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </RelativeLayout>

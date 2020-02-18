@@ -7,12 +7,12 @@
   ~  */
   -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="false"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".ping.PingFragment">
 
     <include layout="@layout/snippet_top_bar_ping"/>
 
@@ -21,38 +21,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/character_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            app:layout_anchorGravity="center_vertical|bottom"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_character"
-            app:backgroundTint="@color/colorWhite"
-            app:fabCustomSize="@dimen/fab_custom_size"
-            app:rippleColor="@color/colorGrey101" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:visibility="gone"
-            android:id="@+id/next_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            app:layout_anchorGravity="center_vertical|bottom"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/ic_ping"
-            app:backgroundTint="@color/colorWhite"
-            app:fabCustomSize="@dimen/fab_custom_size"
-            app:rippleColor="@color/colorGrey101" />
-
-
-    </RelativeLayout>
+    <include layout="@layout/fragment_character_bs"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

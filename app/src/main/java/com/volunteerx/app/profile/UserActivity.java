@@ -17,7 +17,6 @@ import com.volunteerx.app.profile.fragment.FollowStaticFragment;
 import com.volunteerx.app.profile.fragment.UserActivitiesFragment;
 import com.volunteerx.app.profile.fragment.UserPostFragment;
 import com.volunteerx.app.utils.ClickListener;
-import com.volunteerx.app.utils.RoundedCorner;
 import com.google.android.material.tabs.TabLayout;
 import androidx.fragment.app.Fragment;
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,23 +59,17 @@ public class UserActivity extends AppCompatActivity implements ClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user);
+        setContentView(R.layout.fragment_user);
 
         llFollowers =  findViewById(R.id.ll_followers);
         llFollowing = findViewById(R.id.ll_following);
-        llContactInfo = findViewById(R.id.ll_contact_info);
         editProfileBtn = findViewById(R.id.follow_btn);
-        ivCoverPhoto = findViewById(R.id.iv_cover_photo);
 
-        toolbar = findViewById(R.id.toolbar_user);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
-        int curveRadius = 50;
-        RoundedCorner.setRoundedCorner(ivCoverPhoto, curveRadius, RoundedCorner.ROUNDED_TOP);
-
         setupBottomNavigationView();
-        setupFragments();
+        setupViewPager();
         setupAccountChanging();
         setupFollowStatics();
         setupEditFragment();
@@ -137,7 +130,7 @@ public class UserActivity extends AppCompatActivity implements ClickListener {
     /**
      * Setting up fragments(tabs)
      */
-    private void setupFragments() {
+    private void setupViewPager() {
 
         viewPager = findViewById(R.id.user_tab_container);
         WrapContentStatePagerAdapter statePagerAdapter = new WrapContentStatePagerAdapter(getSupportFragmentManager());
@@ -151,33 +144,6 @@ public class UserActivity extends AppCompatActivity implements ClickListener {
 
         tabLayout.getTabAt(0).setText(R.string.tab_post);
         tabLayout.getTabAt(1).setText(R.string.tab_activities);
-
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-
-            // Animate fade in and out with transition and scaling
-
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if (tabLayout.getSelectedTabPosition() != 0) {
-//                    linearLayout1.setVisibility(View.GONE);
-                    llContactInfo.setVisibility(View.GONE);
-                }
-                else {
-//                    linearLayout1.setVisibility(View.VISIBLE);
-                    llContactInfo.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
 
     }
 

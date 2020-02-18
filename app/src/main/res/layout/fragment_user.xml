@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 11/18/19 11:54 AM
+  ~  */
+  -->
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".profile.UserFragment">
+
+    <include layout="@layout/snippet_top_bar_user"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_tab_container"
+        android:layout_marginBottom="50dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+
+    <!-- Bottom Navigation  -->
+    <include layout="@layout/layout_bottom_navigation_view"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

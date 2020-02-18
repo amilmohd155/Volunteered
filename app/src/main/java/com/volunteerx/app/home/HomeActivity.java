@@ -34,24 +34,6 @@ public class HomeActivity extends AppCompatActivity {
                 .replace(R.id.container, MainFragment.newInstance(), "MainFragment")
                 .commit();
 
-//        viewPager = findViewById(R.id.container);
-//
-//        SectionsStatePagerAdapter adapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
-//
-//        Runnable runnable = () -> {
-//
-//            adapter.addFragment(NearbyFragment.newInstance(), "NearbyFragment");
-//            adapter.addFragment(HomeFragment.newInstance(), "HomeFragment");
-//            adapter.addFragment(ForumsFragment.newInstance(), "ForumsFragment");
-//
-//        };
-//
-//        runnable.run();
-//
-//        viewPager.setAdapter(adapter);
-//        viewPager.setCurrentItem(1);
-
-
     }
 
     @Override
@@ -63,24 +45,6 @@ public class HomeActivity extends AppCompatActivity {
         }
         else return;
 
-//        if (viewPager.getCurrentItem() == 1) {
-//            Log.d(TAG, "onBackPressed: super");
-//            super.onBackPressed();
-//        }else {
-//            viewPager.setCurrentItem(1);
-//        }
-
     }
-
-//    @Override
-//    public void buttonClick(int type) {
-//        switch (type) {
-//            case NEARBY_VIEW: viewPager.setCurrentItem(0);
-//                break;
-//            case FORUM_VIEW:  viewPager.setCurrentItem(2);
-//                break;
-//            case HOME_VIEW: viewPager.setCurrentItem(1);
-//        }
-//    }
 
 }

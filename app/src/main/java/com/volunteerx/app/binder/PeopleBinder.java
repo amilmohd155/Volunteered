@@ -9,6 +9,7 @@
 package com.volunteerx.app.binder;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -49,7 +50,7 @@ public class PeopleBinder extends ItemBinder<PeopleListModel, PeopleBinder.Peopl
     @Override
     public void bindViewHolder(PeopleViewHolder holder, PeopleListModel item) {
 
-        glide.load(item.getProfilePhoto())
+        glide.load(item.getProfilePhotoUrl())
                 .into(holder.profilePicture);
 
         holder.TvFullName.setText(item.getFullName());
@@ -60,23 +61,17 @@ public class PeopleBinder extends ItemBinder<PeopleListModel, PeopleBinder.Peopl
                 holder.followBtn.setVisibility(View.GONE);
                 holder.ellipsesMenu.setVisibility(View.GONE);
                 break;
-            case FOLLOWING_LIST:
-                holder.checkView.setVisibility(View.GONE);
-                holder.ellipsesMenu.setVisibility(View.GONE);
-                    holder.followBtn.setText(R.string.following);
-                    holder.followBtn.setBackgroundColor(context.getColor(R.color.colorWhite));
-                    holder.followBtn.setTextColor(context.getColor(R.color.colorBlack));
-                break;
-            case FOLLOWER_LIST:
-                holder.checkView.setVisibility(View.GONE);
+            case 1: {
                 if (item.isFollowing()) {
-                    holder.followBtn.setText(R.string.following);
-                    holder.followBtn.setBackgroundColor(context.getColor(R.color.colorWhite));
-                    holder.followBtn.setTextColor(context.getColor(R.color.colorBlack));
+                    holder.followBtn.setText(context.getString(R.string.following));
+                    holder.followBtn.setTextColor(context.getColor(R.color.color_following));
+                    holder.followBtn.setBackgroundResource(R.drawable.stroke_border_background_5_1);
+                    holder.followBtn.setVisibility(View.VISIBLE);
                 }
-                holder.ellipsesMenu.setVisibility(View.VISIBLE); //click and slide up fragment comes to ask about un_following
-                break;
-                
+            }
+            break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + item.getTypeOfLayout());
         }
 
     }

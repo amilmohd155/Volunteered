@@ -25,6 +25,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -71,4 +73,10 @@ public class ForumInfoFragment extends Fragment {
         });
 
     }
+
+    public void setGridView() {
+
+
+    }
+
 }

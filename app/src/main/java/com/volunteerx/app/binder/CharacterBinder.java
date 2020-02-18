@@ -32,6 +32,10 @@ public class CharacterBinder extends ItemBinder<CharacterModel, CharacterBinder.
         this.listener = listener;
     }
 
+    public CharacterBinder(Context context) {
+        this.context = context;
+    }
+
     @Override
     public CharacterBinder.CharacterViewHolder createViewHolder(ViewGroup parent) {
         return new CharacterViewHolder(inflate(parent, R.layout.layout_character_swatches));
@@ -42,18 +46,20 @@ public class CharacterBinder extends ItemBinder<CharacterModel, CharacterBinder.
 
         holder.tvCharacterName.setText(context.getString(item.getCharacterNameID()));
 
-        if (holder.isItemSelected()) {
+        if (listener!= null) {
+            if (holder.isItemSelected()) {
 
-            holder.cvCharacterColor.setCardBackgroundColor(context.getColor(item.getCharacterColorID()));
+                holder.cvCharacterColor.setCardBackgroundColor(context.getColor(item.getCharacterColorID()));
+                holder.tvCharacterName.setTextColor(context.getColor(R.color.colorWhite));
 
+            }
+            else  {
+                holder.cvCharacterColor.setCardBackgroundColor(context.getColor(R.color.colorCharacterDeselected));
+                holder.tvCharacterName.setTextColor(context.getColor(R.color.colorBlack));
+            }
+
+            holder.itemView.setOnLongClickListener((View view) -> listener.onLongClick(item.getCharacterID()));
         }
-        else  {
-            holder.cvCharacterColor.setCardBackgroundColor(context.getColor(R.color.colorCharacterDeselected));
-        }
-
-        holder.itemView.setOnLongClickListener((View view) -> listener.onLongClick(item.getCharacterID()));
-
-
     }
 
     @Override

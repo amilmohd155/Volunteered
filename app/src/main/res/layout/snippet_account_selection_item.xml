@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 2/12/20 7:50 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 2/12/20 7:50 PM
+  ~  */
+  -->
+
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:weightSum="10"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:clickable="true"
+    android:focusable="true">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/avatar"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:padding="5dp"
+        android:src="@drawable/avatar0" />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_weight="6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:text="JohnDoe135"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        />
+
+    <ImageView
+        android:visibility="invisible"
+        android:id="@+id/tick"
+        android:layout_weight="2"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:padding="13dp"
+        android:src="@drawable/ic_tick"
+        android:layout_gravity="end|center_vertical"/>
+
+</LinearLayout>

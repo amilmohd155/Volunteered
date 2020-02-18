@@ -26,7 +26,6 @@ import android.widget.ImageView;
 
 import com.volunteerx.app.R;
 import com.volunteerx.app.fragments.PrivacyDialogFragment;
-import com.volunteerx.app.utils.Permissions;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -55,7 +54,7 @@ public class PostActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+        setContentView(R.layout.fragment_post);
 
         Log.d(TAG, "onCreate: Starting Post Activity");
 
@@ -79,7 +78,7 @@ public class PostActivity extends AppCompatActivity {
     }
 
     /**
-     * Post submition Button function.
+     * Post submitting Button function.
      */
     private void setupPostBtn() {
     }
@@ -239,12 +238,7 @@ public class PostActivity extends AppCompatActivity {
 
         //Todo check if the text area or the media area is empty or not.
 
-        closeBtnPost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        closeBtnPost.setOnClickListener(v -> finish());
     }
 
 

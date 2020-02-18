@@ -18,16 +18,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.volunteerx.app.R;
+import com.volunteerx.app.explore.fragment.ExCharacterFragment;
 import com.volunteerx.app.explore.fragment.ExRecommendedFragment;
+import com.volunteerx.app.explore.fragment.SearchFragment;
 import com.volunteerx.app.utils.BottomNavigationViewHelper;
-import com.volunteerx.app.utils.ClickListener;
 import com.volunteerx.app.utils.NonSwipeableViewPager;
 import com.volunteerx.app.utils.SectionsStatePagerAdapter;
+
+import static com.volunteerx.app.utils.FragmentLoadFunction.replaceFragment;
 
 public class ExploreFragment extends Fragment {
 
@@ -38,7 +43,6 @@ public class ExploreFragment extends Fragment {
     private BottomNavigationViewEx bottomNavigationViewEx;
     private TabLayout tabLayout;
     private NonSwipeableViewPager viewPager;
-//    private ClickListener listener;
 
     public ExploreFragment() {
     }
@@ -67,6 +71,29 @@ public class ExploreFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tab_layout);
         viewPager = view.findViewById(R.id.view_pager);
 
+        final AppBarLayout appBarLayout = view.findViewById(R.id.app_bar_layout);
+        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
+
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (verticalOffset == 0) {
+                    swipeRefreshLayout.setOnChildScrollUpCallback((parent, child) -> false);
+                }
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    swipeRefreshLayout.setOnChildScrollUpCallback((parent, child) -> true);
+                }
+            }
+        });
+
+
+        view.findViewById(R.id.tv_search_view).setOnClickListener(view1 ->
+                replaceFragment(SearchFragment.newInstance(), "SearchFragment", getFragmentManager()));
 
         setupBottomNavigationView();
         setupTabs();
@@ -81,7 +108,7 @@ public class ExploreFragment extends Fragment {
         adapter.addFragment(ExRecommendedFragment.newInstance(), getString(R.string.fragment_act_recommended));
         adapter.addFragment(ExRecommendedFragment.newInstance(), getString(R.string.fragment_act_recommended));
         adapter.addFragment(ExRecommendedFragment.newInstance(), getString(R.string.fragment_act_recommended));
-        adapter.addFragment(ExRecommendedFragment.newInstance(), getString(R.string.fragment_act_recommended));
+        adapter.addFragment(ExCharacterFragment.newInstance(), getString(R.string.fragment_ex_character));
         viewPager.setAdapter(adapter);
 
         tabLayout.setupWithViewPager(viewPager);

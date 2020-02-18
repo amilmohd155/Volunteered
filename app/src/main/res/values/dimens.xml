@@ -40,5 +40,7 @@
     <dimen name="pp_padding_tb">25dp</dimen>
     <dimen name="w_button_corner_radius">10dp</dimen>
     <dimen name="character_spacing">5dp</dimen>
+    <dimen name="button_margin_hor">20dp</dimen>
+    <dimen name="button_margin_ver">10dp</dimen>
 
 </resources>

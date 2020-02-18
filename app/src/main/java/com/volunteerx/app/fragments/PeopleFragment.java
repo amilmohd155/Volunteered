@@ -50,10 +50,10 @@ public class PeopleFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.people_list_view);
 
-        model.add(new PeopleListModel("ABC", "abc123", R.drawable.car_wan, true, 1));
-        model.add(new PeopleListModel("CBE", "cbe344", R.drawable.astronaut, true, 1));
-        model.add(new PeopleListModel("ASD", "asd668", R.drawable.avatar0, false,1));
-        model.add(new PeopleListModel("QWE", "qwe490", R.drawable.car_wan, true, 1));
+//        model.add(new PeopleListModel("ABC", "abc123", R.drawable.car_wan, true, 1));
+//        model.add(new PeopleListModel("CBE", "cbe344", R.drawable.astronaut, true, 1));
+//        model.add(new PeopleListModel("ASD", "asd668", R.drawable.avatar0, false,1));
+//        model.add(new PeopleListModel("QWE", "qwe490", R.drawable.car_wan, true, 1));
 
         initView();
 

@@ -14,14 +14,14 @@ public class PeopleListModel {
 
     private String fullName;
     private String username;
-    private int profilePhoto;
+    private String profilePhotoUrl;
     private boolean isFollowing;
     private int typeOfLayout;
 
-    public PeopleListModel(String fullName, String username, int profilePhoto, boolean isFollowing, int typeOfLayout) {
+    public PeopleListModel(String fullName, String username, String profilePhotoUrl, boolean isFollowing, int typeOfLayout) {
         this.fullName = fullName;
         this.username = username;
-        this.profilePhoto = profilePhoto;
+        this.profilePhotoUrl = profilePhotoUrl;
         this.isFollowing = isFollowing;
         this.typeOfLayout = typeOfLayout;
     }
@@ -42,14 +42,6 @@ public class PeopleListModel {
         this.username = username;
     }
 
-    public int getProfilePhoto() {
-        return profilePhoto;
-    }
-
-    public void setProfilePhoto(int profilePhoto) {
-        this.profilePhoto = profilePhoto;
-    }
-
     public boolean isFollowing() {
         return isFollowing;
     }
@@ -64,5 +56,13 @@ public class PeopleListModel {
 
     public void setTypeOfLayout(int typeOfLayout) {
         this.typeOfLayout = typeOfLayout;
+    }
+
+    public String getProfilePhotoUrl() {
+        return profilePhotoUrl;
+    }
+
+    public void setProfilePhotoUrl(String profilePhotoUrl) {
+        this.profilePhotoUrl = profilePhotoUrl;
     }
 }

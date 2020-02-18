@@ -23,6 +23,7 @@ import android.view.ViewGroup;
 
 import com.volunteerx.app.R;
 import com.volunteerx.app.forum.ForumsFragment;
+import com.volunteerx.app.location.NearbyFragment;
 import com.volunteerx.app.utils.IOonBackPressed;
 import com.volunteerx.app.utils.SectionsStatePagerAdapter;
 

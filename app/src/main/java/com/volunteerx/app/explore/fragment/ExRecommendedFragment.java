@@ -69,16 +69,17 @@ public class ExRecommendedFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_recycler_view_swipeable, container, false);
+        return inflater.inflate(R.layout.fragment_recycler_view_only, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Log.d(TAG, "onViewCreated: starting rfragmet");
+        Log.d(TAG, "onViewCreated: starting fragment");
 
         recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView.setNestedScrollingEnabled(true);
 
         setupLayout();
 

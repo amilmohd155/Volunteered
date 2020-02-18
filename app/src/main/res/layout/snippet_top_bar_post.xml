@@ -8,7 +8,7 @@
   -->
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -59,16 +59,24 @@
                     <!--android:layout_centerVertical="true"/>-->
 
 
-                <Button
+                <mehdi.sakout.fancybuttons.FancyButton
                     android:id="@+id/submit_post"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
                     android:text="Post"
-                    android:textColor="@color/colorBlue63"
+                    fancy:fb_text="Post"
+                    fancy:fb_textColor="@color/colorBlue63"
+                    fancy:fb_textSize="20sp"
                     android:textStyle="bold"
-                    android:textSize="20sp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    fancy:fb_borderWidth="1dp"
+                    fancy:fb_radius="5dp"
+                    fancy:fb_defaultColor="@color/colorWhite"
+                    fancy:fb_disabledColor="@color/colorWhite"
+                    fancy:fb_disabledBorderColor="#A2A2A2"
+                    android:enabled="false"
+                    android:layout_marginEnd="10dp"
                     android:background="?android:attr/selectableItemBackground"/>
 
             </RelativeLayout>

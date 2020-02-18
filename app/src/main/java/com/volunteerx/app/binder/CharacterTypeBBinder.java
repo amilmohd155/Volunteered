@@ -57,11 +57,15 @@ public class CharacterTypeBBinder extends ItemBinder<CharacterModel, CharacterTy
         if (holder.isItemSelected()) {
             Log.d(TAG, "bindViewHolder: " + item.getCharacterID());
             holder.borderLayout.setCardElevation(2);
+            holder.borderLayout.setCardBackgroundColor(context.getColor(R.color.colorBlack));
+            holder.characterName.setTextColor(context.getColor(R.color.colorWhite));
 //            holder.borderLayout.setBackgroundResource(R.drawable.stroke_border_background_5_1);
 //            holder.borderLayout.setBackgroundColor(context.getColor(R.color.colorVolunteerX));
         }
         else {
             holder.borderLayout.setCardElevation(0);
+            holder.borderLayout.setCardBackgroundColor(context.getColor(R.color.colorWhite));
+            holder.characterName.setTextColor(context.getColor(R.color.colorBlack));
 //            holder.borderLayout.setBackgroundResource(R.drawable.rounded_border_5dp);
 //            holder.borderLayout.setBackgroundTintList(ColorStateList.valueOf(context.getColor(R.color.colorWhite)));
         }

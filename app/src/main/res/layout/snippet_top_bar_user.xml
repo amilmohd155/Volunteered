@@ -7,23 +7,41 @@
   ~  */
   -->
 
-<merge
+
+<com.google.android.material.appbar.AppBarLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <com.google.android.material.appbar.AppBarLayout
+    <com.google.android.material.appbar.CollapsingToolbarLayout
+        android:id="@+id/collapsing_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorWhite"
-        app:layout_scrollFlags="scroll|enterAlways|snap">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:contentScrim="@color/colorWhite"
+        app:scrimAnimationDuration="0"
+        app:scrimVisibleHeightTrigger="0dp"
+        app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Small"
+        app:expandedTitleMarginStart="12dp"
+        app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+        <include
+            android:layout_marginTop="?attr/actionBarSize"
+            layout="@layout/snippet_profile_desc_area"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:layout_collapseMode="pin"/>
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_user"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorWhite"
+            app:layout_collapseMode="pin"
+            app:contentInsetStart="0dp"
+            android:elevation="1dp">
 
             <RelativeLayout
                 android:id="@+id/user_dropdown"
@@ -34,30 +52,17 @@
                     android:id="@+id/ab_username"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="JohnDoe123"
+                    android:text="@string/john_doe123"
                     android:textSize="18sp"
                     android:textColor="@color/colorBlack"
                     android:gravity="center"
-                    android:drawablePadding="2dp"
+                    android:drawablePadding="10dp"
                     android:drawableEnd="@drawable/ic_dropdown"
                     android:padding="15dp"/>
 
-                <Button
-                    android:visibility="gone"
-                    android:id="@+id/broadcast_btn"
-                    android:layout_width="120dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/rounded_border_5dp"
-                    android:text="Broadcast"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="14sp"
-                    android:layout_toLeftOf="@id/setting"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="10dp"/>
-
                 <ImageView
                     android:id="@+id/setting"
-                    android:layout_width="50dp"
+                    android:layout_width="60dp"
                     android:layout_height="50dp"
                     android:padding="12dp"
                     android:clickable="true"
@@ -65,14 +70,24 @@
                     android:src="@drawable/ic_setting"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:elevation="2dp"/>
+                    android:background="?attr/selectableItemBackgroundBorderless"/>
 
             </RelativeLayout>
 
+
         </androidx.appcompat.widget.Toolbar>
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-</merge>
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CustomTabLayout"
+        android:id="@+id/tabs_user"
+        app:tabMode="fixed"
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"/>
+
+</com.google.android.material.appbar.AppBarLayout>
 
 

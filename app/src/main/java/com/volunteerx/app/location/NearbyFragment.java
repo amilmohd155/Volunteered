@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 1/3/20 10:18 PM
+ *  * Created by Amil Muhammed Hamza on 2/16/20 11:35 PM
  *  * Copyright (c) 2020 . All rights reserved.
- *  * Last modified 1/3/20 6:05 PM
+ *  * Last modified 2/2/20 11:19 PM
  *
  */
 
-package com.volunteerx.app.home;
+package com.volunteerx.app.location;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -30,10 +30,7 @@ public class NearbyFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-
-        View view = inflater.inflate(R.layout.fragment_nearby, container, false);
-
-        return view;
+        return inflater.inflate(R.layout.fragment_nearby, container, false);
 
     }
 

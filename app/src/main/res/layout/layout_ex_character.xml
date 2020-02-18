@@ -1,0 +1,52 @@
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 2/7/20 12:59 AM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 2/7/20 12:59 AM
+  ~  */
+  -->
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="5dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackgroundBorderless"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.volunteerx.app.explore.fragment.ExCharacterFragment">
+
+
+
+    <ImageView
+        android:id="@+id/iv_character_art"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/review"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="#70000000"
+        android:alpha="0.8">
+
+        <TextView
+            android:id="@+id/tv_character_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/women"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

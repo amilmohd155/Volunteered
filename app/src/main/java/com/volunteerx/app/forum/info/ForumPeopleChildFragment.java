@@ -52,9 +52,9 @@ public class ForumPeopleChildFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         
         ArrayList<PeopleListModel> arrayList = new ArrayList<>();
-
-        arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.avatar0, false, 1));
-        arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.user, true, 1));
+//
+//        arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.avatar0, false, 1));
+//        arrayList.add(new PeopleListModel("Fullname", "username", R.drawable.user, true, 1));
 
         //Recyclerview Required
 

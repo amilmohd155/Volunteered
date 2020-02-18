@@ -7,12 +7,12 @@
   ~  */
   -->
 
-<RelativeLayout
-    android:orientation="vertical"
+<RelativeLayout android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorWhite">
+    android:background="@color/colorWhite"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/relLayout"
@@ -103,6 +103,281 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"/>
 
+        <GridLayout
+            android:id="@+id/grid_view"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:rowCount="2"
+            android:columnCount="2"
+            android:columnOrderPreserved="false"
+            android:alignmentMode="alignMargins"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="#f5f4fa"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_photo_white"
+                            android:background="@drawable/rounded_border_10dp"
+                            android:backgroundTint="#E040FB"
+                            android:elevation="2dp"
+                            android:padding="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Photos"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold"
+                            android:layout_marginTop="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="52 items"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginTop="5dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_ellipses"
+                        android:layout_alignParentEnd="true"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="#f5f4fa"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/exo_icon_play"
+                            android:background="@drawable/rounded_border_10dp"
+                            android:backgroundTint="#FF8A80"
+                            android:elevation="2dp"
+                            android:padding="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Videos"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold"
+                            android:layout_marginTop="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="52 items"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginTop="5dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_ellipses"
+                        android:layout_alignParentEnd="true"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="#f5f4fa"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_document_white"
+                            android:background="@drawable/rounded_border_10dp"
+                            android:backgroundTint="#FF1744"
+                            android:elevation="2dp"
+                            android:padding="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Documents"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold"
+                            android:layout_marginTop="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="52 items"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginTop="5dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_ellipses"
+                        android:layout_alignParentEnd="true"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:cardBackgroundColor="#f5f4fa"
+                android:layout_margin="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/ic_link_white"
+                            android:background="@drawable/rounded_border_10dp"
+                            android:backgroundTint="#5E35B1"
+                            android:elevation="2dp"
+                            android:padding="10dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Links"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold"
+                            android:layout_marginTop="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="52 items"
+                            android:textSize="12sp"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginTop="5dp" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_ellipses"
+                        android:layout_alignParentEnd="true"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"/>
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </GridLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
         <TextView
             android:id="@+id/tv_act_report"
             android:layout_width="match_parent"
@@ -113,8 +388,6 @@
             android:paddingEnd="20dp"
             android:paddingTop="15dp"
             android:paddingBottom="15dp"/>
-
-
 
         <TextView
             android:id="@+id/tv_act_leave"

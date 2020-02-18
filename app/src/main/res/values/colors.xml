@@ -33,9 +33,9 @@
     
     <!-- Character Colors -->
     <color name="colorAnimal">#c57d4a</color>
-    <color name="colorArt">#ffff63</color>
+    <color name="colorArt">#C4C42C</color>
     <color name="colorChildren">#ffb938</color>
-    <color name="colorCivil">#ffffe5</color>
+    <color name="colorCivil">#AAAA76</color>
     <color name="colorDisaster">#A2181818</color>
     <color name="colorEconomics">#b2dcac</color>
     <color name="colorEducation">#c57d4a</color>
@@ -61,7 +61,9 @@
     <color name="colorOnBoardingScreen">#fff8f0</color>
     <color name="colorCharacterDeselected">#F3F3F3</color>
     <color name="color_following_text">#B8B8B8</color>
-    <color name="line_color">#ECECEC</color>
+    <color name="colorDivider">#ECECEC</color>
+    <color name="color_following">#B6B6B6</color>
+    <color name="grey_500">#9E9E9E</color>
 
 
 </resources>

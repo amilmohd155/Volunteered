@@ -10,14 +10,18 @@ package com.volunteerx.app.ping;
 
 import android.Manifest;
 import android.content.Intent;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,29 +29,58 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.volunteerx.app.R;
+import com.volunteerx.app.binder.CharacterTypeBBinder;
+import com.volunteerx.app.models.CharacterModel;
 import com.volunteerx.app.utils.Permissions;
+import com.volunteerx.app.utils.RoundedCorner;
 
+import mva2.adapter.ListSection;
+import mva2.adapter.MultiViewAdapter;
+import mva2.adapter.util.Mode;
+
+import static com.volunteerx.app.utils.Constants.CHAR_ANI;
+import static com.volunteerx.app.utils.Constants.CHAR_ART;
+import static com.volunteerx.app.utils.Constants.CHAR_CLD;
+import static com.volunteerx.app.utils.Constants.CHAR_CVL;
+import static com.volunteerx.app.utils.Constants.CHAR_DSR;
+import static com.volunteerx.app.utils.Constants.CHAR_ECO;
+import static com.volunteerx.app.utils.Constants.CHAR_EDU;
+import static com.volunteerx.app.utils.Constants.CHAR_ENV;
+import static com.volunteerx.app.utils.Constants.CHAR_HLH;
+import static com.volunteerx.app.utils.Constants.CHAR_HMN;
+import static com.volunteerx.app.utils.Constants.CHAR_POL;
+import static com.volunteerx.app.utils.Constants.CHAR_POV;
+import static com.volunteerx.app.utils.Constants.CHAR_SCI;
+import static com.volunteerx.app.utils.Constants.CHAR_SCL;
+import static com.volunteerx.app.utils.Constants.CHAR_WMN;
 import static com.volunteerx.app.utils.FragmentLoadFunction.replaceFragment;
 
+//Todo Super Incomplete  error in back press, maybe a need to change UI
 public class PingFragment extends Fragment implements
+        View.OnClickListener,
         OnMapReadyCallback,
-        LocationErrorFragment.OnFragmentInteractionListener,
-        CharacterBSFragment.OnFragmentInteractionListener {
+        LocationErrorFragment.OnFragmentInteractionListener {
 
     private static final String TAG = "PingFragment";
     private final String PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION;
 
     //Var
     private int responseType = 1; //0 -- setting button || 1 -- enable button
+    private MultiViewAdapter adapter = new MultiViewAdapter();
+    private ListSection<CharacterModel> characterSection = new ListSection<>();
 
     //UI
     private FrameLayout localContainer;
@@ -55,7 +88,10 @@ public class PingFragment extends Fragment implements
     private SupportMapFragment mapFragment;
     private FloatingActionButton fabCharacter, fabNext;
     private Toolbar toolbar;
-    private LinearLayout bottomSheet;
+    private BottomSheetBehavior sheetBehavior;
+    private RelativeLayout bottomSheet;
+    private ImageView closeBtn;
+    private RecyclerView recyclerView;
 
     public PingFragment() {
     }
@@ -83,18 +119,94 @@ public class PingFragment extends Fragment implements
         //UI
         localContainer = view.findViewById(R.id.map_container);
         fabCharacter = view.findViewById(R.id.character_fab);
+        fabNext = view.findViewById(R.id.next_fab);
         toolbar = view.findViewById(R.id.toolbar);
+        bottomSheet = view.findViewById(R.id.bottom_sheet);
+        sheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        closeBtn = view.findViewById(R.id.close_btn);
+        recyclerView = view.findViewById(R.id.character_grid);
+
+        fabCharacter.setOnClickListener(this);
+        fabNext.setOnClickListener(this);
+        localContainer.setOnClickListener(this);
+        closeBtn.setOnClickListener(this);
+
+        RoundedCorner.setRoundedCorner(view.findViewById(R.id.linearLayout), 20, RoundedCorner.ROUNDED_TOP);
 
         toolbar.setNavigationOnClickListener(v -> {
             if (getActivity() != null) getActivity().onBackPressed();
         });
 
-        fabCharacter.setOnClickListener(view1 -> {
-            CharacterBSFragment fragment = CharacterBSFragment.newInstance();
-            fragment.show(getChildFragmentManager(), fragment.getTag());
-        });
 
         permissionHustle();
+        setBottomSheet();
+//        setRecyclerView();
+
+    }
+
+    private void setRecyclerView() {
+
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 4));
+        recyclerView.addItemDecoration(new SpacesItemDecoration(getResources().getDimensionPixelSize(R.dimen.character_spacing)));
+
+        recyclerView.setAdapter(adapter);
+
+        adapter.registerItemBinders(new CharacterTypeBBinder(getContext(), Glide.with(this)));
+
+        characterSection.add(new CharacterModel(CHAR_ANI, R.string.animal, R.drawable.art));
+        characterSection.add(new CharacterModel(CHAR_ART, R.string.art, R.drawable.astronaut));
+        characterSection.add(new CharacterModel(CHAR_CLD, R.string.children, R.drawable.fairy_tales));
+        characterSection.add(new CharacterModel(CHAR_CVL, R.string.civil, R.drawable.fernando_nunes));
+        characterSection.add(new CharacterModel(CHAR_DSR, R.string.disaster, R.drawable.art));
+        characterSection.add(new CharacterModel(CHAR_ECO, R.string.economic, R.drawable.fernando_nunes));
+        characterSection.add(new CharacterModel(CHAR_EDU, R.string.education, R.drawable.astronaut));
+        characterSection.add(new CharacterModel(CHAR_ENV, R.string.environment, R.drawable.thought));
+        characterSection.add(new CharacterModel(CHAR_HLH, R.string.health, R.drawable.car_wan));
+        characterSection.add(new CharacterModel(CHAR_HMN, R.string.human, R.drawable.astronaut));
+        characterSection.add(new CharacterModel(CHAR_POL, R.string.politics, R.drawable.fairy_tales));
+        characterSection.add(new CharacterModel(CHAR_POV, R.string.poverty, R.drawable.astronaut));
+        characterSection.add(new CharacterModel(CHAR_SCI, R.string.science, R.drawable.fernando_nunes));
+        characterSection.add(new CharacterModel(CHAR_SCL, R.string.social, R.drawable.fairy_tales));
+        characterSection.add(new CharacterModel(CHAR_WMN, R.string.women, R.drawable.thought));
+
+        adapter.addSection(characterSection);
+        adapter.setSelectionMode(Mode.MULTIPLE);
+
+        characterSection.setOnSelectionChangedListener((item, isSelected, selectedItems) -> {
+            if (!selectedItems.isEmpty()) {
+                fabNext.show();
+            }
+            else fabNext.hide();
+
+        });
+
+    }
+
+    private void setBottomSheet() {
+        sheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View view, int newState) {
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                    case BottomSheetBehavior.STATE_SETTLING:
+                        break;
+                        case BottomSheetBehavior.STATE_EXPANDED:
+                            fabCharacter.hide();
+                            closeBtn.setVisibility(View.VISIBLE);
+                            break;
+                        case BottomSheetBehavior.STATE_COLLAPSED:
+                            closeBtn.setVisibility(View.GONE);
+                            fabCharacter.show();
+                            break;
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View view, float v) {
+
+            }
+        });
 
     }
 
@@ -179,13 +291,67 @@ public class PingFragment extends Fragment implements
     }
 
     @Override
-    public void onBSFragmentInteraction() {
-        replaceFragment(new PingFragmentB(), "PingFragmentB", getFragmentManager());
+    public void onDestroyView() {
+        super.onDestroyView();
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.character_fab:
+                if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                    fabCharacter.hide();
+                    closeBtn.setVisibility(View.VISIBLE);
+                }else {
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                    closeBtn.setVisibility(View.GONE);
+                    if ((fabNext.getVisibility() == View.VISIBLE)) {
+                        fabNext.hide();
+                    } else {
+                        fabNext.show();
+                    }
+                    fabCharacter.show();
+                }
+                break;
+            case R.id.map_container:
+            case R.id.close_btn:
+                if (sheetBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED) {
+                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                    bottomSheet.clearFocus();
+                    closeBtn.setVisibility(View.GONE);
+                    if ((fabNext.getVisibility() == View.VISIBLE)) {
+                        fabNext.hide();
+                    } else {
+                        fabNext.show();
+                    }
+                    fabCharacter.show();
+                }
+                break;
+            case R.id.next_fab:
+                replaceFragment(PingFragmentB.newInstance(), "PingFragmentB", getFragmentManager());
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + view.getId());
+        }
+    }
+
+
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+        private int space;
+
+        public SpacesItemDecoration(int space) {
+            this.space = space;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view,
+                                   RecyclerView parent, RecyclerView.State state) {
+            outRect.left = space;
+            outRect.right = space;
+            outRect.bottom = space;
+
+        }
     }
 
 }

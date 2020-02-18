@@ -8,8 +8,8 @@
   -->
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="112dp"
-    android:layout_height="112dp"
+    android:layout_width="90dp"
+    android:layout_height="85dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="5dp"
     app:cardElevation="0dp"
@@ -19,26 +19,27 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="10dp">
+        android:gravity="center">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/character_icon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/astronaut"
-            android:layout_marginBottom="5dp" />
+            android:paddingBottom="5dp"
+            app:civ_border_width="3dp"
+            app:civ_border_color="#FFFFFF"/>
 
         <TextView
             android:id="@+id/character_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/economic"
+            android:text="@string/poverty"
             android:textSize="12sp"
             android:textStyle="normal"
             android:textColor="@color/colorFeedText"
             android:maxLines="2"
-            android:maxEms="6"
+            android:maxEms="5"
             android:gravity="center_horizontal"/>
 
     </LinearLayout>

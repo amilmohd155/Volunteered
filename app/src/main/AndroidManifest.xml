@@ -60,14 +60,8 @@
             android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name="com.volunteerx.app.location.LocationActivity"
-            android:screenOrientation="portrait"/>
-
         <activity android:name="com.volunteerx.app.notification.NotificationActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name="com.volunteerx.app.profile.UserActivity"
-            android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.volunteerx.app.post.PostActivity"
@@ -84,9 +78,6 @@
             android:screenOrientation="portrait"/>
 
         <activity android:name="com.volunteerx.app.profile.Organisation"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name="com.volunteerx.app.activity.ActActivity"
             android:screenOrientation="portrait"/>
 
         <meta-data

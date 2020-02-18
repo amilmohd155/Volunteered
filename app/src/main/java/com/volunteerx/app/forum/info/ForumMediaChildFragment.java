@@ -38,7 +38,7 @@ public class ForumMediaChildFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_forum_media, container, false);
 
-        gridView = (GridView) view.findViewById(R.id.media_grid);
+        gridView = view.findViewById(R.id.media_grid);
         int gridWidth = getResources().getDisplayMetrics().widthPixels;
         int imageWidth = gridWidth / NUM_COL;
 

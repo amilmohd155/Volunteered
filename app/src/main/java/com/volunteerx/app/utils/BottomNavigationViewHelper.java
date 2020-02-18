@@ -21,8 +21,8 @@ import com.volunteerx.app.home.HomeActivity;
 import com.volunteerx.app.R;
 import com.volunteerx.app.notification.NotificationCenter;
 import com.volunteerx.app.ping.PingFragment;
-import com.volunteerx.app.profile.UserActivity;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
+import com.volunteerx.app.profile.UserFragment;
 
 import static com.volunteerx.app.utils.FragmentLoadFunction.replaceFragment;
 
@@ -76,8 +76,11 @@ public class BottomNavigationViewHelper {
                     break;
 
                 case R.id.ic_user:
-                    Intent intentUser = new Intent(context, UserActivity.class);
-                    context.startActivity(intentUser);
+//                    Intent intentUser = new Intent(context, UserActivity.class);
+//                    context.startActivity(intentUser);
+
+                    replaceFragment(UserFragment.newInstance(true), "UserFragment", fragmentManager);
+
                     break;
             }
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Amil Muhammed Hamza on 2/10/20 7:09 PM
+  ~  * Copyright (c) 2020 . All rights reserved.
+  ~  * Last modified 2/10/20 7:09 PM
+  ~  */
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@drawable/white_grey_border_bottom">
+
+    <ImageButton
+        android:id="@+id/ib_header_nav"
+        android:layout_width="65dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_close"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true" />
+
+</LinearLayout>
