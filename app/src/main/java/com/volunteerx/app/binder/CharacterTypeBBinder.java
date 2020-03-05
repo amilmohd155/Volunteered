@@ -9,11 +9,9 @@
 package com.volunteerx.app.binder;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -22,7 +20,6 @@ import androidx.cardview.widget.CardView;
 import com.bumptech.glide.RequestManager;
 import com.volunteerx.app.R;
 import com.volunteerx.app.models.CharacterModel;
-import com.bumptech.glide.Glide;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import mva2.adapter.ItemBinder;
@@ -51,7 +48,7 @@ public class CharacterTypeBBinder extends ItemBinder<CharacterModel, CharacterTy
 
         holder.characterName.setText(item.getCharacterNameID());
 
-        glide.load(item.getCharacterColorID())
+        glide.load(item.getCharacterColor())
                 .into(holder.characterIcon);
 
         if (holder.isItemSelected()) {

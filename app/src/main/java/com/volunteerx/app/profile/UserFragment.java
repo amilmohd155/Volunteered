@@ -9,69 +9,85 @@
 package com.volunteerx.app.profile;
 
 
+import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-import androidx.viewpager.widget.ViewPager;
-
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.Observable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+import androidx.viewpager.widget.ViewPager;
+
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 import com.volunteerx.app.R;
+import com.volunteerx.app.databinding.FragmentUserBinding;
+import com.volunteerx.app.fragments.EditBioFragment;
 import com.volunteerx.app.fragments.EditProfileFragment;
+import com.volunteerx.app.models.User;
 import com.volunteerx.app.profile.fragment.AccountBottomSheetFragment;
 import com.volunteerx.app.profile.fragment.FollowStaticFragment;
 import com.volunteerx.app.profile.fragment.UserActivitiesFragment;
 import com.volunteerx.app.profile.fragment.UserCharacterBSFragment;
 import com.volunteerx.app.profile.fragment.UserContactBSFragment;
 import com.volunteerx.app.profile.fragment.UserPostFragment;
+import com.volunteerx.app.profile.viewmodel.UserViewModel;
 import com.volunteerx.app.utils.BottomNavigationViewHelper;
+import com.volunteerx.app.utils.GlideApp;
 import com.volunteerx.app.utils.SectionsStatePagerAdapter;
-import com.volunteerx.app.utils.WrapContentStatePagerAdapter;
-import com.volunteerx.app.utils.WrapContentViewPager;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static com.volunteerx.app.utils.Converter.NumberFormatting;
 import static com.volunteerx.app.utils.FragmentLoadFunction.replaceFragment;
-
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link UserFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class UserFragment extends Fragment implements View.OnClickListener {
+public class UserFragment extends Fragment implements View.OnClickListener, UserContactBSFragment.ElementClickListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "isUserFragment";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM2 = "Username";
 
 
+    private static final String TAG = "UserFragment";
 
     //Variables
+    private User user;
+    private UserViewModel userViewModel;
     private boolean isUserFragment; //true :: user false:: profile
+    private String username; //username given to the fragment by the calling fragment
 
 
     //UI
     private ViewPager viewPager;
     private Toolbar toolbar;
-    private CircleImageView civProfile;
-    private RelativeLayout rely;
     private TabLayout tabLayout;
-    private Button genButton, btnContact;
 
 
     public UserFragment() {
@@ -90,6 +106,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
         Bundle args = new Bundle();
         args.putBoolean(ARG_PARAM1, isUserFragment);
+//        args.putString(ARG_PARAM2, username);
         fragment.setArguments(args);
         return fragment;
     }
@@ -99,16 +116,33 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             isUserFragment = getArguments().getBoolean(ARG_PARAM1);
+//            username = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        FragmentUserBinding binding;
+
         if (!isUserFragment) {
+
             return inflater.inflate(R.layout.fragment_profile, container, false); //profile fragment
         }
-        return inflater.inflate(R.layout.fragment_user, container, false); //user fragment
+
+        userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user, container, false);
+        binding.setLifecycleOwner(this);
+        binding.setUserViewModel(userViewModel);
+        binding.setIsUserFragment(isUserFragment);
+        binding.setFragment(this);
+
+        setupUserView(binding.getRoot());
+
+        return binding.getRoot();
 
     }
 
@@ -116,29 +150,16 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        civProfile = view.findViewById(R.id.civ_profile_picture);
-        rely = view.findViewById(R.id.user_dropdown);
         viewPager = view.findViewById(R.id.user_tab_container);
         tabLayout = view.findViewById(R.id.tabs_user);
-        genButton = view.findViewById(R.id.follow_btn);
-        btnContact = view.findViewById(R.id.contact_btn);
-        toolbar = view.findViewById(R.id.toolbar);
-
-        view.findViewById(R.id.ll_followers).setOnClickListener(this);
-        view.findViewById(R.id.ll_following).setOnClickListener(this);
-        view.findViewById(R.id.iv_character).setOnClickListener(this);
-        genButton.setOnClickListener(this);
-        btnContact.setOnClickListener(this);
-
-
-        if (isUserFragment) {
-            setupBottomNavigationView(view);
-            setupUserView(view);
-
-        } else setupProfileView(view);
 
         setupViewPager();
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 
     /**
@@ -147,10 +168,15 @@ public class UserFragment extends Fragment implements View.OnClickListener {
      */
     private void setupUserView(View view) {
 
-        view.findViewById(R.id.user_dropdown).setOnClickListener(this);
+        setupBottomNavigationView(view);
 
-        genButton.setText(getContext().getString(R.string.edit_profile));
-
+        userViewModel.queryData();
+        userViewModel.getUser().observe(getViewLifecycleOwner(), user -> {
+            if (user != null) {
+                userViewModel.progressValue.postValue(View.GONE);
+                this.user = user;
+            }
+        });
 
     }
 
@@ -161,7 +187,7 @@ public class UserFragment extends Fragment implements View.OnClickListener {
     private void setupProfileView(View view) {
 
         //if following
-        genButton.setText(getContext().getString(R.string.follow));
+//        genButton.setText(getContext().getString(R.string.follow));
 
         final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.swipe_refresh);
 
@@ -223,32 +249,35 @@ public class UserFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.ll_followers:
-                replaceFragment(FollowStaticFragment.newInstance(0), "FollowStaticFragment", getFragmentManager());
-                break;
-            case R.id.ll_following:
-                replaceFragment(FollowStaticFragment.newInstance(1), "FollowStaticFragment", getFragmentManager());
-                break;
-            case R.id.follow_btn:
-                if (isUserFragment)
-                replaceFragment(new EditProfileFragment(), "EditProfileFragment", getFragmentManager());
-                //else follow option
-                break;
-            case R.id.user_dropdown: //used to change account to user to organisation
-                final AccountBottomSheetFragment fragment = AccountBottomSheetFragment.newInstance();
-                fragment.show(getChildFragmentManager(), fragment.getTag());
-                break;
-            case R.id.iv_character:
-                //show character dialog
-                final UserCharacterBSFragment uCFragment = UserCharacterBSFragment.newInstance();
-                uCFragment.show(getChildFragmentManager(), uCFragment.getTag());
-                break;
-            case R.id.contact_btn:
-                //show contact bottom fragment
-                final UserContactBSFragment ucFragment =  UserContactBSFragment.newInstance();
-                ucFragment.show(getChildFragmentManager(), ucFragment.getTag());
-                break;
+    }
+
+    public void openContactBSFragment() {
+        Log.d(TAG, "openContactBSFragment: clicked");
+        final UserContactBSFragment ucFragment =  UserContactBSFragment.newInstance(user, isUserFragment);
+        ucFragment.show(getChildFragmentManager(), ucFragment.getTag());
+    }
+
+    public void openAccountBSFragment() {
+        final AccountBottomSheetFragment fragment = AccountBottomSheetFragment.newInstance(user);
+        fragment.show(getChildFragmentManager(), fragment.getTag());
+    }
+
+    public void openEditFragment() {
+        replaceFragment(EditProfileFragment.newInstance(user), "EditProfileFragment", getActivity().getSupportFragmentManager());
+    }
+
+    public void lookUpCharactersFragment() {
+        final UserCharacterBSFragment uCFragment = UserCharacterBSFragment.newInstance(user);
+        uCFragment.show(getChildFragmentManager(), uCFragment.getTag());
+    }
+
+    public void gotToStatics(int type) {
+        replaceFragment(FollowStaticFragment.newInstance(type), "FollowStaticFragment", getActivity().getSupportFragmentManager());
+    }
+
+    public void openBioEdit(String bio) {
+        if(bio != null && bio.isEmpty()) {
+            replaceFragment(new EditBioFragment(), "EditBioFragment", getActivity().getSupportFragmentManager());
         }
     }
 
@@ -267,5 +296,14 @@ public class UserFragment extends Fragment implements View.OnClickListener {
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(getContext(), bottomNavigationViewEx, pingFab, getFragmentManager());
 
+    }
+
+    @Override
+    public void onElementClickListener(int ElementType) {
+        if (ElementType == ELEMENT_TYPE_A ) {
+            openEditFragment();
+        }else if (ElementType == ELEMENT_TYPE_B) {
+            //follow code
+        }
     }
 }

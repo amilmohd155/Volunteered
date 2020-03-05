@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
- *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 12/14/19 8:58 PM
+ *  * Created by Amil Muhammed Hamza on 2/19/20 6:29 AM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 12/25/19 9:32 PM
  *
  */
 
-package com.volunteerx.app.startup;
+package com.volunteerx.app.startup.forgotPassword;
 
 import android.content.Context;
 import android.os.Bundle;

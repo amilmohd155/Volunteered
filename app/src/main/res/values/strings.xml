@@ -142,8 +142,10 @@
     <string name="splash_fragment">SplashFragment</string>
     <string name="sign_up_tab">Sign up</string>
     <string name="login_tab">Login</string>
-    <string name="loginInviteText">Already have an account? <font color="#28a8ff"><b>Login</b></font></string>
-    <string name="signUpInviteText">"Don't" have an account?<font color="#28a8ff"><b> Sign up</b></font></string>
+
+    <string name="loginInviteText"><![CDATA[Already have an account?<span style="color:#28a8ff"><b> Login</b></span>]]></string>
+    <string name="signUpInviteText"><![CDATA["Don't" have an account?<span style="color:#28a8ff"><b> Sign up</b></span>]]></string>
+
     <string name="forgot_password_fragment">ForgotPasswordFragment</string>
     <string name="fp_slide_alpha_fragment">FPSlideAFragment</string>
     <string name="fp_slide_username_fragment">FPSlideUsernameFragment</string>
@@ -172,5 +174,15 @@
 
     <string name="fragment_ex_character">ExCharacterFragment</string>
     <string name="edit_profile">Edit profile</string>
+    <string name="add_bio">Add Bio</string>
+    <string name="contact">Contact</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="followers">Followers</string>
+    <string name="activities">Activities</string>
+    <string name="post">Post</string>
 
 </resources>

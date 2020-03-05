@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
- *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 12/25/19 8:15 PM
+ *  * Created by Amil Muhammed Hamza on 2/19/20 6:29 AM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 12/25/19 9:32 PM
  *
  */
 
-package com.volunteerx.app.startup;
+package com.volunteerx.app.startup.forgotPassword;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,8 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,32 +22,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.goodiebag.pinview.Pinview;
+import com.google.android.material.snackbar.Snackbar;
 import com.volunteerx.app.R;
 import com.volunteerx.app.utils.ClickListener;
 
-import static com.volunteerx.app.utils.Constants.FP_FINAL;
+import static com.volunteerx.app.utils.Constants.FP_BETA;
 
-public class FPSlideBetaFragment extends Fragment {
 
-    private static final String TAG = "FPSlideBetaFragment";
+public class FPSlidePhoneFragment extends Fragment {
+
+    private static final String TAG = "FPSlidePhoneFragment";
 
     private final Context context = getContext();
     private ClickListener listener;
 
     //UI
     private Toolbar toolbar;
-    private EditText etPassword;
-    private Button resetButton;
+    private Pinview pinview;
 
-    public FPSlideBetaFragment() {
+    public FPSlidePhoneFragment() {
         //Required null constructor
     }
 
-//    Use this factory method to create a new instance of
+    //    Use this factory method to create a new instance of
 //    this fragment using the provided parameters.
-    public static FPSlideBetaFragment newInstance() {
+    public static FPSlidePhoneFragment newInstance() {
 
-        FPSlideBetaFragment fragment = new FPSlideBetaFragment();
+        FPSlidePhoneFragment fragment = new FPSlidePhoneFragment();
 
         return fragment;
     }
@@ -65,21 +66,42 @@ public class FPSlideBetaFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_fp_slide_beta, container, false);
+        View view = inflater.inflate(R.layout.fragment_fp_slide_phone, container, false);
 
         toolbar = view.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         toolbar.setTitle(null);
 
-        etPassword = view.findViewById(R.id.et_password);
-        resetButton = view.findViewById(R.id.reset_btn);
+        pinview = view.findViewById(R.id.pin_view);
 
-        resetButton.setOnClickListener((View v) -> listener.buttonClick(FP_FINAL) );
-
+        handleOtp();
         setupBackButton();
 
         return view;
 
+    }
+
+    private void handleOtp() {
+
+        pinview.setPinViewEventListener((Pinview pinview, boolean fromUser) -> {
+                Toast.makeText(getContext(), pinview.getValue(), Toast.LENGTH_LONG).show();
+                String pinValue = pinview.getValue();
+
+                if (verifyOtp(pinValue)) {
+                    listener.buttonClick(FP_BETA);
+                }else {
+                    Snackbar.make(getView(), "Wrong OTP entered", Snackbar.LENGTH_LONG).show();
+                }
+        });
+
+    }
+
+    private boolean verifyOtp(String pinValue) {
+
+        if (pinValue.equals("1234")) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -93,18 +115,19 @@ public class FPSlideBetaFragment extends Fragment {
         }
     }
 
-
     private void setupBackButton() {
 
         Log.d(TAG, "setupBackButton: closing fragment");
-        toolbar.setNavigationOnClickListener((View v) -> {
+        toolbar.setNavigationOnClickListener((View view) -> {
                 try {
-                    getActivity().onBackPressed();
+                    getFragmentManager().popBackStack();
                 }catch (NullPointerException e) {
                     e.getStackTrace();
                 }
         });
     }
+
+
 
     @Override
     public void onDetach() {

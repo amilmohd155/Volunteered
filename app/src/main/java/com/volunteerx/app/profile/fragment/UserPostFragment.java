@@ -101,32 +101,8 @@ public class UserPostFragment extends Fragment {
 
         postSection.addDecorator(new SectionDecorator(adapter, getContext(), 20));
 
-        postSection.add(new PostModel(null,
-                "https://maxcdn.icons8.com/app/uploads/2018/07/awesome-women-digital-art.jpg",
-                "John Doe",
-                "Android is a mobile operating system based on a modified version of the Linux kernel and other open source software, designed primarily for touchscreen mobile devices such as smartphones and tablets.",
-                "02-01-2020"));
-
-        ArrayList<MediaModel> mediaModels = new ArrayList<>();
-        mediaModels.add(new ImageModel("https://maxcdn.icons8.com/app/uploads/2018/07/elegant-digital-illustration.png"));
-
-        postSection.add(new PostModel(mediaModels,
-                "https://maxcdn.icons8.com/app/uploads/2018/07/awesome-women-digital-art.jpg",
-                "John Doe",
-                "Android is a mobile operating system based on a modified version of the Linux kernel and other open source software, designed primarily for touchscreen mobile devices such as smartphones and tablets.",
-                "02-01-2020"));
-
-        mediaModels.add(new ImageModel("https://maxcdn.icons8.com/app/uploads/2018/07/awesome-women-digital-art.jpg"));
-        mediaModels.add(new ImageModel("https://i.postimg.cc/N0RfYyRL/fairy-tales.png"));
-
-        postSection.add(new PostModel(mediaModels,
-                "https://maxcdn.icons8.com/app/uploads/2018/07/awesome-women-digital-art.jpg",
-                "John Doe",
-                "Android is a mobile operating system based on a modified version of the Linux kernel and other open source software, designed primarily for touchscreen mobile devices such as smartphones and tablets.",
-                "02-01-2020"));
-
         adapter.registerItemBinders(postBinder);
-        adapter.addSection(postSection);
+//        adapter.addSection(postSection);
 
     }
 

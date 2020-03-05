@@ -13,6 +13,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,32 +28,57 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 import com.volunteerx.app.R;
+import com.volunteerx.app.models.User;
 import com.volunteerx.app.profile.DividerDecorator;
 import com.volunteerx.app.profile.binder.AccountBinder;
 import com.volunteerx.app.profile.model.AccountModel;
+import com.volunteerx.app.utils.GlideApp;
 
 import mva2.adapter.ListSection;
 import mva2.adapter.MultiViewAdapter;
 import mva2.adapter.decorator.Decorator;
 import mva2.extension.decorator.DividerDecoration;
 
-//Todo incomplete
+//Todo Logical inconsistency found
 public class AccountBottomSheetFragment extends BottomSheetDialogFragment {
 
     private static final String TAG = "AccountBottomSheetFrag";
+    private static final String PARAM_1 = "UserValue";
 
     private RecyclerView recyclerView;
     private LinearLayout llAdd;
 
     private MultiViewAdapter adapter;
 
+    private User user;
+    private FirebaseFirestore rootDef = FirebaseFirestore.getInstance();
+
+
     public AccountBottomSheetFragment() {
     }
 
-    public static AccountBottomSheetFragment newInstance() {
+    public static AccountBottomSheetFragment newInstance(User user) {
+        
+        Bundle args = new Bundle();
+        args.putParcelable(PARAM_1, user);
+        
         AccountBottomSheetFragment fragment = new AccountBottomSheetFragment();
+        fragment.setArguments(args);
+
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            user = getArguments().getParcelable(PARAM_1);
+        }
+        adapter = new MultiViewAdapter();
     }
 
     @Nullable
@@ -70,33 +96,35 @@ public class AccountBottomSheetFragment extends BottomSheetDialogFragment {
         recyclerView = view.findViewById(R.id.recycler_view);
         llAdd = view.findViewById(R.id.ll_add);
 
-        adapter = new MultiViewAdapter();
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+//        listSection.add(new AccountModel("https://i.postimg.cc/9Q6FvPRv/thought.jpg",
+//                "JohnDoe",
+//                true));
 
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
-        recyclerView.addItemDecoration(adapter.getItemDecoration());
 
-        AccountBinder accountBinder = new AccountBinder(getContext(), Glide.with(this));
-        accountBinder.addDecorator(new DividerDecorator(adapter, getContext()));
+        AsyncTask.execute(() -> {
 
-        adapter.registerItemBinders(accountBinder);
+            AccountBinder accountBinder = new AccountBinder(getContext());
+            accountBinder.addDecorator(new DividerDecorator(adapter, getContext()));
 
-        ListSection<AccountModel> listSection = new ListSection<>();
+            adapter.registerItemBinders(accountBinder);
 
-        listSection.add(new AccountModel("https://i.postimg.cc/9Q6FvPRv/thought.jpg",
-                "JohnDoe",
-                true));
+            ListSection<AccountModel> listSection = new ListSection<>();
 
-        listSection.add(new AccountModel("https://i.postimg.cc/NGdGgv28/da2f9881304925-5cfb6ffe0984e.png",
-                "JaneDoe",
-                false));
+            listSection.add(new AccountModel(user.getPhotoUrl(), user.getName(), true));
 
-        listSection.add(new AccountModel("https://i.postimg.cc/NGdGgv28/da2f9881304925-5cfb6ffe0984e.png",
-                "JaneDoe",
-                false));
+            //check if linked account exits
 
-        adapter.addSection(listSection);
+            adapter.addSection(listSection);
+
+            getActivity().runOnUiThread(() -> {
+
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.setAdapter(adapter);
+                recyclerView.addItemDecoration(adapter.getItemDecoration());
+
+            });
+        });
 
     }
 

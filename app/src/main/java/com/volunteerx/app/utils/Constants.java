@@ -58,4 +58,6 @@ public class Constants {
     public static final int CHAR_SCL = 13;
     public static final int CHAR_WMN = 14;
 
+    public static final int MIN_AGE = 13;
+
 }

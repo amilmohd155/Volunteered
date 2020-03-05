@@ -9,8 +9,9 @@
 package com.volunteerx.app.profile.fragment;
 
 import android.graphics.Rect;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,16 +23,15 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.volunteerx.app.R;
-import com.volunteerx.app.binder.CharacterBinder;
 import com.volunteerx.app.models.CharacterModel;
+import com.volunteerx.app.models.User;
 import com.volunteerx.app.profile.binder.UserCharacterBinder;
-import com.volunteerx.app.startup.CharacterWizardFragment;
+import com.volunteerx.app.utils.CharacterHelper;
 
 import java.util.ArrayList;
 
 import mva2.adapter.ListSection;
 import mva2.adapter.MultiViewAdapter;
-import mva2.adapter.util.Mode;
 
 import static com.volunteerx.app.utils.Constants.CHAR_ANI;
 import static com.volunteerx.app.utils.Constants.CHAR_ART;
@@ -39,31 +39,35 @@ import static com.volunteerx.app.utils.Constants.CHAR_CLD;
 import static com.volunteerx.app.utils.Constants.CHAR_CVL;
 import static com.volunteerx.app.utils.Constants.CHAR_DSR;
 import static com.volunteerx.app.utils.Constants.CHAR_ECO;
-import static com.volunteerx.app.utils.Constants.CHAR_EDU;
-import static com.volunteerx.app.utils.Constants.CHAR_ENV;
-import static com.volunteerx.app.utils.Constants.CHAR_HLH;
-import static com.volunteerx.app.utils.Constants.CHAR_HMN;
-import static com.volunteerx.app.utils.Constants.CHAR_POL;
-import static com.volunteerx.app.utils.Constants.CHAR_POV;
-import static com.volunteerx.app.utils.Constants.CHAR_SCI;
-import static com.volunteerx.app.utils.Constants.CHAR_SCL;
-import static com.volunteerx.app.utils.Constants.CHAR_WMN;
-import static com.volunteerx.app.utils.Constants.MIN_NUM_CHARACTER;
 
 public class UserCharacterBSFragment extends BottomSheetDialogFragment {
 
+    private static final String PARAM_1 = "User_Value";
+
     private RecyclerView recyclerView;
+
+    private User user;
 
     public UserCharacterBSFragment() {
     }
 
-    public static UserCharacterBSFragment newInstance() {
+    public static UserCharacterBSFragment newInstance(User user) {
 
         Bundle args = new Bundle();
+        args.putParcelable(PARAM_1, user);
 
         UserCharacterBSFragment fragment = new UserCharacterBSFragment();
         fragment.setArguments(args);
+
         return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            user = getArguments().getParcelable(PARAM_1);
+        }
     }
 
     @Nullable
@@ -84,39 +88,43 @@ public class UserCharacterBSFragment extends BottomSheetDialogFragment {
 
     private void initRecyclerView() {
 
-        ArrayList<CharacterModel> characters = new ArrayList<>();
+        ArrayList<CharacterModel> characters;
+        characters = new ArrayList<>();
 
-        characters.add(new CharacterModel(CHAR_ANI, R.string.animal, R.color.colorAnimal));
-        characters.add(new CharacterModel(CHAR_ART, R.string.art, R.color.colorArt));
-        characters.add(new CharacterModel(CHAR_CLD, R.string.children, R.color.colorChildren));
-        characters.add(new CharacterModel(CHAR_CVL, R.string.civil, R.color.colorCivil));
-        characters.add(new CharacterModel(CHAR_DSR, R.string.disaster, R.color.colorDisaster));
-        characters.add(new CharacterModel(CHAR_ECO, R.string.economic, R.color.colorEconomics));
-//        characters.add(new CharacterModel(CHAR_EDU, R.string.education, R.color.colorEducation));
-//        characters.add(new CharacterModel(CHAR_ENV, R.string.environment, R.color.colorEnvironment));
-//        characters.add(new CharacterModel(CHAR_HLH, R.string.health, R.color.colorHealth));
-//        characters.add(new CharacterModel(CHAR_HMN, R.string.human, R.color.colorHuman));
-//        characters.add(new CharacterModel(CHAR_POL, R.string.politics, R.color.colorPolitics));
-//        characters.add(new CharacterModel(CHAR_POV, R.string.poverty, R.color.colorPoverty));
-//        characters.add(new CharacterModel(CHAR_SCI, R.string.science, R.color.colorScience));
-//        characters.add(new CharacterModel(CHAR_SCL, R.string.social, R.color.colorSocial));
-//        characters.add(new CharacterModel(CHAR_WMN, R.string.women, R.color.colorWomen));
+//        characters.add(new CharacterModel(CHAR_ANI, R.string.animal, R.color.colorAnimal));
+
 
         MultiViewAdapter adapter = new MultiViewAdapter();
-        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.HORIZONTAL);
 
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new SpacesItemDecoration(8));
+        AsyncTask.execute(() -> {
 
-        adapter.registerItemBinders(new UserCharacterBinder(getContext()));
+            CharacterHelper helper = new CharacterHelper(getContext());
+            for (int characterID : user.getUserCharacter()) {
+                characters.add(new CharacterModel(characterID, helper.getCharacterColor(characterID), helper.getCharacterName(characterID)));
+            }
 
-        ListSection<CharacterModel> listSection = new ListSection<>();
-        listSection.addAll(characters);
+            helper.recycle();
 
-        adapter.addSection(listSection);
+            adapter.registerItemBinders(new UserCharacterBinder(getContext()));
+
+            ListSection<CharacterModel> listSection = new ListSection<>();
+            listSection.addAll(characters);
+
+            adapter.addSection(listSection);
+
+            getActivity().runOnUiThread(() -> {
+
+                StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(4,StaggeredGridLayoutManager.HORIZONTAL);
+
+                recyclerView.setAdapter(adapter);
+                recyclerView.setLayoutManager(layoutManager);
+                recyclerView.addItemDecoration(new SpacesItemDecoration(8));
+
+            });
+        });
 
     }
+
 
     private class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 

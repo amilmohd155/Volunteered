@@ -60,24 +60,18 @@ public class BottomNavigationViewHelper {
                     break;
 
                 case R.id.ic_search:
-//                    Intent intentLocation = new Intent(context, ExploreActivity.class);
-//                    context.startActivity(intentLocation);
 
                     replaceFragment(ExploreFragment.newInstance(), "ExploreFragment", fragmentManager);
 
                     break;
 
                 case R.id.ic_notification:
-//                    Intent intentNotifications = new Intent(context, NotificationActivity.class);
-//                    context.startActivity(intentNotifications);
 
                     replaceFragment(NotificationCenter.newInstance(), "NotificationCenter", fragmentManager);
 
                     break;
 
                 case R.id.ic_user:
-//                    Intent intentUser = new Intent(context, UserActivity.class);
-//                    context.startActivity(intentUser);
 
                     replaceFragment(UserFragment.newInstance(true), "UserFragment", fragmentManager);
 

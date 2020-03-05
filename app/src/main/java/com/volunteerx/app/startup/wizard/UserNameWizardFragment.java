@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
- *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 12/14/19 9:09 PM
+ *  * Created by Amil Muhammed Hamza on 2/19/20 6:30 AM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 12/30/19 6:35 PM
  *
  */
 
-package com.volunteerx.app.startup;
+package com.volunteerx.app.startup.wizard;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -26,27 +26,42 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.view.inputmethod.EditorInfoCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.volunteerx.app.R;
 import com.volunteerx.app.api.APIInterface;
 import com.volunteerx.app.api.ServiceGenerator;
 import com.volunteerx.app.api.model.PureErrorResponse;
 import com.volunteerx.app.utils.SharedPrefManager;
+import com.volunteerx.app.utils.StatusColorClass;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.volunteerx.app.utils.FragmentLoadFunction.replaceFragment;
+import static com.volunteerx.app.utils.StatusColorClass.DARK_STATUS_BAR_ICON;
+
 public class UserNameWizardFragment  extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "UserNameWizardFragment";
 
     //Var
-
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+    private DocumentReference documentReference = rootRef.collection("users").document(auth.getCurrentUser().getUid());
 
     //UI
     private ViewGroup mContainer;
@@ -64,15 +79,26 @@ public class UserNameWizardFragment  extends Fragment implements View.OnClickLis
         return new UserNameWizardFragment();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         Log.d(TAG, "onCreateView: username wizard created");
 
-        view = inflater.inflate(R.layout.fragment_username_wizard, container, false);
+        return inflater.inflate(R.layout.fragment_username_wizard, container, false);
 
-        mContainer = container;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        StatusColorClass.setStatusColor(getActivity(), getContext().getColor(R.color.colorWhite), DARK_STATUS_BAR_ICON);
 
         nextBtn = view.findViewById(R.id.btn_next);
         etUsername = view.findViewById(R.id.et_username);
@@ -81,7 +107,9 @@ public class UserNameWizardFragment  extends Fragment implements View.OnClickLis
 
         progressBar.setIndeterminateTintList(ColorStateList.valueOf(getContext().getColor(R.color.colorBlack)));
 
-        nextBtn.setOnClickListener(this);
+        Log.d(TAG, "onViewCreated: " + documentReference.getId());
+
+        view.findViewById(R.id.btn_next).setOnClickListener(this);
 
         etUsername.addTextChangedListener(new TextWatcher() {
             @Override
@@ -91,7 +119,7 @@ public class UserNameWizardFragment  extends Fragment implements View.OnClickLis
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() >= 6) {
+                if (charSequence.length() >= 6 && charSequence.length() <= 60) {
                     halfUsername = charSequence;
                     nextBtn.setEnabled(true);
                 }
@@ -112,16 +140,40 @@ public class UserNameWizardFragment  extends Fragment implements View.OnClickLis
             return false;
         });
 
-        return view;
-
     }
 
     @Override
     public void onClick(View view) {
         if (view.getId() == R.id.btn_next) {
-            setupUsername();
-
+//            setupUsername();
+            checkIfUsernameAvailable();
         }
+    }
+
+    private void checkIfUsernameAvailable() {
+        iv_username_error.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+
+        rootRef.collection("users").whereEqualTo("username", halfUsername.toString())
+                .get().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        if (!task.getResult().isEmpty() && !documentReference.getId().equals(auth.getCurrentUser().getUid())) {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            iv_username_error.setVisibility(View.VISIBLE);
+                            nextBtn.setEnabled(false);
+                        }else {
+                            progressBar.setVisibility(View.INVISIBLE);
+                            storeAvailableUsername();
+                        }
+                    }
+                });
+
+    }
+
+    private void storeAvailableUsername() {
+        documentReference.update("username", halfUsername.toString())
+                .addOnSuccessListener(aVoid -> replaceFragment(AgeWizardFragment.newInstance(), "AgeWizardFragment", getFragmentManager()))
+                .addOnFailureListener(e -> Log.e(TAG, "storeAvailableUsername: ", e ));
     }
 
     /**

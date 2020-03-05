@@ -49,7 +49,7 @@ public class CharacterBinder extends ItemBinder<CharacterModel, CharacterBinder.
         if (listener!= null) {
             if (holder.isItemSelected()) {
 
-                holder.cvCharacterColor.setCardBackgroundColor(context.getColor(item.getCharacterColorID()));
+                holder.cvCharacterColor.setCardBackgroundColor(context.getColor(item.getCharacterColor()));
                 holder.tvCharacterName.setTextColor(context.getColor(R.color.colorWhite));
 
             }

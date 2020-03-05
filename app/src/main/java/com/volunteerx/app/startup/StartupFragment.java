@@ -22,6 +22,9 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.volunteerx.app.R;
+import com.volunteerx.app.databinding.FragmentStartupBinding;
+import com.volunteerx.app.startup.forgotPassword.ForgotPasswordFragment;
+import com.volunteerx.app.startup.wizard.WizardFragment;
 import com.volunteerx.app.utils.ClickListener;
 import com.volunteerx.app.utils.RoundedCorner;
 import com.volunteerx.app.utils.SectionsPagerAdapter;
@@ -43,6 +46,7 @@ public class StartupFragment extends Fragment implements ClickListener {
     private TabLayout tabLayout;
     private ViewGroup mContainer;
 
+    FragmentStartupBinding binding;
 
     @Nullable
     @Override
@@ -50,23 +54,16 @@ public class StartupFragment extends Fragment implements ClickListener {
 
         mContainer = container;
 
-        View view = inflater.inflate(R.layout.fragment_startup, container, false);
+        binding = FragmentStartupBinding.inflate(inflater, container, false);
 
-        try {
-            setStatusColor(getActivity(),getContext().getColor(R.color.colorVolunteerX), LIGHT_STATUS_BAR_ICON);
-        }catch (NullPointerException e) {e.getStackTrace();}
+        viewPager = binding.pager;
+        tabLayout = binding.tabLayout;
 
-        Log.d(TAG, "onCreateView: startup view created");
-
-        viewPager = view.findViewById(R.id.pager);
-        tabLayout = view.findViewById(R.id.tab_layout);
-        final LinearLayout curvyBackgroundLayer = view.findViewById(R.id.curvy_layout);
-
-        RoundedCorner.setRoundedCorner(curvyBackgroundLayer, 25 , RoundedCorner.ROUNDED_TOP);
+        RoundedCorner.setRoundedCorner(binding.curvyLayout, 25 , RoundedCorner.ROUNDED_TOP);
 
         setupViewPagerViews();
 
-        return view;
+        return binding.getRoot();
 
     }
 
@@ -80,13 +77,8 @@ public class StartupFragment extends Fragment implements ClickListener {
 
         tabLayout.setupWithViewPager(viewPager);
 
-        try {
-            tabLayout.getTabAt(0).setText(R.string.login_tab);
-            tabLayout.getTabAt(1).setText(R.string.sign_up_tab);
-        }catch (NullPointerException e) {
-            e.getStackTrace();
-        }
-
+        tabLayout.getTabAt(0).setText(R.string.login_tab);
+        tabLayout.getTabAt(1).setText(R.string.sign_up_tab);
 
     }
 
@@ -136,5 +128,9 @@ public class StartupFragment extends Fragment implements ClickListener {
         return false;
     }
 
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }

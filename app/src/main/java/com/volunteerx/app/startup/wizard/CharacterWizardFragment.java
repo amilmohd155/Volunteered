@@ -1,14 +1,15 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
- *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 12/14/19 9:14 PM
+ *  * Created by Amil Muhammed Hamza on 2/19/20 6:30 AM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 2/3/20 11:10 PM
  *
  */
 
-package com.volunteerx.app.startup;
+package com.volunteerx.app.startup.wizard;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,11 +23,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.volunteerx.app.R;
+import com.volunteerx.app.SimpleProgressDialog.ProgressDialog;
 import com.volunteerx.app.api.APIInterface;
 import com.volunteerx.app.api.ServiceGenerator;
 import com.volunteerx.app.api.model.PureErrorResponse;
 import com.volunteerx.app.binder.CharacterBinder;
+import com.volunteerx.app.home.HomeActivity;
 import com.volunteerx.app.models.CharacterModel;
 import com.volunteerx.app.utils.ClickListener;
 import com.volunteerx.app.utils.SharedPrefManager;
@@ -62,6 +70,10 @@ import static com.volunteerx.app.utils.Constants.MIN_NUM_CHARACTER;
 public class CharacterWizardFragment extends Fragment implements ClickListener {
 
     private static final String TAG = "CharacterWizardFragment";
+
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
+    private FirebaseFirestore rootRef = FirebaseFirestore.getInstance();
+    private DocumentReference documentReference = rootRef.collection("users").document(auth.getCurrentUser().getUid());
 
     private int userId;
     private List<CharacterModel> characters = new ArrayList<>();
@@ -169,32 +181,31 @@ public class CharacterWizardFragment extends Fragment implements ClickListener {
     private void setupNextButton() {
 
         nextBtn.setOnClickListener(view -> {
+
+            ProgressDialog.Builder builder = new ProgressDialog.Builder(getContext())
+                    .setMessage("Loading")
+                    .setTheme(ProgressDialog.LIGHT_THEME);
+
+            builder.build();
             //Doorway to Home activity
-            //tODO handle db insertion and enter wizardComplete to sharedPreferences
             characterSet.clear();
 
             for (CharacterModel model: listSection.getSelectedItems()) {
                 characterSet.add(model.getCharacterID());
             }
 
-            APIInterface apiInterface = ServiceGenerator.createService(APIInterface.class);
-
-            Call<PureErrorResponse> call = apiInterface.setCharacter(userId, characterSet);
-
-            call.enqueue(new Callback<PureErrorResponse>() {
-                @Override
-                public void onResponse(Call<PureErrorResponse> call, Response<PureErrorResponse> response) {
-                    if (!response.body().getError()) {
+            documentReference.update("userCharacter", characterSet)
+                    .addOnSuccessListener(aVoid -> {
+                        Log.d(TAG, "setupNextButton: done with wizard");
                         SharedPrefManager.getInstance(getContext()).wizardCompleted(true);
-                        //TODO go to home page with welcome note
-                    }
-                }
+                        builder.dismiss();
+                        startActivity(new Intent(getContext(), HomeActivity.class));
+                    })
+                    .addOnFailureListener(e -> {
+                        Log.e(TAG, "setupNextButton: wizard failed", e);
+                        builder.dismiss();
+                    });
 
-                @Override
-                public void onFailure(Call<PureErrorResponse> call, Throwable t) {
-
-                }
-            });
 
         });
 

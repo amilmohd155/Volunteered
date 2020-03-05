@@ -12,16 +12,21 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 
 import com.volunteerx.app.R;
 
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 public class CharacterHelper {
 
     private ArrayList<Integer> characterColor = new ArrayList<>();
     private int characterId;
     private Context context;
+
+    public CharacterHelper() {
+    }
 
     public CharacterHelper(Context context) {
         this.context = context;
@@ -69,11 +74,19 @@ public class CharacterHelper {
         return context.getResources().getStringArray(R.array.characterName)[characterId];
     }
 
+    public String getCharacterNameID(int characterId) {
+        return context.getResources().getStringArray(R.array.characterName)[characterId];
+    }
+
     public void recycle() {
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> characterColor = null, 5000);
 
 
+    }
+
+    public static String getCharacterName(View view, int characterId) {
+        return view.getResources().getStringArray(R.array.characterName)[characterId];
     }
 
 }

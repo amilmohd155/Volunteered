@@ -26,12 +26,18 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.volunteerx.app.R;
 import com.volunteerx.app.SimpleProgressDialog.ProgressDialog;
 import com.volunteerx.app.VolunteerXDialog.VolunteerXDialog;
@@ -41,6 +47,8 @@ import com.volunteerx.app.home.HomeActivity;
 import com.volunteerx.app.api.model.Response;
 import com.volunteerx.app.utils.ClickListener;
 import com.volunteerx.app.utils.SharedPrefManager;
+
+import java.util.concurrent.Executor;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
@@ -82,6 +90,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener,Text
     private ProgressDialog.Builder builder;
     private int userDataType;
 
+    private FirebaseAuth auth;
+
     //required
     public LoginFragment() {
 //        default null constructor
@@ -98,6 +108,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener,Text
         if (getArguments() != null) {
             //bundle values;
         }
+        auth = FirebaseAuth.getInstance();
+
     }
 
     @Nullable
@@ -193,9 +205,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener,Text
         else if (isValidMobile(userData))  userDataType = PHONE_ENTRY;
         else Log.d(TAG, "loginFunction: error format");
 
-        if (userDataType != -1) {
+        if (userDataType == EMAIL_ENTRY) {
 
-            apiService();
+//            apiService();
+            firebaseWithEmail();
 
         }
         else {
@@ -204,6 +217,24 @@ public class LoginFragment extends Fragment implements View.OnClickListener,Text
 
         }
 
+    }
+
+    private void firebaseWithEmail() {
+        auth.signInWithEmailAndPassword(userData, password)
+                .addOnCompleteListener(getActivity(), task -> {
+                    if (task.isSuccessful()) {
+                        builder.dismiss();
+                        Log.d(TAG, "firebaseWithEmail: successfully created user");
+
+                        startActivity(new Intent(getActivity(), HomeActivity.class));
+
+                    }else {
+                        Log.w(TAG, "signInWithEmail:failure", task.getException());
+                        builder.dismiss();
+                        Toast.makeText(getContext(), "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void apiService() {

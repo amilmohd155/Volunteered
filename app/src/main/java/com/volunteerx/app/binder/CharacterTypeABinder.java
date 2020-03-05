@@ -39,7 +39,7 @@ public class CharacterTypeABinder extends ItemBinder<CharacterModel, CharacterTy
     @Override
     public void bindViewHolder(CharacterViewHolder holder, CharacterModel item) {
         holder.characterName.setText(item.getCharacterNameID());
-        holder.characterCard.setCardBackgroundColor(context.getColor(item.getCharacterColorID()));
+        holder.characterCard.setCardBackgroundColor(context.getColor(item.getCharacterColor()));
         Glide.with(context)
                 .load(item.getCharacterIcon())
                 .into(holder.characterIcon);

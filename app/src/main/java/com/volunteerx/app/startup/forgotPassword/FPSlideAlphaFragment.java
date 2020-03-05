@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
- *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 12/14/19 9:21 PM
+ *  * Created by Amil Muhammed Hamza on 2/19/20 6:29 AM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 1/24/20 9:59 PM
  *
  */
 
-package com.volunteerx.app.startup;
+package com.volunteerx.app.startup.forgotPassword;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,7 +18,6 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

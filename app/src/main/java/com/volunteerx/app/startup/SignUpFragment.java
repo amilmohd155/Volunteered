@@ -14,28 +14,59 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Html;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.volunteerx.app.R;
 import com.volunteerx.app.SimpleProgressDialog.ProgressDialog;
 import com.volunteerx.app.VolunteerXDialog.VolunteerXDialog;
 import com.volunteerx.app.api.APIInterface;
 import com.volunteerx.app.api.ServiceGenerator;
 import com.volunteerx.app.api.model.Response;
+import com.volunteerx.app.databinding.FragmentSignUpBinding;
+import com.volunteerx.app.firebase.FirebaseMethods;
 import com.volunteerx.app.models.User;
+import com.volunteerx.app.profile.viewmodel.UserViewModel;
+import com.volunteerx.app.startup.model.SigningUser;
+import com.volunteerx.app.startup.viewModel.SigningViewModel;
+import com.volunteerx.app.startup.wizard.UserNameWizardFragment;
+import com.volunteerx.app.startup.wizard.WizardFragment;
+import com.volunteerx.app.utils.CheckerClass;
 import com.volunteerx.app.utils.ClickListener;
 import com.volunteerx.app.utils.SharedPrefManager;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import mehdi.sakout.fancybuttons.FancyButton;
 import retrofit2.Call;
@@ -49,12 +80,21 @@ import static com.volunteerx.app.utils.Constants.EXISTING_USER;
 import static com.volunteerx.app.utils.Constants.INVITE_LOGIN;
 import static com.volunteerx.app.utils.Constants.PHONE_ENTRY;
 import static com.volunteerx.app.utils.Constants.WIZARD;
+import static com.volunteerx.app.utils.FragmentLoadFunction.replaceFragment;
+import static com.volunteerx.app.utils.UtilClass.hideSoftKeyboard;
 
 public class SignUpFragment extends Fragment implements View.OnClickListener, TextWatcher {
 
     private static final String TAG = "SignUpFragment";
 
     //Var
+    private FirebaseAuth auth;
+    private FirebaseFirestore db;
+    private DocumentReference documentReference;
+
+    private SigningViewModel signingViewModel;
+
+
     private ClickListener listener;
     private String userData, fullName, password;
     private int userDataType;
@@ -84,6 +124,12 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Te
         if (getArguments() != null) {
             //bundle values;
         }
+        auth  = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+        builder = new ProgressDialog.Builder(getContext())
+                .setMessage("Loading")
+                .setTheme(LIGHT_THEME);
 
     }
 
@@ -91,7 +137,23 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Te
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.fragment_sign_up, container, false);
+        FragmentSignUpBinding binding = DataBindingUtil.inflate(inflater, R.layout.fragment_sign_up, container, false);
+        signingViewModel = new ViewModelProvider(this).get(SigningViewModel.class);
+
+        binding.setUserViewModel(signingViewModel);
+        binding.setLifecycleOwner(this);
+
+        signingViewModel.getTask().observe(getViewLifecycleOwner(), authResultTask -> {
+            Log.d(TAG, "onCreateView: something please");
+        });
+
+        return binding.getRoot();
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
         tvLoginInvite = view.findViewById(R.id.tv_login_invite);
         signUpBtn = view.findViewById(R.id.btn_sign_up);
@@ -113,11 +175,15 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Te
         etPassword.addTextChangedListener(this);
         etFullName.addTextChangedListener(this);
 
-        return view;
+        etPassword.setOnEditorActionListener((TextView textView, int i, KeyEvent keyEvent) -> {
+            if (i == EditorInfo.IME_ACTION_DONE) {
+                if (signUpBtn.isEnabled()) signUpBtn.performClick();
+                return true;
+            }
+            return false;
+        });
 
     }
-
-
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -143,7 +209,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Te
                 listener.buttonClick(INVITE_LOGIN);
             }break;
             case R.id.btn_sign_up: {
-                signUpFunc();
+//                signUpFunc();
             }
         }
     }
@@ -151,102 +217,101 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Te
     private void signUpFunc() {
 
         Log.d(TAG, "signUpFunc: signing up here");
+        if (getActivity() != null) hideSoftKeyboard(getActivity());
 
         builder = new ProgressDialog.Builder(getContext())
                 .setMessage("Loading")
                 .setTheme(LIGHT_THEME);
 
+        builder.build();
+
         userData = etUserData.getText().toString().trim();
         fullName = etFullName.getText().toString().trim();
         password = etPassword.getText().toString().trim();
 
-
-        user = new User(fullName, password);
-
         if (isEmailValid(userData)) {
-
-            userDataType = EMAIL_ENTRY;
-            user.setEmailAddress(userData);
+//            createUserWithEmail();
 
         } else if (isValidMobile(userData)) {
 
-            userDataType = PHONE_ENTRY;
-            user.setPhone(userData);
-
         } else {
 
+            builder.dismiss();
+
             //dialog for retry
-            return;
+            new VolunteerXDialog.Builder(getActivity())
+                    .setMessage("Invalid entry")
+                    .setPositiveBtnText("Try again")
+                    .OnPositiveClicked(Dialog::dismiss)
+                    .isCancellable(true)
+                    .build();
 
         }
 
-//        listener.buttonClick(WIZARD);
-        apiService();
     }
 
-    private void apiService() {
+    private void createUserWithEmail() {
+        auth.createUserWithEmailAndPassword(userData, password).addOnCompleteListener(getActivity() ,task -> {
+           if (task.isSuccessful()) {
+               Log.d(TAG, "createUserWithEmail:success");
 
-        builder.build();
+               User user = new User(null,
+                       null,
+                       "",
+                       "",
+                       userData,
+                       fullName,
+                       "",
+                       "",
+                       "",
+                       "",
+                       0,
+                       0,
+                       0,
+                       false
+               );
 
-        APIInterface apiInterface = ServiceGenerator.createService(APIInterface.class);
+               db.collection("users").document(auth.getCurrentUser().getUid()).set(user)
+                       .addOnSuccessListener(aVoid -> {
+                           builder.dismiss();
 
-        Call<Response> call = apiInterface.createUser(
-                user.getFullName(),
-                userData,
-                user.getPassword(),
-                userDataType
-        );
 
-        call.enqueue(new Callback<Response>() {
-            @Override
-            public void onResponse(Call<Response> call, retrofit2.Response<Response> response) {
 
-                builder.dismiss();
+                           Log.d(TAG, "createUserWithEmail: DocumentSnapshot added with ID:" );
+                           SharedPrefManager.getInstance(getContext()).wizardCompleted(false);
+                           replaceFragment(UserNameWizardFragment.newInstance(), "UserNameWizardFragment", getParentFragment().getFragmentManager());
 
-                if (response.body().getError()) {
+                       }).addOnFailureListener(e -> {
+                           builder.dismiss();
+                           Log.w(TAG, "createUserWithEmail: error adding document", e);
+               });
 
-                    if (response.body().getErrorValue() == EXISTING_USER) {
-                        Log.d(TAG, "onResponse: existing user");
-                        new VolunteerXDialog.Builder(getActivity())
-                                .setTitle(response.body().getMessage())
-                                .setMessage("The account already exists. Please try logging in or enter a different email address or phone number.")
-                                .setPositiveBtnText("Try Again")
-                                .OnPositiveClicked(Dialog::dismiss)
-                                .setNegativeBtnText("Log in")
-                                .OnNegativeClicked((Dialog dialog) -> listener.buttonClick(INVITE_LOGIN))
-                                .build();
-                    }
-                }
-                else {
-                    Log.d(TAG, "onResponse: User Id - " + response.body().getUserID());
-                    SharedPrefManager.getInstance(getContext()).userLogin(response.body().getUserID());
-                    listener.buttonClick(WIZARD);
-                }
 
-            }
+           }else {
+               Log.w(TAG, "createUserWithEmail:failure", task.getException());
 
-            @Override
-            public void onFailure(Call<Response> call, Throwable t) {
+               builder.dismiss();
 
-                //failure snack bar
-                builder.dismiss();
-                Snackbar.make(view, R.string.network_error, Snackbar.LENGTH_INDEFINITE)
-                        .setAction(R.string.try_again, (View view) -> apiService())
-                        .setActionTextColor(getContext().getColor(R.color.color685783))
-                        .show();
+               Toast.makeText(getContext(), "Authentication failed. " + task.getException(),
+                       Toast.LENGTH_SHORT).show(); //handle exceptions
 
-            }
+           }
         });
-
     }
 
     private boolean validate(EditText[] fields){
         for (EditText currentField : fields){
-            if(currentField.getText().toString().length() <= 0){
+            if(currentField.getText().toString().isEmpty()){
                 return false;
             }
         }
         return true;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
     }
 
     @Override
@@ -256,7 +321,7 @@ public class SignUpFragment extends Fragment implements View.OnClickListener, Te
 
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        if (validate(new EditText[]{etFullName, etPassword, etUserData})) {
+        if (validate(new EditText[]{etFullName, etPassword, etUserData}) && etPassword.getText().toString().length() >= 8) {
             signUpBtn.setEnabled(true);
         }else signUpBtn.setEnabled(false);
     }

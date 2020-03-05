@@ -7,24 +7,367 @@
   ~  */
   -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".profile.UserFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:viewBindingIgnore="true">
 
-    <include layout="@layout/snippet_top_bar_user"/>
+    <data>
+        <import type="android.text.TextUtils"/>
+        <import type="com.volunteerx.app.utils.Converter"/>
+        <variable
+            name="userViewModel"
+            type="com.volunteerx.app.profile.viewmodel.UserViewModel" />
+        <variable
+            name="isUserFragment"
+            type="java.lang.Boolean" />
+        <variable
+            name="fragment"
+            type="com.volunteerx.app.profile.UserFragment" />
+    </data>
 
-    <androidx.viewpager.widget.ViewPager
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/user_tab_container"
-        android:layout_marginBottom="50dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
+        android:layout_height="match_parent"
+        android:id="@+id/parent_layout">
 
-    <!-- Bottom Navigation  -->
-    <include layout="@layout/layout_bottom_navigation_view"/>
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{userViewModel.progressValue}"
+            android:background="@color/colorWhite"
+            android:elevation="1dp"
+            android:padding="180dp"
+            android:layout_marginTop="?attr/actionBarSize"/>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <!--        <include layout="@layout/snippet_top_bar_user" />-->
+        <!--    Top part    -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                app:contentScrim="@color/colorWhite"
+                app:scrimAnimationDuration="0"
+                app:scrimVisibleHeightTrigger="0dp"
+                app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Small"
+                app:expandedTitleMarginStart="12dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <!--                <include-->
+                <!--                    android:layout_marginTop="?attr/actionBarSize"-->
+                <!--                    layout="@layout/snippet_profile_desc_area"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    app:layout_collapseMode="pin"/>-->
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="pin"
+                    android:layout_marginTop="?attr/actionBarSize">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/civ_profile_picture"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        app:civ_border_color="@color/colorWhite"
+                        app:civ_border_width="4dp"
+                        imageUrl="@{userViewModel.user.photoUrl}"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/follow_btn"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/rounded_border_5dp"
+                        android:backgroundTint="@color/colorBlack"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="@{isUserFragment ? @string/edit_profile : @string/follow}"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/civ_profile_picture"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:onClick="@{() -> fragment.openEditFragment()}"/>
+
+                    <Button
+                        android:id="@+id/contact_btn"
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/stroke_border_background_5_1"
+                        android:clickable="true"
+                        android:elevation="0dp"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:outlineProvider="none"
+                        android:text="@string/contact"
+                        android:textAllCaps="false"
+                        android:textColor="#777777"
+                        android:textSize="15sp"
+                        android:onClick="@{()-> fragment.openContactBSFragment()}"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:layout_constraintBottom_toBottomOf="@+id/follow_btn"
+                        app:layout_constraintEnd_toStartOf="@+id/follow_btn"
+                        app:layout_constraintTop_toTopOf="@+id/follow_btn" />
+
+
+                    <ImageView
+                        android:id="@+id/iv_character"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_toStartOf="@id/follow_btn"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="3dp"
+                        android:src="@drawable/ic_character"
+                        android:onClick="@{()-> fragment.lookUpCharactersFragment()}"
+                        app:layout_constraintBottom_toBottomOf="@+id/follow_btn"
+                        app:layout_constraintEnd_toStartOf="@+id/contact_btn"
+                        app:layout_constraintTop_toTopOf="@+id/follow_btn" />
+
+
+                    <!--Full name-->
+                    <TextView
+                        android:id="@+id/full_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@{userViewModel.user.name}"
+                        android:ellipsize="end"
+                        android:maxEms="12"
+                        android:maxLines="2"
+                        android:textColor="@color/colorFeedText"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/civ_profile_picture" />
+
+                    <!--username-->
+                    <TextView
+                        android:id="@+id/username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{userViewModel.user.username}"
+                        android:textColor="@color/coloVLFont"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/full_name" />
+
+
+                    <!--Bio-->
+                    <TextView
+                        android:id="@+id/user_bio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@{TextUtils.isEmpty(userViewModel.user.bio) ? @string/add_bio : userViewModel.user.bio}"
+                        android:ellipsize="end"
+                        android:maxEms="20"
+                        android:maxLines="3"
+                        android:paddingStart="0dp"
+                        android:paddingEnd="10dp"
+                        android:textColor="@{TextUtils.isEmpty(userViewModel.user.bio) ? @color/colorVolunteerX : @color/colorDarkFontMajor}"
+                        android:textSize="13sp"
+                        android:onClick="@{() -> fragment.openBioEdit(userViewModel.user.bio)}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+                    <!--following&followers-->
+                    <LinearLayout
+                        android:id="@+id/linearLayout1"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/user_bio">
+
+                        <LinearLayout
+                            android:id="@+id/activities"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="30dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/activities_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@{Converter.NumberFormatting(userViewModel.user.activityCount)}"
+                                android:textColor="@color/color685783"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="0dp"
+                                android:text="@string/activities"
+                                android:textColor="@color/colorFeedStats"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <!--Followers-->
+                        <LinearLayout
+                            android:id="@+id/ll_followers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="30dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical"
+                            android:onClick="@{() -> fragment.gotToStatics(0)}">
+
+                            <TextView
+                                android:id="@+id/followers_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@{Converter.NumberFormatting(userViewModel.user.followersCount)}"
+                                android:textColor="@color/color685783"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="0dp"
+                                android:text="@string/followers"
+                                android:textColor="@color/colorFeedStats"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                        <!--Following-->
+                        <LinearLayout
+                            android:id="@+id/ll_following"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical"
+                            android:onClick="@{() -> fragment.gotToStatics(1)}">
+
+                            <TextView
+                                android:id="@+id/following_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@{Converter.NumberFormatting(userViewModel.user.followingCount)}"
+                                android:textColor="@color/color685783"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="0dp"
+                                android:text="@string/following"
+                                android:textColor="@color/colorFeedStats"
+                                android:textSize="14sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/colorWhite"
+                    app:layout_collapseMode="pin"
+                    app:contentInsetStart="0dp"
+                    android:elevation="1dp">
+
+                    <TextView
+                        android:id="@+id/tv_current_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@{userViewModel.user.username}"
+                        android:textSize="18sp"
+                        android:textColor="@color/colorBlack"
+                        android:gravity="center"
+                        android:drawablePadding="10dp"
+                        android:drawableEnd="@drawable/ic_dropdown"
+                        android:padding="15dp"
+                        android:onClick="@{() -> fragment.openAccountBSFragment()}"/>
+
+                    <ImageView
+                        android:id="@+id/setting"
+                        android:layout_width="60dp"
+                        android:layout_height="50dp"
+                        android:padding="12dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:src="@drawable/ic_setting"
+                        android:layout_gravity="end"
+                        android:background="?attr/selectableItemBackgroundBorderless"/>
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/CustomTabLayout"
+                android:id="@+id/tabs_user"
+                app:tabMode="fixed"
+                app:tabMaxWidth="0dp"
+                app:tabGravity="fill"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.viewpager.widget.ViewPager
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_tab_container"
+            android:layout_marginBottom="50dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        <!-- Bottom Navigation  -->
+        <include layout="@layout/layout_bottom_navigation_view"
+            tools:viewBindingIgnore="true"/>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

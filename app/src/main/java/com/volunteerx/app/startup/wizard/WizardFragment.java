@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
- *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 12/14/19 8:51 PM
+ *  * Created by Amil Muhammed Hamza on 2/19/20 6:30 AM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 12/30/19 5:47 PM
  *
  */
 
-package com.volunteerx.app.startup;
+package com.volunteerx.app.startup.wizard;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -22,11 +22,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.volunteerx.app.R;
-import com.volunteerx.app.models.User;
 import com.volunteerx.app.utils.StatusColorClass;
 
 import static com.volunteerx.app.utils.StatusColorClass.DARK_STATUS_BAR_ICON;
 
+//Todo obsolete
 public class WizardFragment extends Fragment {
 
     private static final String TAG = "WizardFragment";

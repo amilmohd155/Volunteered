@@ -49,10 +49,9 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/ab_username"
+                    android:id="@+id/tv_current_user"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/john_doe123"
                     android:textSize="18sp"
                     android:textColor="@color/colorBlack"
                     android:gravity="center"

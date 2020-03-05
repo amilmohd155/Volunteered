@@ -12,7 +12,13 @@
     android:layout_height="match_parent"
     android:background="@color/colorSplash">
 
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <ImageView
+        android:id="@+id/iv_splash"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@mipmap/ic_launcher_round"

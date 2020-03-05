@@ -7,56 +7,56 @@
   ~  */
   -->
 
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorVolunteerX">
+    android:background="#FF80AB"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="VolunteerX"
+        android:layout_margin="20dp"
+        android:fontFamily="@font/kalam_bold"
+        android:text="@string/app_name"
         android:textColor="@color/colorWhite"
-        android:textStyle="bold"
         android:textSize="20sp"
-        android:layout_margin="20dp"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/curvy_layout"
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorWhite">
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:layout_marginBottom="10dp">
+            android:orientation="horizontal"
+            android:padding="20dp">
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
+                style="@style/CustomTabLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:tabIndicatorGravity="bottom"
-                app:tabIndicatorFullWidth="false"
                 app:tabGravity="center"
-                app:tabMode="fixed"
-                style="@style/CustomTabLayout">
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorGravity="bottom"
+                app:tabMode="fixed">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/login_tab"/>
+                    android:text="@string/login_tab" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Signup"/>
+                    android:text="Signup" />
 
 
             </com.google.android.material.tabs.TabLayout>

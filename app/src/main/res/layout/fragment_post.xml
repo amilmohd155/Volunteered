@@ -7,108 +7,158 @@
   ~  */
   -->
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".post.PostActivity">
+    xmlns:fancy="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="postViewModel"
+            type="com.volunteerx.app.post.viewModel.PostViewModel" />
+    </data>
 
-    <RelativeLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/relLayout">
+        tools:context=".post.PostFragment">
 
-        <RelativeLayout
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/relLayout1">
+            app:elevation="0dp">
 
-            <include layout="@layout/snippet_top_bar_post"/>
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:contentInsetStartWithNavigation="0dp"
+                app:navigationIcon="@drawable/ic_close"
+                android:background="@color/colorWhite">
 
-        </RelativeLayout>
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:id="@+id/submit_post"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="10dp"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:enabled="@{postViewModel.isPostReady}"
+                    android:text="@string/post"
+                    android:textStyle="bold"
+                    fancy:fb_borderWidth="1dp"
+                    fancy:fb_defaultColor="@color/colorWhite"
+                    fancy:fb_disabledBorderColor="#A2A2A2"
+                    fancy:fb_disabledColor="@color/colorWhite"
+                    fancy:fb_radius="5dp"
+                    fancy:fb_text="@string/post"
+                    fancy:fb_textColor="@color/colorBlue63"
+                    fancy:fb_textSize="20sp"
+                    android:onClick="@{() -> postViewModel.submitPost()}"/>
 
-        <RelativeLayout
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/relLayout1"
-            android:id="@+id/relLayout2"
-            android:background="@color/colorWhite"
-            android:layout_above="@id/relLayout3">
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <!--WriteBoard-->
-            <RelativeLayout
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/circleImageView3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="5dp"
+                android:scaleType="centerCrop"
+                loadProfileImage="@{postViewModel.post.profileUrl}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/post_description"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#00000000"
+                android:gravity="top|start"
+                android:hint="@string/post_bait_text"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:textColor="@color/colorBlack"
+                android:textCursorDrawable="@null"
+                app:autoSizeMaxTextSize="25sp"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeStepGranularity="2sp"
+                app:autoSizeTextType="uniform"
+                android:text="@={postViewModel.postText}"
+                android:onTextChanged="@{postViewModel::onTextChanged}"
+                app:layout_constraintBottom_toTopOf="@+id/recyclerView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/circleImageView3"
+                app:layout_constraintTop_toTopOf="@+id/circleImageView3" />
+
+            <!--Media and Poll-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:visibility="gone"
+                android:id="@+id/recyclerView2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/relLayout_inner2"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp">
+                android:layout_height="200dp"
+                app:layout_constraintBottom_toTopOf="@+id/view6"
+                app:layout_constraintStart_toStartOf="parent" />
 
-                <EditText
-                    android:id="@+id/post_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="top|start"
-                    android:background="#00000000"
-                    android:textCursorDrawable="@null"
-                    android:hint="@string/post_bait_text"
-                    android:textSize="25sp"
-                    android:textColor="@color/colorFontMajor"
-                    app:autoSizeTextType="uniform"
-                    app:autoSizeMinTextSize="12sp"
-                    app:autoSizeMaxTextSize="25sp"
-                    app:autoSizeStepGranularity="2sp"/>
-
-            </RelativeLayout>
-
-        </RelativeLayout>
-
-        <!--Media and Poll-->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/relLayout3"
-            android:layout_alignParentBottom="true">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/attachment_tab"
+            <View
+                android:id="@+id/view6"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:tabGravity="fill"
-                app:tabMode="fixed"
-                app:tabIndicator="@android:color/transparent"
-                android:background="@drawable/white_grey_border_top"
-                app:tabTextAppearance="@style/AttachmentTabTextStyle"
-                app:tabTextColor="@color/colorFontMajor">
+                android:layout_height="2dp"
+                android:background="@color/colorDivider"
+                app:layout_constraintBottom_toTopOf="@+id/imageButton" />
 
-                <!--<android.support.design.widget.TabItem-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:icon="@drawable/ic_photos"/>-->
-                <!--<android.support.design.widget.TabItem-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:icon="@drawable/ic_google"/>-->
-                <!--<android.support.design.widget.TabItem-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:icon="@drawable/ic_twitter" />-->
-                <!--<android.support.design.widget.TabItem-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:icon="@drawable/ic_heart" />-->
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_photo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-            </com.google.android.material.tabs.TabLayout>
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="5dp"
+                android:src="@drawable/ic_document"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButton" />
 
-        </RelativeLayout>
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_pin_o"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButton2" />
 
-    </RelativeLayout>
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_poll"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageButton3" />
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

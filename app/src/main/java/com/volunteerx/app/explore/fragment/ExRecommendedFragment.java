@@ -140,7 +140,7 @@ public class ExRecommendedFragment extends Fragment {
 
     private void setupLayout() {
 
-        getData();
+//        getData();
 
         MultiViewAdapter adapter = new MultiViewAdapter();
 
@@ -181,7 +181,7 @@ public class ExRecommendedFragment extends Fragment {
         nestedSection.addSection(postCardSection);
 
 
-        adapter.addSection(nestedSection);
+//        adapter.addSection(nestedSection);
         adapter.setHasStableIds(true);
 
 

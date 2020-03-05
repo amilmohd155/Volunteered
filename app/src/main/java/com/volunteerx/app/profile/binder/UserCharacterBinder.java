@@ -37,8 +37,8 @@ public class UserCharacterBinder extends ItemBinder<CharacterModel, UserCharacte
     @Override
     public void bindViewHolder(UCBViewHolder holder, CharacterModel item) {
 
-        holder.tvCharacterName.setText(context.getString(item.getCharacterNameID()));
-        holder.cvCharacterColor.setCardBackgroundColor(context.getColor(item.getCharacterColorID()));
+        holder.tvCharacterName.setText(item.getCharacterName());
+        holder.cvCharacterColor.setCardBackgroundColor(item.getCharacterColor());
 
     }
 

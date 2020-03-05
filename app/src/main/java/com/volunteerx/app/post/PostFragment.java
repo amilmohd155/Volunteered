@@ -13,8 +13,12 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -29,7 +33,9 @@ import android.widget.ImageView;
 
 import com.google.android.material.tabs.TabLayout;
 import com.volunteerx.app.R;
+import com.volunteerx.app.databinding.FragmentPostBinding;
 import com.volunteerx.app.fragments.PrivacyDialogFragment;
+import com.volunteerx.app.post.viewModel.PostViewModel;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import mehdi.sakout.fancybuttons.FancyButton;
@@ -52,6 +58,10 @@ public class PostFragment extends Fragment {
 //    private String mParam1;
 //    private String mParam2;
 //
+
+    private FragmentPostBinding binding;
+    private PostViewModel postViewModel;
+
     //Widgets
     private ImageView closeBtnPost;
     private EditText etPost;
@@ -93,7 +103,16 @@ public class PostFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_post, container, false);
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_post, container, false);
+        postViewModel = new ViewModelProvider(this).get(PostViewModel.class);
+
+        binding.setPostViewModel(postViewModel);
+        binding.setLifecycleOwner(this);
+
+        postViewModel.getIsPostReady().observe(getViewLifecycleOwner(), aBoolean -> {});
+
+        return binding.getRoot();
     }
 
     @Override
@@ -109,10 +128,10 @@ public class PostFragment extends Fragment {
 
         //function Call
 //        setupList();
-        setupAttachmentTab();
-        setupPrivacySetting();
-        setupFontSize();
-        setupPostBtn();
+//        setupAttachmentTab();
+//        setupPrivacySetting();
+//        setupFontSize();
+//        setupPostBtn();
 
     }
 
@@ -123,7 +142,8 @@ public class PostFragment extends Fragment {
     }
 
     /**
-     * Post text font change when lines exceed 5
+     * Post text
+     * size  change when lines exceed 5
      */
     private void setupFontSize() {
 
@@ -230,5 +250,9 @@ public class PostFragment extends Fragment {
 
     }
 
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        binding = null;
+    }
 }

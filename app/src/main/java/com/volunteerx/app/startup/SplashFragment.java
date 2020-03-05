@@ -42,27 +42,6 @@ public class SplashFragment extends Fragment {
 
         view.setBackgroundColor(getResources().getColor(R.color.colorSplash, getContext().getTheme()));
 
-        Handler handler = new Handler();
-
-        handler.postDelayed(() -> {
-
-            if (SharedPrefManager.getInstance(getContext()).isLoggedIn()) {
-                Intent intent = new Intent(getActivity(), HomeActivity.class);
-                startActivity(intent);
-                getActivity().finish();
-            }
-            else if (restorePrefsData(getContext(), getString(R.string.on_boarding_screen_opened_key), getString(R.string.saved_on_boarding_key))) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(mContainer.getId(), new StartupFragment())
-                        .commit();
-            }else  {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(mContainer.getId(), OnBoardingFragment.newInstance())
-                        .commit();
-            }
-
-        }, 1000);
-
         return view;
     }
 

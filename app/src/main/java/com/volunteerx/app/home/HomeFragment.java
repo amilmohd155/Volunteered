@@ -110,32 +110,11 @@ public class HomeFragment extends Fragment {
 
         PostBinder postBinder = new PostBinder(getContext(), Glide.with(this));
 
-        adapter.registerItemBinders(new PostBinder(getContext(), Glide.with(this)));
+        adapter.registerItemBinders(postBinder);
 
         ListSection<PostModel> postSection = new ListSection<>();
 
-        ArrayList<MediaModel> mediaModels = new ArrayList<>();
-        mediaModels.add(new ImageModel("https://i.postimg.cc/zvgC906b/Assassin-s-Creed-Odyssey-10-29-2019-6-20-54-PM.png"));
-        mediaModels.add(new ImageModel("https://i.postimg.cc/N0RfYyRL/fairy-tales.png"));
-        mediaModels.add(new ImageModel("https://i.postimg.cc/9Q6FvPRv/thought.jpg"));
-
-        if (postSection.size() == 0){
-
-            postSection.add(new PostModel(mediaModels,
-                    "https://i.postimg.cc/DZLpx4KL/Screenshot-13.png",
-                    "Jane Doe",
-                    "Android is a mobile operating system based on a modified version of the Linux kernel and other open source software, designed primarily for touchscreen mobile devices such as smartphones and tablets.",
-                    "02-01-2020"));
-
-            postSection.add(new PostModel(mediaModels,
-                    "https://i.postimg.cc/DZLpx4KL/Screenshot-13.png",
-                    "Jane Doe",
-                    "Android is a mobile operating system based on a modified version of the Linux kernel and other open source software, designed primarily for touchscreen mobile devices such as smartphones and tablets.",
-                    "02-01-2020"));
-
-        }
-
-        adapter.addSection(postSection);
+//        adapter.addSection(postSection);
 
     }
 

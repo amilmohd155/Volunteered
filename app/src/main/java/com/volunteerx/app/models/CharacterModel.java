@@ -11,19 +11,45 @@ package com.volunteerx.app.models;
 public class CharacterModel {
 
     private int characterID;
-    private int characterColorID;
+    private int characterColor;
     private int characterNameID;
+    private String characterName;
     private int characterIcon;
 
-    public CharacterModel(int characterID, int characterName, int characterImageID) {
+    /**
+     *
+     * @param characterID
+     * @param characterNameID
+     * @param characterImage
+     */
+    public CharacterModel(int characterID, int characterNameID, int characterImage) {
         this.characterID = characterID;
-        this.characterColorID = characterImageID;
-        this.characterNameID = characterName;
+        this.characterColor = characterImage;
+        this.characterNameID = characterNameID;
     }
 
-    public CharacterModel(int characterID, int characterColorID, int characterNameID, int characterIcon) {
+    /**
+     *
+     * @param characterID
+     * @param characterColor
+     * @param characterName
+     */
+    public CharacterModel(int characterID, int characterColor, String characterName) {
         this.characterID = characterID;
-        this.characterColorID = characterColorID;
+        this.characterColor = characterColor;
+        this.characterName = characterName;
+    }
+
+    /**
+     *
+     * @param characterID
+     * @param characterColor
+     * @param characterNameID
+     * @param characterIcon
+     */
+    public CharacterModel(int characterID, int characterColor, int characterNameID, int characterIcon) {
+        this.characterID = characterID;
+        this.characterColor = characterColor;
         this.characterNameID = characterNameID;
         this.characterIcon = characterIcon;
     }
@@ -36,12 +62,12 @@ public class CharacterModel {
         this.characterID = characterID;
     }
 
-    public int getCharacterColorID() {
-        return characterColorID;
+    public int getCharacterColor() {
+        return characterColor;
     }
 
-    public void setCharacterColorID(int characterColorID) {
-        this.characterColorID = characterColorID;
+    public void setCharacterColor(int characterColor) {
+        this.characterColor = characterColor;
     }
 
     public int getCharacterNameID() {
@@ -58,5 +84,13 @@ public class CharacterModel {
 
     public void setCharacterIcon(int characterIcon) {
         this.characterIcon = characterIcon;
+    }
+
+    public String getCharacterName() {
+        return characterName;
+    }
+
+    public void setCharacterName(String characterName) {
+        this.characterName = characterName;
     }
 }

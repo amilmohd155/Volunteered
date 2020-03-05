@@ -38,11 +38,12 @@ public class HorizontalScrollBinder extends ItemBinder<Integer, HorizontalScroll
     @SuppressWarnings("unchecked")
     public <T>HorizontalScrollBinder(RequestManager glide, ArrayList<T> model) {
         this.glide = glide;
-        if (model.get(0) instanceof ActivityCardModel)
-            this.activityCardModels = (ArrayList<ActivityCardModel>)model;
-        else if(model.get(0) instanceof EventCardModel)
-            this.eventCardModels = (ArrayList<EventCardModel>) model;
-
+        if (!model.isEmpty()) {
+            if (model.get(0) instanceof ActivityCardModel)
+                this.activityCardModels = (ArrayList<ActivityCardModel>)model;
+            else if(model.get(0) instanceof EventCardModel)
+                this.eventCardModels = (ArrayList<EventCardModel>) model;
+        }
         viewPool = new RecyclerView.RecycledViewPool();
 
     }

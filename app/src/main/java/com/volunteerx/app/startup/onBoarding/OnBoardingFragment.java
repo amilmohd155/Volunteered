@@ -1,12 +1,12 @@
 /*
  * *
- *  * Created by Amil Muhammed Hamza on 12/25/19 9:32 PM
- *  * Copyright (c) 2019 . All rights reserved.
- *  * Last modified 12/14/19 9:16 PM
+ *  * Created by Amil Muhammed Hamza on 2/19/20 6:31 AM
+ *  * Copyright (c) 2020 . All rights reserved.
+ *  * Last modified 1/10/20 3:00 PM
  *
  */
 
-package com.volunteerx.app.startup;
+package com.volunteerx.app.startup.onBoarding;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -24,6 +24,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator;
 import com.volunteerx.app.R;
 import com.volunteerx.app.models.ScreenItem;
+import com.volunteerx.app.startup.StartupFragment;
 import com.volunteerx.app.utils.OnBoardingViewPagerAdapter;
 import com.volunteerx.app.utils.StatusColorClass;
 
